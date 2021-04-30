@@ -1,0 +1,25 @@
+<style>
+    .bg {
+        background-color: rgb(138, 248, 248);
+        margin: 10px;
+
+    }
+</style>
+
+<center>
+    <h1>Hello User</h1>
+</center>
+<div class="bg">
+    <center>
+        <h2>Profile</h2>
+
+        <br>
+        Mail Id: {{ user.email }}
+        <br>
+        <br>
+        <form method="POST" action="{% url 'logoutuser' %}">
+            {% csrf_token %}
+            <button id="Btn" type="submit">Logout</button>
+        </form>
+    </center>
+</div>
