@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from accounts import views
 
 urlpatterns = [
@@ -8,5 +8,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('loginuser/', views.loginuser, name='loginuser'),
     path('logout/', views.logoutuser, name='logoutuser'),
-    path('profile/', views.profile, name='profile')
+    path('profile/', views.profile, name='profile'),
+    path('faceregister/', include('faceregister.urls'))
 ]
