@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+#AppBody * {
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  /* font-smoothing: antialiased; */
+  text-rendering: optimizeLegibility;
+}
+
+#AppBody {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
+}
+
+.nav-link {
+  color: #f9f9f9;
+  font-size: 20px;
+}
+.box1 {
+  background: #282828;
+}
+.box2 {
+  background: #181818;
+}
+.btn {
+  margin: 10px;
+}
+.p {
+  margin-bottom: 55px;
+  color: #f9f9f9;
+  font-size: 20px;
+  text-align: center;
+}
+
+#webcamVideo {
+  margin: 0%;
+}

@@ -1,0 +1,68 @@
+body {
+  background-color: #f7cac9;
+}
+h3 {
+  text-align: center;
+}
+
+#check3 {
+  /* margin-left: 10%; */
+  margin-bottom: 1%;
+}
+#check {
+  margin-top: 8%;
+}
+#video,
+#canvas {
+  width: 465px;
+  height: 349px;
+}
+#container {
+  margin-left: 4%;
+  width: 485px;
+  height: 369px;
+  border: 10px #343148 solid;
+  background: #343148;
+  position: relative;
+}
+
+.play-area {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3%;
+}
+.button {
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  border: none;
+  /* background-color: inherit; */
+  padding: 14px 28px;
+  font-size: 25px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.btn-submit,
+.btn-capture,
+.btn-auth {
+  border: none;
+  background-color: #343148;
+  padding: 14px 28px;
+  font-size: 25px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+.btn-submit:hover,
+.btn-capture:hover,
+.btn-auth:hover {
+  color: white;
+}
+
+.bttn {
+  display: flex;
+  justify-content: space-evenly;
+}

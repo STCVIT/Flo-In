@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        <!-- Hero Start -->
+        <!-- Template Stylesheet -->
+        <div class="hero">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="hero-text">
+                            <h3 class="pb-2">
+                                FLO-IN is a Chrome Extension that helps you easily Log-In and Log-Out of your accounts. It is also safe to use as it gives access to only the authoried user.
+                            </h3>
+                            <div class="hero-btn pt-2">
+                                <a class="btn" href="">Add Extension To Chrome</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 d-none d-md-block">
+                        <div class="hero-image">
+                            <img src="{% static 'frontend/chrome.png' %}" alt="Hero Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+
+
+        <!-- About Start -->
+        <div class="about wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="about-img">
+                            <img src="{% static 'frontend/1200.png' %}" alt="Image">
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6">
+                        <div class="section-header text-left">
+                            <p>About</p>
+                            <h2>Welcome to FLO-IN</h2>
+                        </div>
+                        <div class="about-text">
+                            <p>
+                                 FLO-IN is an extension that recognises a user whenever he/she tries to Log-In any of the accounts.
+                                 The user who has registered his/her face will only be given the option to access the accounts.
+                                 The face recognition will be done every time the user tries to access any of the accounts.
+                                 Option to open the accounts via pattern is also provided.
+
+                            </p>
+                            <p>
+                                Hence, there is no need to Log-Out every time of the account to keep the data safe.
+                                Without any single click you can access your accounts as well as keep the account password protected.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+
+        <!-- Service Start -->
+        <div class="service">
+            <div class="container">
+                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                    <p>Features</p>
+                    <h2>FLO-IN For Ease</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.0s">
+                        <div class="service-item active">
+                            <div class="service-icon">
+                                <i class="fas fa-key"></i>
+
+                            </div>
+                            <h3>Pattern Log-In</h3>
+                            <p>
+                                Loggin-In with Pattern can also be an easy option sometimes, so FLO-IN provides you with an easy to access Pattern Protection.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="service-item active">
+                            <div class="service-icon">
+                                <i class="fas fa-user-lock"></i>
+                            </div>
+                            <h3>Facial Log-In</h3>
+                            <p>
+                                FLO-IN provides you security of your accounts with Face Detection Method. You can Log-In to your accont without Logging-Out by recognising your face.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="service-item active">
+                            <div class="service-icon">
+                                <i class="fas fa-file-signature"></i>
+                            </div>
+                            <h3>Auto-Fill</h3>
+                            <p>
+                                There is no need for a single click to fill up your passwords, FLO-IN provides you an option to Auto-Fill the passwords of your accounts.
+                            </p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Service End -->
+
+
+        <!-- Discount -->
+<div class="discount wow cont">
+    <div class="section-header text-center">
+        <h2>Instructions To Get <span>Started</span></h2>
+    </div>
+        <div class="containers" id="tester">
+            <div class="step-wrapper move-line">
+          
+          <article class="linestep linestep1" style="left: 56%; top: -2%;"> 
+              <span class="num"> 1</span>
+              <p class="bottom">
+                  Register On Website 
+              </p>
+          </article>
+          
+          <article class="linestep linestep2" style=" right: -0.5%; top: 20%;"> 
+              <span class="num"> 2</span>
+              <p class="left">
+                Create Your Account
+            </p>
+          </article>
+          
+          <article class="linestep linestep3" style="left: 68%; top: 44%;"> 
+              <span class="num"> 3</span>
+              <p  class="bottom">
+                Register Your Face
+              </p>
+          </article>
+          
+          <article class="linestep linestep4" style="left: 32%; top: 44.5%;"> 
+              <span class="num">4</span>
+              <p class="top">
+                Register Your Pattern
+              </p>
+          </article>
+          
+          <article class="linestep linestep5" style="left: -1.5%; top: 68%;"> 
+              <span class="num"> 5</span>
+              <p  class="right">
+                Add Extension to Chrome
+              </p>
+          </article>
+          
+          <article class="linestep linestep6" style="left: 21%;  top: 93%;"> 
+              <span class="num"> 6</span>
+              <p  class="bottom">
+                Add Credentials In Extension
+              </p>
+          </article>        
+          <article class="linestep linestep7" style="left: 53%; top: 93%;"> 
+            <span class="num"> 7</span>
+            <p class="top">
+                Add Passwords of Respective Accounts
+            </p>
+        </article> 
+          <article class="linestep linestep8" style="left: 86%; top: 93%;"> 
+              <span class="num"> 8</span>
+              <p  class="bottom">
+                  You Are All Set! Visit Your Accounts Now!
+              </p>
+          </article>
+          
+          <svg width="100%" viewBox="0 0 1156 608" xmlns="http://www.w3.org/2000/svg">
+            <path class="path" d="m560.30957,10.588011c0,0 438.0947,1.90476 439.04708,1.90476c0.95238,0 144.57857,-1.02912 143.80934,137.14269c-0.76923,138.17181 -116.81095,142.30859 -131.61967,143.8923c-14.80873,1.58372 -840.41472,-0.71429 -860.5941,0.71429c-20.17938,1.42858 -148.4991,6.80903 -146.83244,147.05973c1.66666,140.2507 129.52365,152.14266 129.33243,151.27321c0.19122,0.86945 815.268425,2.687632 951.42748,0" opacity="0.5" stroke-width="7" stroke="#FFFFFF" fill="none"/>
+          </svg>
+          
+          </div>
+          
+          </div>  
+        </div>
+          <!-- container.//  -->
+        <!-- End -->
+{% endblock %}

@@ -1,0 +1,79 @@
+<!-- {% load static %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'frontend/authenticate.css' %}" />
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="container" id="container">
+        <div class="form-container sign-up-container">
+          
+          <form class="modal-content" method="POST">
+            <h1>Sign Up</h1>
+            {% csrf_token %}
+            {% if error %}
+            <div style="color: #f44336;" role="alert">
+              {{ error }}
+            </div>
+            {% endif %}
+
+            <label for="email"><b></b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label for="password1"><b></b></label>
+            <input type="password" placeholder="Enter Password" name="password1" id="password1" required>
+
+            <label for="password2"><b></b></label>
+            <input type="password" placeholder="Confirm Password" name="password2" id="password2" required>
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
+        <div class="form-container sign-in-container">
+          <form class="modal-content" method="POST">
+            {% csrf_token %}
+            <h1>Log In</h1>
+            {% if error %}
+            <div style="color: #f44336;" role="alert">
+              {{ error }}
+            </div>
+            {% endif %}
+            <label for="user"><b></b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+            <label for="password"><b></b></label>
+            <input type="password" placeholder="Enter Password" name="password" id="password" required>
+            <button type="submit">Log In</button>
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1>Hello, Friend!</h1>
+              <p>Please login with your personal info!</p>
+              <button class="ghost" id="signIn">Log In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h1>Welcome Back!</h1>
+              <p>
+                Personalise Your Account!
+              </p>
+              <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  <script src="{% static 'frontend/authenticate.js' %}"></script>
+</body>
+
+</html>
+
+</html>

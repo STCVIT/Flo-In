@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'frontend/profile.css' %}">
+<div class="hero">
+    <h2>Passwords </h2>
+    <ul class="responsive-table">
+        <input class="form-control mb-4" id="myInput" type="text" placeholder="Search..">
+      <li class="table-header ">
+
+        <div class="col col-22">Website URL</div>
+        <div class="col col-33">Email Id/ Username</div>
+        <div class="col col-44">Password</div>
+      </li>
+
+      {% for data in datas %}
+      <li class="table-row ">
+        <div class="col col-2" data-label="Customer Name">{{data.url}}</div>
+        <div class="col col-3" data-label="Amount">{{ data.username }}</div>
+        <div class="col col-4" data-label="Payment Status">{{ data.password }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $(".table-row").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+{% endblock %}

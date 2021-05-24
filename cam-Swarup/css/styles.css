@@ -1,0 +1,106 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+#AppBody * {
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  /* font-smoothing: antialiased; */
+  text-rendering: optimizeLegibility;
+}
+
+#AppBody {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
+  /* color: #777; */
+  background: #181818;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="password"],
+#contact textarea,
+#contact button[type="submit"] {
+  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+#contact {
+  background: #181818;
+  color: white;
+  padding: 25px;
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+}
+#contact h3 {
+  display: block;
+  font-size: 25px;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+#contact h4 {
+  margin: 5px 0 15px;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+#AppBody fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#AppBody button a {
+  text-decoration: none;
+}
+
+#grid-tab {
+  cursor: pointer;
+}
+
+#grid-tab:hover {
+  background-color: #ffffff;
+  font-weight: 900;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="password"],
+#contact textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#contact textarea {
+  height: 100px;
+  max-width: 100%;
+  resize: none;
+}
+
+.back {
+  color: white;
+  padding-bottom: 3%;
+  font-size: 20px;
+}
+.back:hover {
+  color: #ccc;
+}
+.btn {
+  padding: 2%;
+  background-color: #282828;
+  color: white;
+  border-color: white;
+  background-color: inherit;
+}
+.btn:hover {
+  color: black;
+  background-color: white;
+}

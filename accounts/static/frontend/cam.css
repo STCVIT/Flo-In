@@ -1,0 +1,121 @@
+body {
+  background-color: #f7cac9;
+}
+
+#container {
+  margin-bottom: 5%;
+  width: 425px;
+  height: 328px;
+  border: 10px #343148 solid;
+  background: #343148;
+  position: relative;
+}
+
+#video {
+  width: 405px;
+  height: 308px;
+  background-color: #343148;
+}
+
+.button {
+  margin: 50px;
+  margin-left: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+.button,
+h2 {
+  color: white;
+}
+
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 25px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.btn:hover {
+  background-color: #343148;
+  color: white;
+}
+.btn:active {
+  background-color: #343148;
+  color: white;
+  transform: translateY(4px);
+}
+
+.app {
+  font-family: sans-serif;
+  display: grid;
+  height: 50vh;
+  place-items: center;
+}
+
+.base-timer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+}
+
+.base-timer__path-remaining.green {
+  color: rgb(65, 184, 131);
+}
+
+.base-timer__path-remaining.orange {
+  color: orange;
+}
+
+.base-timer__path-remaining.red {
+  color: red;
+}
+
+.base-timer__label {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.bttn {
+  margin-top: 8%;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+p {
+  font-size: 20px;
+}
