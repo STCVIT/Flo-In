@@ -10,6 +10,7 @@ urlpatterns = [
     path('loginuser/', views.loginuser, name='loginuser'),
     path('logout/', views.logoutuser, name='logoutuser'),
     path('profile/', views.profile, name='profile'),
+    path('setpattern/', views.setpattern, name='setpattern'),
     path('api/', include('api.urls')),
     # path('faceregister/', include('faceregister.urls')),
     path('userdata/',views.savedata, name='userdata'),

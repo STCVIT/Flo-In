@@ -4,7 +4,7 @@ from .renderers import ImageRenderer
 from .serializers import userDataSerializer
 from .permissions import IsOwnerProfileOrReadOnly
 from accounts.models import UserData
-from accounts.recognise import authenticate_user
+from accounts.recognise2 import authenticate_user
 from rest_framework import status
 from django.conf import settings
 from django.shortcuts import render

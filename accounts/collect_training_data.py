@@ -5,6 +5,7 @@ import sys
 import random
 import numpy as np
 from django.conf import settings
+import mediapipe as mp
 
 # Loading classifiers
 faceCascade = cv2.CascadeClassifier(os.path.join(settings.BASE_DIR,'opencv_haarcascade_data','haarcascade_frontalface_default.xml'))

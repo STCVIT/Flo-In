@@ -72,6 +72,8 @@ class UserData(models.Model):
 class FaceData(models.Model):
     objects=None
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+    pattern = models.BigIntegerField(default=000000000)
+    confidence = models.IntegerField(default=80)
     data= models.FileField(upload_to='user/videos/', blank=True)
 
     def __str__(self):

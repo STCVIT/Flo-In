@@ -1,8 +1,8 @@
 import os
-from .models import MyUser, UserData
-from .classifier import train_classifier
-from .recognise import authenticate_user
-from .collect_training_data import collectTrainingData
+from .models import MyUser, UserData, FaceData
+from .classifier import generate_classifier
+from .recognise2 import authenticate_user
+from .collect_training_data2 import collectTrainingData
 from .Forms import UserAdminCreationForm, AuthenticationForm, UserDataForm, FaceDataForm
 from django.conf import settings
 from django.db import IntegrityError
@@ -81,15 +81,22 @@ def savefacedata(request):
         return render(request, 'savefacedata.html', {'form': FaceDataForm()})
     else:
         try:
+            fd = get_object_or_404(FaceData, user=request.user)
+            form = FaceDataForm(request.POST,request.FILES, instance=fd)
+            form.save()
+        except:
             form = FaceDataForm(request.POST,request.FILES)
             newfacedata = form.save(commit=False)
             newfacedata.user = request.user
             newfacedata.save()
-            collectTrainingData(str(request.user.id))
-            train_classifier(str(request.user.id))
-            return redirect('profile')
-        except:
-            return render(request, 'savefacedata.html', {'form': FaceDataForm(), 'error': 'Wrong data put in. Try Again'})
+        collectTrainingData(str(request.user.id))
+        fd = FaceData.objects.get(user=request.user)
+        fd.confidence = generate_classifier(str(request.user.id))
+        print(fd.confidence)
+        fd.save()
+        return redirect('profile')
+        # except:   
+        #     return render(request, 'savefacedata.html', {'form': FaceDataForm(), 'error': 'Wrong data put in. Try Again'})
 
 
 @login_required
@@ -102,8 +109,21 @@ def checkfacedata(request):
         fs = FileSystemStorage()
         filename = fs.save(checkImage.name, checkImage)
         filename = os.path.join(settings.BASE_DIR,"media",filename) 
-        k[request.user.id] = authenticate_user(str(request.user.id), filename)
+        fd = FaceData.objects.get(user=request.user)
+        confidence = fd.confidence
+        print(confidence)
+        k[request.user.id] = authenticate_user(str(request.user.id), confidence,filename )
         print(k)
         return JsonResponse({"match" : k[request.user.id]})
 
-
+@login_required
+def setpattern(request):
+    if request.method == 'GET':
+        return render(request, 'password.html')
+    else:
+        fd = FaceData.objects.get(user=request.user)
+        print(fd)
+        fd.pattern = request.POST['pattern']
+        print(fd.pattern)
+        fd.save()
+        return render(request, 'password.html')

@@ -1,6 +1,6 @@
 import cv2
 import mediapipe as mp
-from typing import NamedTuple
+#from typing import NamedTuple
 
 mp_face_detection = mp.solutions.face_detection
 mp_drawing = mp.solutions.drawing_utils
@@ -23,9 +23,9 @@ with mp_face_detection.FaceDetection(min_detection_confidence=0.5) as face_detec
     for detection in results.detections:
         #print("Nose tip:")
         print(
-            detection.location_data
+            detection.location_data.relative_bounding_box
             )
         
-        print(mp_drawing)
+    
         mp_drawing.draw_detection(annotated_image, detection)
     cv2.imwrite("me" + ".png", annotated_image)
