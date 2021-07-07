@@ -14,7 +14,7 @@ faceCascade=cv2.CascadeClassifier(os.path.join(settings.BASE_DIR,'opencv_haarcas
 
 def draw_boundary(img  , clf , userCONF):
     print("detect")
-    height , width = img.shape
+    height , width, _dim = img.shape
     with mp_face_detection.FaceDetection(min_detection_confidence=0.5) as face_detection:
 
         results = face_detection.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
@@ -33,13 +33,16 @@ def draw_boundary(img  , clf , userCONF):
     k = "Unauthorised"
     
     # Predicting the id of the user
-    # img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    roi_img = img[y:y+h, x:x+w]
+    roi_img = cv2.resize(roi_img, (100 , 100))
+    print("------recognise dimension------ ", roi_img.shape)
     #img=cv2.equalizeHist(img)
     # img=cv2.normalize(img,img,0,255, cv2.NORM_MINMAX)
     # clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
     # img = clahe.apply(img)
-    cv2.imwrite("test.png", img[y:y+h, x:x+w])
-    idd, confidence = clf.predict(img[y:y+h, x:x+w])
+    cv2.imwrite("test.png", roi_img)
+    idd, confidence = clf.predict(roi_img)
     # Check for id of user and label the rectangle accordingly
     print(idd,"|||", confidence)
     if idd==1 and confidence<userCONF:
@@ -59,9 +62,9 @@ def authenticate_user(userID, userCONF ,image):
     if(os.path.exists(os.path.join(settings.BASE_DIR,f"classifiers",userID+".xml"))):
         clf.read(os.path.join(settings.BASE_DIR,f"classifiers",userID+".xml"))
     # Capturing real time video stream. 0 for built-in web-cams, 0 or -1 for external web-cams
-    # img = cv2.imread(image)
-    img = Image.open(os.path.join(settings.BASE_DIR,"682.jpg")).convert('L')
-    img = np.array(img, 'uint8')
+    img = cv2.imread(image)
+    # img = Image.open(os.path.join(settings.BASE_DIR,"682.jpg")).convert('L')
+    # img = np.array(img, 'uint8')
     os.remove(image)
     # Reading image from 
     img = recognize(img, clf, faceCascade, userCONF)

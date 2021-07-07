@@ -50,6 +50,8 @@ def detect(img, userID):
     if len(coords)==4:
         # Updating region of interest by cropping image
         roi_img = img[coords[1]:coords[1]+coords[3], coords[0]:coords[0]+coords[2]]
+        #resizing the image 
+        roi_img = cv2.resize(roi_img, (100 , 100))
         # img_id to make the name of each image unique
         generate_dataset(roi_img, userID)
     return img
@@ -65,8 +67,8 @@ def collectTrainingData(userID):
         # Reading image from video stream
         success, img = video_capture.read()
         # Call method we defined above
-        img_id += 1
         img = detect(img, userID)
+        img_id += 1
         #changed the no of images to 30 for custom confidense level
         if img_id>30:
             break

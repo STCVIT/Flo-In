@@ -14,10 +14,11 @@ def delete_images(userID):
 def split_data(userID):
     pth = os.path.join(settings.BASE_DIR,"data",userID)
     dir_list = os.listdir(pth)
+    size = len(dir_list)
     os.mkdir(os.path.join(settings.BASE_DIR,"data",userID,"train"))
     os.mkdir(os.path.join(settings.BASE_DIR,"data",userID,"test"))
 
-    for i in range(30):
+    for i in range(size):
         orignal = dir_list[i]
         orignal = os.path.join(settings.BASE_DIR,"data",userID,orignal)
         if(i<15):
@@ -50,7 +51,9 @@ def generate_confidense_level(userID):
     mean_conf = statistics.mean(confidence)
     sd_conf = statistics.stdev(confidence)
 
-    return mean_conf + sd_conf
+    custom_confidence = mean_conf + (sd_conf)**2 + 30
+    
+    return 80 if (custom_confidence<=80) else custom_confidence
     
     
 
@@ -65,6 +68,7 @@ def train_classifier(userID):
 
     for image in dir_list:
         img = Image.open(os.path.join(settings.BASE_DIR,"data",userID,"train",image)).convert('L')
+        print("-----training dimension -------  : ", img.size)
         imageNp = np.array(img, 'uint8')
         faces.append(imageNp)
         ids.append(1)
