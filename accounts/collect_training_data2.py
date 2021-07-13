@@ -12,6 +12,16 @@ mp_face_detection = mp.solutions.face_detection
 
 # Loading classifiers
 faceCascade = cv2.CascadeClassifier(os.path.join(settings.BASE_DIR,'opencv_haarcascade_data','haarcascade_frontalface_default.xml'))
+#Preprocessing function
+
+def prep(image): 
+    image = cv2.GaussianBlur(image, (3,3), 0)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    image = cv2.normalize(image, image, 0, 255, cv2.NORM_MINMAX)
+    #image = cv2.equalizeHist(image)
+    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+    image = clahe.apply(image)
+    return image
 
 # Method to generate dataset to recognize a person
 def generate_dataset(img, userID):
@@ -24,7 +34,7 @@ def generate_dataset(img, userID):
 
 def draw_boundary(img):
     print(detect)
-    height , width , _ = img.shape
+    height , width = img.shape
     with mp_face_detection.FaceDetection(min_detection_confidence=0.5) as face_detection:
 
         results = face_detection.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
@@ -67,9 +77,10 @@ def collectTrainingData(userID):
         # Reading image from video stream
         success, img = video_capture.read()
         # Call method we defined above
+        img = prep(img)  #preprocessing function
         img = detect(img, userID)
         img_id += 1
         #changed the no of images to 30 for custom confidense level
-        if img_id>30:
+        if img_id>35:
             break
     os.remove(os.path.join(settings.BASE_DIR,"media","user","videos",userID+".mp4"))

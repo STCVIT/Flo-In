@@ -1,6 +1,6 @@
-// const button=document.getElementById("form");
-// button.onclick=()=>{
-//     // e.preventDefault();
+// const button = document.getElementById("form");
+// button.onclick = () => {
+//     e.preventDefault();
 //     console.log("You entered " + document.getElementById("password").value);
 //     return true;
 // }

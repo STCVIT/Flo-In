@@ -1,9 +1,8 @@
 import os
-
 from .renderers import ImageRenderer
 from .serializers import userDataSerializer
 from .permissions import IsOwnerProfileOrReadOnly
-from accounts.models import UserData
+from accounts.models import UserData, FaceData
 from accounts.recognise2 import authenticate_user
 from rest_framework import status
 from django.conf import settings
@@ -37,7 +36,8 @@ class ImageAPIView(APIView):
             if not ext in ALLOWED_IMAGE_EXTENSIONS:
                 return JsonResponse({'error': 'Invalid image file format.'}, status=400)
             default_storage.save(str(request.user.id)+".png",file)
-            k[request.user.id] = authenticate_user(str(request.user.id), os.path.join(settings.BASE_DIR,"media",str(request.user.id)+".png"))
+            fd = FaceData.objects.get(user=request.user)
+            k[request.user.id] = authenticate_user(str(request.user.id), fd.confidence,os.path.join(settings.BASE_DIR,"media",str(request.user.id)+".png"))
             print(k)
             return JsonResponse({"match" : k[request.user.id]})
         else:

@@ -15,6 +15,23 @@
   <div class="page">
     <header>
       <div class="container" id="container">
+        <div class="form-container sign-in-container">
+          <form class="modal-content" method="POST">
+            {% csrf_token %}
+            <h1>Log In</h1>
+            {% if error %}
+            <div style="color: #f44336;" role="alert">
+              {{ error }}
+            </div>
+            {% endif %}
+            <label for="user"><b></b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+            <label for="password"><b></b></label>
+            <input type="password" placeholder="Enter Password" name="password" id="password" required>
+            <button type="submit" id="login">Log In</button>
+            <a href="{% url 'reset_password' %}" class="dropdown-item" style="color:#f44336">Forgotten Password?</a>
+          </form>
+        </div>
         <div class="form-container sign-up-container">
           
           <form class="modal-content" method="POST">
@@ -37,22 +54,7 @@
             <button type="submit">Sign Up</button>
           </form>
         </div>
-        <div class="form-container sign-in-container">
-          <form class="modal-content" method="POST">
-            {% csrf_token %}
-            <h1>Log In</h1>
-            {% if error %}
-            <div style="color: #f44336;" role="alert">
-              {{ error }}
-            </div>
-            {% endif %}
-            <label for="user"><b></b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
-            <label for="password"><b></b></label>
-            <input type="password" placeholder="Enter Password" name="password" id="password" required>
-            <button type="submit">Log In</button>
-          </form>
-        </div>
+        
         <div class="overlay-container">
           <div class="overlay">
             <div class="overlay-panel overlay-left">

@@ -26,6 +26,7 @@ window.onload = function () {
                 url = tabs[0].url;
                 var value = localStorage.getItem(url);
                 console.log(value);
+                console.log("hello");
                 var TempValue = value.split("0+/");
                 userName = TempValue[0];
                 var passwordValue = TempValue[1];
@@ -42,10 +43,14 @@ window.onload = function () {
                                 break;
                             }
                         }
+                        document.getElementById("modal-content").submit();
+                        alert("Hello");
+                        button.click();
                         return { success: true, html: document.body.innerHTML };
                     } + ')(' + JSON.stringify(someJSON) + ');'
                 }, function (results) {
                 });
+
             });
     };
 };

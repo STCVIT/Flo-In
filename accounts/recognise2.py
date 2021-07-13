@@ -12,6 +12,15 @@ mp_face_detection = mp.solutions.face_detection
 # Loading classifier
 faceCascade=cv2.CascadeClassifier(os.path.join(settings.BASE_DIR,'opencv_haarcascade_data/haarcascade_frontalface_default.xml'))
 
+def prep(image): 
+	image = cv2.GaussianBlur(image, (3,3), 0)
+	image = cv2.normalize(image, image, 0, 255, cv2.NORM_MINMAX)
+	#image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+	#image = cv2.equalizeHist(image)
+	clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+	image = clahe.apply(image)
+	return image
+
 def draw_boundary(img  , clf , userCONF):
     print("detect")
     height , width, _dim = img.shape
@@ -35,6 +44,7 @@ def draw_boundary(img  , clf , userCONF):
     # Predicting the id of the user
     img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     roi_img = img[y:y+h, x:x+w]
+    roi_img=prep(roi_img)
     roi_img = cv2.resize(roi_img, (100 , 100))
     print("------recognise dimension------ ", roi_img.shape)
     #img=cv2.equalizeHist(img)
@@ -67,5 +77,5 @@ def authenticate_user(userID, userCONF ,image):
     # img = np.array(img, 'uint8')
     os.remove(image)
     # Reading image from 
-    img = recognize(img, clf, faceCascade, userCONF)
-    return img
+    k = recognize(img, clf, faceCascade, userCONF)
+    return k

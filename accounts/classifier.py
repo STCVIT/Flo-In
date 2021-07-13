@@ -53,7 +53,7 @@ def generate_confidense_level(userID):
 
     custom_confidence = mean_conf + (sd_conf)**2 + 30
     
-    return 80 if (custom_confidence<=80) else custom_confidence
+    return 85 if (custom_confidence<=85) else custom_confidence
     
     
 
@@ -85,7 +85,7 @@ def generate_classifier(userID):
     split_data(userID)
     train_classifier(userID)
     conf = generate_confidense_level(userID)
-    #delete_images(userID)
+    delete_images(userID)
     return conf
 
 

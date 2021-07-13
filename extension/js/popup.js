@@ -47,6 +47,8 @@ function autofill() {
                 break;
               }
             }
+            console.log("hello")
+            document.getElementsByTagName("button")[0].click();
             return { success: true, html: document.body.innerHTML };
           } + ')(' + JSON.stringify(someJSON) + ');'
         });
@@ -169,6 +171,7 @@ function takepicture() {
     console.log(auth.match)
     if (auth.match == "Authorised") {
       autofill()
+
     }
   }).catch((error) => {
     console.log(error)

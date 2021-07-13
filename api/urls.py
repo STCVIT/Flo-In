@@ -13,4 +13,6 @@ urlpatterns = [
     path('data-create/', views.dataCreate, name="data-Create"),
     path('data-update/<path:url>/', views.dataUpdate, name="data-update"),
     path('data-delete/<path:url>/', views.dataDelete, name="data-delete"),
+
+
 ]

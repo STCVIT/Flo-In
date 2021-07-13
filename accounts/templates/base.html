@@ -45,7 +45,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ user.email }}</a>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">Change Password</a>
+                                <a href="{% url 'reset_password' %}" class="dropdown-item">Change Password</a>
                                 <a class="dropdown-item" href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a><form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
                                     {% csrf_token %}
                                     <button id="signOutBtn" type="submit"><strong>Logout</strong></button>
