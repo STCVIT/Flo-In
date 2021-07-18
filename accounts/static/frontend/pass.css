@@ -8,6 +8,7 @@ body {
   position: relative;
   margin: 30px auto;
   margin-top: 80px;
+  margin-bottom: 160px;
   padding: 20px 20px 20px;
   width: 310px;
   background: white;
@@ -63,24 +64,6 @@ body {
 
 .login p.submit {
   text-align: center;
-}
-
-.login-help {
-  margin: 0px 0;
-  margin-bottom: 110px;
-  font-size: 11px;
-  color: #343148;
-  text-align: center;
-  /* text-shadow: 0 1px #343148; */
-}
-
-.login-help a {
-  color: #343148;
-  text-decoration: none;
-}
-
-.login-help a:hover {
-  text-decoration: underline;
 }
 
 :-moz-placeholder {
