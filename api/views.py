@@ -18,7 +18,7 @@ from rest_framework.decorators import api_view, permission_classes
 from cryptography.fernet import Fernet
 
 k = dict()
-key = Fernet.generate_key()
+key= b'0Bnw3EFq0OSgfKA26qxJBkmWC9kABY1Xdfw8Ng1DHss='
 fernet = Fernet(key)
 # Create your views here.
 

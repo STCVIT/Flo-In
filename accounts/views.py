@@ -124,11 +124,11 @@ def checkfacedata(request):
 @login_required
 def setpattern(request):
     if request.method == 'GET':
-        return render(request, 'password.html')
+        return render(request, 'password_pin.html')
     else:
         fd = FaceData.objects.get(user=request.user)
         print(fd)
         fd.pin = request.POST['pattern']
         print(fd.pin)
         fd.save()
-        return render(request, 'password.html')
+        return render(request, 'password_pin.html')
