@@ -16,7 +16,7 @@ def prep(image):
 	image = cv2.GaussianBlur(image, (3,3), 0)
 	image = cv2.normalize(image, image, 0, 255, cv2.NORM_MINMAX)
 	#image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-	#image = cv2.equalizeHist(image)
+	image = cv2.equalizeHist(image)
 	clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
 	image = clahe.apply(image)
 	return image

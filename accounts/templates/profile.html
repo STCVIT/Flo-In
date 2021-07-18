@@ -6,7 +6,7 @@
 <div class="hero">
     <h2>Passwords </h2>
     <ul class="responsive-table">
-        <input class="form-control mb-4" id="myInput" type="text" placeholder="Search..">
+        <input class="form-control mb-2" id="myInput" type="text" placeholder="Search..">
       <li class="table-header ">
 
         <div class="col col-22">Website URL</div>
@@ -16,9 +16,18 @@
 
       {% for data in datas %}
       <li class="table-row ">
-        <div class="col col-2" data-label="Customer Name">{{data.url}}</div>
-        <div class="col col-3" data-label="Amount">{{ data.username }}</div>
-        <div class="col col-4" data-label="Payment Status">{{ data.password }}</div>
+        <div class="col col-22" data-label="Website URL">{{data.url}}</div>
+        <div class="col col-33" data-label="Email ID">{{ data.username }}</div>
+        <!-- <div class="col col-4" data-label="Payment Status">{{ data.password }}</div> -->
+        <div class="col col-44" id="viewPassword"><button class="button" style="vertical-align:middle" onclick="showPassword()"><span>View Password </span></button></div>
+        <div class="col col-44" id="Password" style="display: none;"></div>
+        <script>
+          function showPassword(){
+      document.getElementById('Password').innerHTML = "{{ data.password }}";
+      document.getElementById('Password').style.display = "block";
+      document.getElementById('viewPassword').style.display = "none";
+    }
+        </script>
       </li>
       {% endfor %}
     </ul>
@@ -32,5 +41,7 @@
         });
       });
     });
+
+    
     </script>
 {% endblock %}

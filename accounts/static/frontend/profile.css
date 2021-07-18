@@ -7,8 +7,7 @@ body {
 }
 
 h2 {
-  font-size: 26px;
-  margin: 20px 0;
+  font-size: 20px;
   text-align: center;
 }
 h2 small {
@@ -16,14 +15,14 @@ h2 small {
 }
 .responsive-table li {
   border-radius: 5px;
-  padding: 25px 30px;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
 }
 .responsive-table .table-header {
   background-color: #343148;
   color: white;
-  font-size: 14px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   text-align: left;
@@ -41,16 +40,7 @@ h2 small {
 .responsive-table .col-44 {
   flex-basis: 40%;
 }
-.responsive-table .col-2 {
-  flex-basis: 50%;
-}
-.responsive-table .col-3 {
-  flex-basis: 70%;
-  padding-left: 8%;
-}
-.responsive-table .col-4 {
-  flex-basis: 23%;
-}
+
 @media all and (max-width: 767px) {
   .responsive-table .table-header {
     display: none;
@@ -72,4 +62,44 @@ h2 small {
     flex-basis: 50%;
     text-align: right;
   }
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #343148;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  /* margin: 5px; */
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }

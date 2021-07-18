@@ -91,7 +91,7 @@ a:active {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  height: 15px;
+  height: 5px;
   padding: 0 10px;
   text-align: center;
   border-left: 1px solid rgba(255, 255, 255, 0.15);
@@ -151,7 +151,7 @@ a:active {
 
 @media (min-width: 992px) {
   .top-bar {
-    padding: 0 60px;
+    padding: 0 0px;
   }
 }
 
@@ -174,7 +174,7 @@ a:active {
 .navbar .navbar-brand {
   margin: 0;
   color: #ffffff;
-  font-size: 45px;
+  font-size: 25px;
   line-height: 0px;
   font-weight: 700;
   text-transform: uppercase;
@@ -200,7 +200,7 @@ a:active {
 .navbar-dark .navbar-nav .nav-link,
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
-  padding: 10px 10px 8px 10px;
+  padding: 0px 10px 0px 10px;
   color: #ffffff;
   font-size: 20px;
 }
@@ -244,7 +244,7 @@ a:active {
 
 @media (max-width: 991.98px) {
   .navbar {
-    padding: 15px;
+    padding: 5px;
     padding-left: 15px;
     background: #343148 !important;
   }
@@ -254,7 +254,7 @@ a:active {
   }
 
   .navbar a.nav-link {
-    margin: 25px;
+    margin: 5px;
     padding: 5px;
   }
 
@@ -270,7 +270,7 @@ a:active {
   position: relative;
   width: 100%;
   margin-bottom: 45px;
-  padding: 190px 0;
+  padding: 100px 0 165px;
   background: #f7cac9;
   overflow: hidden;
 }
@@ -279,17 +279,18 @@ a:active {
   padding: 0;
 }
 
-.hero .hero-image {
+/* .hero .hero-image {
   position: relative;
-  padding-left: 40%;
-  /* text-align:right; */
+  padding-left: 20%; 
+   text-align:right;
 }
 
 .hero .hero-image img {
-  max-width: 80%;
-  max-height: 80%;
-  width: 300px;
-}
+  max-width: 100%;
+  max-height: 100%;
+
+  width: 700px;
+} */
 
 .hero .hero-text {
   position: relative;
@@ -314,8 +315,8 @@ a:active {
 }
 
 .hero .hero-btn .btn {
-  padding: 12px 20px;
-  font-size: 14px;
+  padding: 8px 10px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 1px;
   color: #f7cac9;
@@ -502,18 +503,18 @@ a:active {
 
 .about .about-img {
   position: relative;
-  height: 100%;
+  height: 50%;
 }
 
 .about .about-img img {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   object-fit: cover;
 }
 
 .about .about-text p {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .about .about-text a.btn {
@@ -547,7 +548,7 @@ a:active {
 .service {
   position: relative;
   width: 100%;
-  padding: 45px 0 15px 0;
+  padding: 45px 0 35px 0;
 }
 
 .service .service-item {
@@ -660,6 +661,13 @@ a:active {
   background-size: contain;
 }
 
+@media (max-width: 767.98px) {
+  .linestep span,
+  .linestep p {
+    text-align: left;
+  }
+}
+
 /*******************************/
 /********* Footer CSS **********/
 /*******************************/
@@ -670,7 +678,7 @@ a:active {
 }
 
 .footer .container-fluid {
-  padding: 50px 0 0 0;
+  padding: 20px 0 0 0;
   background: linear-gradient(rgba(52, 49, 72, 0.9), rgba(52, 49, 72, 0.9)),
     url("footer-bg.png");
   background-position: center;
@@ -687,7 +695,7 @@ a:active {
 .footer .footer-info .footer-logo {
   display: inline-block;
   color: #f7cac9;
-  font-size: 60px;
+  font-size: 40px;
   line-height: 60px;
   font-weight: 700;
   text-transform: uppercase;
@@ -705,7 +713,7 @@ a:active {
 
 .footer .footer-social {
   position: relative;
-  margin-top: 5px;
+  margin-top: 0px;
 }
 
 .footer .footer-social a {
@@ -728,12 +736,12 @@ a:active {
 }
 
 .footer .copyright {
-  margin-top: 60px;
+  margin-top: 0px;
   padding: 0 30px;
 }
 
 .footer .copyright .row {
-  padding-top: 25px;
+  padding-top: 5px;
   padding-bottom: 25px;
   border-top: 1px solid rgba(256, 256, 256, 0.1);
 }

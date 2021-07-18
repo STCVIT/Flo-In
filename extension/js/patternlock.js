@@ -1,10 +1,5 @@
-// const button = document.getElementById("form");
-// button.onclick = () => {
-//     e.preventDefault();
-//     console.log("You entered " + document.getElementById("password").value);
-//     return true;
-// }
-
+let token = localStorage.getItem('user')
+token = JSON.parse(token)
 var patternLock = (function () {
 
     // Parameters-------------------
@@ -27,7 +22,6 @@ var patternLock = (function () {
     var lines = []; // array to hold the connecting lines
 
     var resets = []; // array to hold the reset buttons
-
     var init = function () {
 
         if (autoInit) {
@@ -283,6 +277,19 @@ var patternLock = (function () {
                     document.forms[0].submit();
                 }
             }
+            console.log("submitting.....")
+            console.log("You entered " + document.getElementById("password").value);
+            // var fdata = new FormData();
+            // fdata.append('password', document.getElementById("password").value);
+            await fetch('http://127.0.0.1:8000/api/checkpattern/', {
+                method: 'POST',
+                headers: {
+                    Authorization: `JWT ${token.access}`,
+                },
+                body: { "pin": document.getElementById("password").value },
+            }).then(() => {
+                console.log('success')
+            });
         }
         return (false)
 
@@ -331,4 +338,10 @@ var patternLock = (function () {
 
 
 }());
+
+// formbutton.addEventListener("submit", async function submitform() {
+//     console.log("You entered " + document.getElementById("password").value);
+//     
+//     return true;
+// };
 console.log(patternLock);

@@ -63,7 +63,7 @@ class UserData(models.Model):
     objects = None
     url= models.CharField(max_length=100)
     username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
+    password = models.TextField(max_length=500)
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE, null=True,  blank = True)
 
     def __str__(self):
@@ -72,7 +72,7 @@ class UserData(models.Model):
 class FaceData(models.Model):
     objects=None
     user = models.ForeignKey(MyUser, on_delete=models.CASCADE)
-    pattern = models.BigIntegerField(default=000000000)
+    pin = models.TextField(max_length=500)
     confidence = models.IntegerField(default=80)
     data= models.FileField(upload_to='user/videos/', blank=True)
 

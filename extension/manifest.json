@@ -14,11 +14,15 @@
     }
   ],
   "background": {
-    "page": "background.html"
+    "page": "background.html",
+    "js": "js/background.js",
+    "persistent": false
   },
   "permissions": [
     "activeTab",
     "storage",
+    "tabs",
+    "webNavigation",
     "unlimitedStorage",
     "https://ajax.googleapis.com/"
   ]

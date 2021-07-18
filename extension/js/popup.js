@@ -94,6 +94,10 @@ function startup() {
   canvas = document.getElementById('canvas')
   photo = document.getElementById('photo')
   startbutton = document.getElementById('startbutton')
+  chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
+    let url = tabs[0].url;
+    console.log(url);
+  });
 
   navigator.mediaDevices
     .getUserMedia({ video: true, audio: false })
@@ -130,8 +134,17 @@ function startup() {
   startbutton.addEventListener(
     'click',
     function (ev) {
-      takepicture()
-      ev.preventDefault()
+      takepicture(console.log("in pic"));
+      console.log("logged 1");
+      setTimeout(function () {
+        takepicture();
+      }, 300);
+      console.log("logged 2");
+      setTimeout(function () {
+        takepicture();
+      }, 300);
+      console.log("logged 3")
+      ev.preventDefault();
     },
     false,
   )

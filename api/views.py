@@ -15,9 +15,16 @@ from rest_framework.parsers import JSONParser
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
+from cryptography.fernet import Fernet
 
 k = dict()
+key = Fernet.generate_key()
+fernet = Fernet(key)
 # Create your views here.
+
+def sendFernet():
+    return fernet
+
 
 ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', 
                             '.JPG', '.JPEG', '.PNG']
@@ -36,6 +43,7 @@ class ImageAPIView(APIView):
             if not ext in ALLOWED_IMAGE_EXTENSIONS:
                 return JsonResponse({'error': 'Invalid image file format.'}, status=400)
             default_storage.save(str(request.user.id)+".png",file)
+            print(FaceData.objects.all)
             fd = FaceData.objects.get(user=request.user)
             k[request.user.id] = authenticate_user(str(request.user.id), fd.confidence,os.path.join(settings.BASE_DIR,"media",str(request.user.id)+".png"))
             print(k)
@@ -63,17 +71,22 @@ def dataList(request):
 @api_view(['GET'])
 def dataDetail(request, url):
     datas = UserData.objects.filter(url=url, user=request.user).first()
+    # print(datas.password)
     serializer = userDataSerializer(datas, many = False)
     return Response(serializer.data)
 
 @api_view(['POST'])
 def dataCreate(request):
+    password = request.data.get('password')
+    password= fernet.encrypt(password.encode())
+    password = password.decode("utf8")
     data={
             'username': request.data.get('username'),
-            'password': request.data.get('password'),
+            'password': password,
             'url': request.data.get('url'),
             'user': request.user.id
             }
+    print(data)
     try:
         udata = UserData.objects.filter(url = request.data.get('url'), user=request.user).first()
         serializer = userDataSerializer(instance=udata, data=data)
@@ -100,3 +113,16 @@ def dataDelete(request, url):
     task = UserData.objects.get(url = url)
     task.delete()
     return Response("Taks deleted successfully.")
+
+
+@api_view(['POST'])
+def checkPattern(request, url):
+    data = FaceData.objects.get(user = request.user)
+    serializer = userDataSerializer(instance=data, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+    print(serializer.data)
+    if data.pin==serializer.data:
+        print("pin matched")
+    return Response(serializer.data)

@@ -45,7 +45,7 @@ def generate_confidense_level(userID):
         idd, conf = clf.predict(imageNp)
         if idd == 1:
             # print("yes")
-            print(conf)
+            print(str(conf) + "       confi--------------------------------------")
             confidence.append(conf)
 
     mean_conf = statistics.mean(confidence)
@@ -68,7 +68,6 @@ def train_classifier(userID):
 
     for image in dir_list:
         img = Image.open(os.path.join(settings.BASE_DIR,"data",userID,"train",image)).convert('L')
-        print("-----training dimension -------  : ", img.size)
         imageNp = np.array(img, 'uint8')
         faces.append(imageNp)
         ids.append(1)
@@ -82,6 +81,7 @@ def train_classifier(userID):
     # delete_images(userID)
 
 def generate_classifier(userID):
+    print("=============================classifier==========================")
     split_data(userID)
     train_classifier(userID)
     conf = generate_confidense_level(userID)

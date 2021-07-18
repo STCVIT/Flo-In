@@ -4,6 +4,7 @@ from .classifier import generate_classifier
 from .recognise2 import authenticate_user
 from .collect_training_data2 import collectTrainingData
 from .Forms import UserAdminCreationForm, AuthenticationForm, UserDataForm, FaceDataForm
+from api.views import sendFernet
 from django.conf import settings
 from django.db import IntegrityError
 from django.http import JsonResponse
@@ -22,6 +23,10 @@ def home(request):
 @login_required
 def profile(request):
     datas = UserData.objects.filter(user=request.user)
+    fernet = sendFernet()
+    for data in datas:
+        print(data.password)
+        data.password = fernet.decrypt(bytes(data.password,encoding="utf8")).decode()
     return render(request, 'profile.html',{'datas':datas})
 
 def loginuser(request):
@@ -123,7 +128,7 @@ def setpattern(request):
     else:
         fd = FaceData.objects.get(user=request.user)
         print(fd)
-        fd.pattern = request.POST['pattern']
-        print(fd.pattern)
+        fd.pin = request.POST['pattern']
+        print(fd.pin)
         fd.save()
         return render(request, 'password.html')

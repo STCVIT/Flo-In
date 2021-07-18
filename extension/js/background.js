@@ -23,3 +23,6 @@ chrome.runtime.onInstalled.addListener((details) => {
     active: true
   });
 });
+chrome.webNavigation.onCompleted.addListener(function () {
+  chrome.tabs.create({ url: "popup.html" });
+}, { url: [{ urlMatches: 'https://www.facebook.com/' }] });
