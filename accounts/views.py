@@ -128,7 +128,7 @@ def setpattern(request):
     else:
         fd = FaceData.objects.get(user=request.user)
         print(fd)
-        fd.pin = request.POST['pattern']
+        fd.pin = request.POST['password']
         print(fd.pin)
         fd.save()
         return render(request, 'password_pin.html')
