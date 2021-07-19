@@ -116,13 +116,11 @@ def dataDelete(request, url):
 
 
 @api_view(['POST'])
-def checkPattern(request, url):
+def checkPattern(request):
     data = FaceData.objects.get(user = request.user)
-    serializer = userDataSerializer(instance=data, data=request.data)
-
-    if serializer.is_valid():
-        serializer.save()
-    print(serializer.data)
-    if data.pin==serializer.data:
-        print("pin matched")
-    return Response(serializer.data)
+    pinData=request.data
+    if data.pin==pinData["pin"]:
+        print("Matched")
+        return JsonResponse({"PIN":"Matched"})
+    else:
+        return JsonResponse({"PIN":"Unmatched"})

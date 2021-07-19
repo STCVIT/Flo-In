@@ -20,6 +20,7 @@ let data
 let logout = document.getElementById('logout')
 let token
 
+
 function autofill() {
   chrome.tabs.query({ 'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT },
     function (tabs) {
@@ -240,4 +241,5 @@ function patterncheck() {
     console.log(error)
   })
 }
+
 
