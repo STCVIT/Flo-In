@@ -20,6 +20,7 @@ pytz==2020.1
 pyyaml==5.4.1
 sqlparse==0.3.1
 toml==0.10.1
+typing==3.7.4.3
 whitenoise==5.2.0
 uritemplate==3.0.1
 mediapipe==0.8.3.1
