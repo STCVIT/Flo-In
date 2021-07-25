@@ -50,10 +50,8 @@ trigger.addEventListener('click', async (e) => {
             Authorization: `JWT ${token.access}`,
         },
         body: fdata,
-    }).then(res => { console.log(res); res.json() }).then(res => {
-        var auth = JSON.parse(JSON.stringify(res))
-        console.log(res);
-        if (auth.match == "Matched") {
+    }).then(res => res = res.json()).then(res => {
+        if (res.PIN == "Matched") {
             autofill()
         }
         else {

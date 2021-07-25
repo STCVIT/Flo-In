@@ -1,6 +1,4 @@
-/*******************************/
 /********* General CSS *********/
-/*******************************/
 body {
   color: #797979;
   background: #ffffff;
@@ -64,10 +62,7 @@ a:active {
   color: #343148;
   padding-top: 10px;
 }
-
-/**********************************/
 /********** Top Bar CSS ***********/
-/**********************************/
 .top-bar {
   position: relative;
   height: 15px;
@@ -154,10 +149,8 @@ a:active {
     padding: 0 0px;
   }
 }
-
-/**********************************/
 /*********** Nav Bar CSS **********/
-/**********************************/
+
 .navbar {
   position: relative;
   transition: 0.5s;
@@ -174,7 +167,7 @@ a:active {
 .navbar .navbar-brand {
   margin: 0;
   color: #ffffff;
-  font-size: 25px;
+  font-size: 35px;
   line-height: 0px;
   font-weight: 700;
   text-transform: uppercase;
@@ -200,7 +193,7 @@ a:active {
 .navbar-dark .navbar-nav .nav-link,
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
-  padding: 0px 10px 0px 10px;
+  padding: 5px 10px 5px 10px;
   color: #ffffff;
   font-size: 20px;
 }
@@ -263,9 +256,8 @@ a:active {
   }
 }
 
-/*******************************/
 /********** Hero CSS ***********/
-/*******************************/
+
 .hero {
   position: relative;
   width: 100%;
@@ -278,19 +270,6 @@ a:active {
 .hero .container-fluid {
   padding: 0;
 }
-
-/* .hero .hero-image {
-  position: relative;
-  padding-left: 20%; 
-   text-align:right;
-}
-
-.hero .hero-image img {
-  max-width: 100%;
-  max-height: 100%;
-
-  width: 700px;
-} */
 
 .hero .hero-text {
   position: relative;
@@ -387,10 +366,8 @@ a:active {
     letter-spacing: 0;
   }
 }
-
-/*******************************/
 /******* Page Header CSS *******/
-/*******************************/
+
 .page-header {
   position: relative;
   margin-bottom: 45px;
@@ -441,10 +418,8 @@ a:active {
     font-size: 18px;
   }
 }
-
-/*******************************/
 /******* Section Header ********/
-/*******************************/
+
 .section-header {
   position: relative;
   max-width: 600px;
@@ -486,10 +461,8 @@ a:active {
     font-size: 30px;
   }
 }
-
-/*******************************/
 /********** About CSS **********/
-/*******************************/
+
 .about {
   position: relative;
   width: 100%;
@@ -541,10 +514,8 @@ a:active {
     height: auto;
   }
 }
-
-/*******************************/
 /********* Service CSS *********/
-/*******************************/
+
 .service {
   position: relative;
   width: 100%;
@@ -642,10 +613,8 @@ a:active {
   margin: 0;
   font-size: 16px;
 }
-
-/*******************************/
 /********* Discount CSS *********/
-/*******************************/
+
 .discount {
   position: relative;
   width: 100%;
@@ -667,10 +636,8 @@ a:active {
     text-align: left;
   }
 }
-
-/*******************************/
 /********* Footer CSS **********/
-/*******************************/
+
 .footer {
   position: relative;
   margin-top: 0px;
@@ -679,8 +646,7 @@ a:active {
 
 .footer .container-fluid {
   padding: 20px 0 0 0;
-  background: linear-gradient(rgba(52, 49, 72, 0.9), rgba(52, 49, 72, 0.9)),
-    url("footer-bg.png");
+  background: linear-gradient(rgba(52, 49, 72, 0.9), rgba(52, 49, 72, 0.9));
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -709,30 +675,6 @@ a:active {
 
 .footer .footer-menu p:last-child {
   border: none;
-}
-
-.footer .footer-social {
-  position: relative;
-  margin-top: 0px;
-}
-
-.footer .footer-social a {
-  display: inline-block;
-}
-
-.footer .footer-social a i {
-  margin-right: 15px;
-  font-size: 20px;
-  color: #ffffff;
-  transition: 0.3s;
-}
-
-.footer .footer-social a:last-child i {
-  margin: 0;
-}
-
-.footer .footer-social a:hover i {
-  color: #f7cac9;
 }
 
 .footer .copyright {
@@ -773,7 +715,6 @@ a:active {
 }
 
 .cont {
-  /* background: linear-gradient(rgba(247, 202, 201, .7), rgba(247, 202, 201, .7)); */
   background: #f7cac9;
 }
 

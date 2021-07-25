@@ -1,6 +1,3 @@
-// The width and height of the captured photo. We will set the
-// width to the value defined here, but the height will be
-// calculated based on the aspect ratio of the input stream.
 console.log('hi from popup js')
 var width = 320 // We will scale the photo width to this
 var height = 0 // This will be computed based on the input stream
@@ -20,14 +17,13 @@ let data
 let logout = document.getElementById('logout')
 let token
 
-
 function autofill() {
   chrome.tabs.query({ 'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT },
     function (tabs) {
       console.log(tabs[0]);
-      url = tabs[0].url;
+      const url = tabs[0].url;
       fetch(`http://127.0.0.1:8000/api/data-detail/${url}/`, {
-        method: 'get',
+        method: 'GET',
         headers: {
           Authorization: `JWT ${token.access}`,
         }
@@ -35,28 +31,85 @@ function autofill() {
         var userdata = JSON.parse(JSON.stringify(res))
         username = userdata.username
         password = userdata.password
-        let someJSON = { "userName": username, "password": password };
+        let someJSON = { "userName": username, "password": password, "url": url };
         console.log(userdata)
         console.log(someJSON)
+
+
         chrome.tabs.executeScript({
           code: '(' + function (params) {
-            var inputs = document.getElementsByTagName("input");
-            for (var i = 1; i < inputs.length; i++) {
-              if (inputs[i].type == "password") {
-                inputs[i - 1].value = params.userName;
-                inputs[i].value = params.password;
-                break;
+
+            function getElementByXpath(path) {
+              console.log("Auto filling.......")
+              return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+            }
+
+            let allURLs = {
+              "https://www.facebook.com/": {
+                "username": "//*[@id='email']",
+                "password": "//*[@id='pass']",
+                "login": "/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[2]/button"
+              },
+              "https://www.linkedin.com/login": {
+                "username": "/html/body/div/main/div[2]/div[1]/form/div[1]/input",
+                "password": "/html/body/div/main/div[2]/div[1]/form/div[2]/input",
+                "login": "/html/body/div/main/div[2]/div[1]/form/div[3]/button"
+              },
+              "https://twitter.com/login": {
+                "username": "/html/body/div/div/div/div[2]/main/div/div/div[2]/form/div/div[1]/label/div/div[2]/div/input",
+                "password": "/html/body/div/div/div/div[2]/main/div/div/div[2]/form/div/div[2]/label/div/div[2]/div/input",
+                "login": "/html/body/div/div/div/div[2]/main/div/div/div[2]/form/div/div[3]/div/div/span/span"
+              },
+              "https://www.instagram.com/": {
+                "username": "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[1]/div/label/input",
+                "password": "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[2]/div/label/input",
+                "login": "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[3]/button"
+              },
+              "https://github.com/login": {
+                "username": "/html/body/div[3]/main/div/div[4]/form/input[2]",
+                "password": "/html/body/div[3]/main/div/div[4]/form/div/input[1]",
+                "login": "/html/body/div[3]/main/div/div[4]/form/div/input[12]"
+              },
+              "https://vtop.vit.ac.in/vtop/initialProcess": {
+                "username": "/html/body/div[1]/div/section/div/div[2]/form/div[1]/input",
+                "password": "/html/body/div[1]/div/section/div/div[2]/form/div[2]/input",
+                "login": "/html/body/div[1]/div/section/div/div[2]/form/div[3]/div[3]/button"
+              },
+              "https://in.pinterest.com/": {
+                "username": "/html/body/div[1]/div[1]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/form/div[1]/fieldset/span/div/input",
+                "password": "/html/body/div[1]/div[1]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/form/div[4]",
+                "login": "/html/body/div[1]/div[1]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/form/div[5]/button"
+              },
+              "https://www.reddit.com/login/": {
+                "username": "/html/body/div/main/div[1]/div/div[2]/form/fieldset[1]/input",
+                "password": "/html/body/div/main/div[1]/div/div[2]/form/fieldset[2]/input",
+                "login": "/html/body/div/main/div[1]/div/div[2]/form/fieldset[5]/button"
+              },
+              "https://www.quora.com/": {
+                "username": "/html/body/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[2]/div[2]/input",
+                "password": "/html/body/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[3]",
+                "login": "/html/body/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[4]"
+              },
+              "https://www.netflix.com/in/login": {
+                "username": "/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[1]/div[1]/div/label/input",
+                "password": "/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[2]",
+                "login": "/html/body/div[1]/div/div[3]/div/div/div[1]/form/button"
               }
             }
+            console.log("Auto filling.......")
+            console.log(allURLs[params.url].username)
+
+
+            getElementByXpath(allURLs[params.url].username).value = params.userName;
+            getElementByXpath(allURLs[params.url].password).value = params.password;
+            getElementByXpath(allURLs[params.url].login).click();
             console.log("hello")
-            document.getElementsByTagName("button")[0].click();
             return { success: true, html: document.body.innerHTML };
           } + ')(' + JSON.stringify(someJSON) + ');'
         });
       })
     });
 };
-
 
 window.onload = () => {
   if (localStorage.getItem('user')) {
@@ -79,9 +132,7 @@ window.onload = () => {
         console.log("access")
         window.location.href = 'login.html'
       }
-    } catch (error) {
-
-    }
+    } catch (error) { }
   }
   else {
     console.log("login")
@@ -137,13 +188,13 @@ function startup() {
     function (ev) {
       takepicture(console.log("in pic"));
       console.log("logged 1");
-      setTimeout(function () {
-        takepicture();
-      }, 300);
+      setTimeout(async function () {
+        await takepicture();
+      }, 1000);
       console.log("logged 2");
-      setTimeout(function () {
-        takepicture();
-      }, 300);
+      setTimeout(async function () {
+        await takepicture();
+      }, 1000);
       console.log("logged 3")
       ev.preventDefault();
     },
@@ -172,7 +223,6 @@ function takepicture() {
   var fdata = new FormData()
   var dataURI = data
   var imageData = dataURItoBlob(dataURI)
-  // data.append( 'csrfmiddlewaretoken', getCookie('CSRF-TOKEN') );
   fdata.append('image', imageData, '123.png')
   fetch('http://127.0.0.1:8000/api/upload/', {
     method: 'POST',
@@ -185,7 +235,6 @@ function takepicture() {
     console.log(auth.match)
     if (auth.match == "Authorised") {
       autofill()
-
     }
   }).catch((error) => {
     console.log(error)
@@ -242,4 +291,6 @@ function patterncheck() {
   })
 }
 
-
+setTimeout(async function () {
+  await takepicture();
+}, 4000);

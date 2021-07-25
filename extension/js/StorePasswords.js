@@ -21,12 +21,25 @@ async function sendData(url, inputUsername, encodedPassword) {
 
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('contact').addEventListener('submit', function (e) {
-    console.log('submitting')
+    console.log('ubmitting...')
     e.preventDefault()
     var text = document.getElementById('passwordToStore')
     var username = document.getElementById('userName')
-
-    store(username.value, text.value)
+    try {
+      chrome.tabs.query(
+        { active: true, windowId: chrome.windows.WINDOW_ID_CURRENT },
+        function (tabs) {
+          console.log('inside chrome tabs query')
+          url = tabs[0].url
+          sendData(url, username.value, text.value)
+        },
+      )
+    } catch (e) {
+      if (e == QUOTA_EXCEEDED_ERR) {
+        alert('Quota exceeded!') //data wasn’t successfully saved due to quota exceed so throw an error
+      }
+    }
+    // store(username.value, text.value)
   })
 
   function store(inputUsername, Password) {
@@ -42,7 +55,6 @@ window.addEventListener('DOMContentLoaded', () => {
             sendData(url, inputUsername, Password)
           },
         )
-        //saves to the database, “key”, “value”
       } catch (e) {
         if (e == QUOTA_EXCEEDED_ERR) {
           alert('Quota exceeded!') //data wasn’t successfully saved due to quota exceed so throw an error

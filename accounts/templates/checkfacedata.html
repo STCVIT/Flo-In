@@ -1,196 +1,184 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-<!-- <head>
-	<title>WebRTC: Still photo capture demo</title>
-	<meta charset='utf-8'>
-	<link rel="stylesheet" href="main.css" type="text/css" media="all">
-	<script src="capture.js">
-	</script>
-</head>
-<body>
-<div class="contentarea">
-	<h1>
-		MDN - WebRTC: Still photo capture demo
-	</h1>
-  <h3>{{ match }}</h3>
-	<p>
-		This example demonstrates how to set up a media stream using your built-in webcam, fetch an image from that stream, and create a PNG using that image.
-	</p>
-  <div class="camera">
-    <video id="video">Video stream not available.</video>
-    <button id="startbutton">Take photo</button> 
-  </div>
-  <canvas id="canvas">
-  </canvas>
-  <form method="POST" id="myForm" >{% csrf_token %}</form>
-  <div class="output">
-    <img id="photo" alt="The screen capture will appear in this box."> 
-  </div>
-	<p>
-		Visit our article <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos"> Taking still photos with WebRTC</a> to learn more about the technologies used here.
-	</p>
-</div>
-</body>
-</html> -->
-
-<link rel="stylesheet" href="{% static 'frontend/checkfacedata.css' %}">
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'frontend/checkfacedata.css' %}" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div
+  class="alert alert-danger"
+  id="alert_check_face_not"
+  role="alert"
+  style="display: none"
+></div>
+
 <div id="check">
   <!-- The buttons to control the stream -->
-    <center>
-      <form id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
+  <center>
+    <form id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
       {% csrf_token %}
-        <div class="border bttn">
-        <button class="btn btn-capture button" type="button" id="startbutton">Capture</button>
+      <div class="border bttn">
+        <button class="btn btn-capture button" type="button" id="startbutton">
+          Capture
+        </button>
         <div class="btn btn-auth button" id="showResult">Result</div>
-        </div>
-         
-      </form>
-    </center>
+      </div>
+    </form>
+  </center>
+</div>
+<!-- Video Element & Canvas -->
+<div class="play-area">
+  <div class="play-area-sub">
+    <h3>The Stream</h3>
+    <div id="container">
+      <video id="video" height="500" width="500"></video>
+    </div>
   </div>
-    <!-- Video Element & Canvas -->
-    <div class="play-area">
-      <div class="play-area-sub">
-        <h3>The Stream</h3>
-        <div id="container">
-            <video id="video" height="500" width="500"></video>
-        </div>
-      </div>
-      <div class="play-area-sub">
-        <h3>The Capture</h3>
-        <div id="container">
-          <canvas id="canvas"></canvas>
-          <form method="POST" id="myForm" >{% csrf_token %}</form>
-      </div>
-      </div> 
+  <div class="play-area-sub">
+    <h3>The Capture</h3>
+    <div id="container">
+      <canvas id="canvas"></canvas>
+      <form method="POST" id="myForm">{% csrf_token %}</form>
     </div>
-  <div id="check3">
-    <!-- The buttons to control the stream -->
-    </div>
-
+  </div>
+</div>
+<div id="check3">
+  <!-- The buttons to control the stream -->
+</div>
 
 <script>
-    (function() {
-
-      const status = response => {
-  if (response.status >= 200 && response.status < 300) {
-    return Promise.resolve(response)
-  }
-  return Promise.reject(new Error(response.statusText))
-}
-
-const json = response => response.json()
-
-
-  // The width and height of the captured photo. We will set the
-  // width to the value defined here, but the height will be
-  // calculated based on the aspect ratio of the input stream.
-
-  var width = 320;    // We will scale the photo width to this
-  var height = 0;     // This will be computed based on the input stream
-
-  // |streaming| indicates whether or not we're currently streaming
-  // video from the camera. Obviously, we start at false.
-
-  var streaming = false;
-
-  // The various HTML elements we need to configure or control. These
-  // will be set by the startup() function.
-
-  var video = null;
-  var canvas = null;
-  var startbutton = null;
-  var data;
-
-  function startup() {
-    video = document.getElementById('video');
-    canvas = document.getElementById('canvas');
-    startbutton = document.getElementById('startbutton');
-
-    navigator.mediaDevices.getUserMedia({video: true, audio: false})
-    .then(function(stream) {
-      video.srcObject = stream;
-      video.play();
-    })
-    .catch(function(err) {
-      console.log("An error occurred: " + err);
-    });
-
-    video.addEventListener('canplay', function(ev){
-      if (!streaming) {
-        height = video.videoHeight / (video.videoWidth/width);
-      
-        // Firefox currently has a bug where the height can't be read from
-        // the video, so we will make assumptions if this happens.
-      
-        if (isNaN(height)) {
-          height = width / (4/3);
-        }
-      
-        video.setAttribute('width', width);
-        video.setAttribute('height', height);
-        canvas.setAttribute('width', width);
-        canvas.setAttribute('height', height);
-        streaming = true;
+  (function () {
+    const status = (response) => {
+      if (response.status >= 200 && response.status < 300) {
+        return Promise.resolve(response);
       }
-    }, false);
+      return Promise.reject(new Error(response.statusText));
+    };
 
-    startbutton.addEventListener('click', function(ev){
-      takepicture();
-      ev.preventDefault();
-    }, false);
-  }
+    const json = (response) => response.json();
 
-  // Capture a photo by fetching the current contents of the video
-  // and drawing it into a canvas, then converting that to a PNG
-  // format data URL. By drawing it on an offscreen canvas and then
-  // drawing that to the screen, we can change its size and/or apply
-  // other changes before drawing it.
+    // The width and height of the captured photo. We will set the
+    // width to the value defined here, but the height will be
+    // calculated based on the aspect ratio of the input stream.
 
-  function takepicture() {
-    var context = canvas.getContext('2d');
-    if (width && height) {
-      canvas.width = width;
-      canvas.height = height;
-      context.drawImage(video, 0, 0, width, height);
-      var data = canvas.toDataURL('image/png');
-    } else {
-      console.log("No phot detected");
+    var width = 320; // We will scale the photo width to this
+    var height = 0; // This will be computed based on the input stream
+
+    // |streaming| indicates whether or not we're currently streaming
+    // video from the camera. Obviously, we start at false.
+
+    var streaming = false;
+
+    // The various HTML elements we need to configure or control. These
+    // will be set by the startup() function.
+
+    var video = null;
+    var canvas = null;
+    var startbutton = null;
+    var data;
+
+    function startup() {
+      video = document.getElementById("video");
+      canvas = document.getElementById("canvas");
+      startbutton = document.getElementById("startbutton");
+
+      navigator.mediaDevices
+        .getUserMedia({ video: true, audio: false })
+        .then(function (stream) {
+          video.srcObject = stream;
+          video.play();
+        })
+        .catch(function (err) {
+          console.log("An error occurred: " + err);
+        });
+
+      video.addEventListener(
+        "canplay",
+        function (ev) {
+          if (!streaming) {
+            height = video.videoHeight / (video.videoWidth / width);
+
+            // Firefox currently has a bug where the height can't be read from
+            // the video, so we will make assumptions if this happens.
+
+            if (isNaN(height)) {
+              height = width / (4 / 3);
+            }
+
+            video.setAttribute("width", width);
+            video.setAttribute("height", height);
+            canvas.setAttribute("width", width);
+            canvas.setAttribute("height", height);
+            streaming = true;
+          }
+        },
+        false
+      );
+
+      startbutton.addEventListener(
+        "click",
+        function (ev) {
+          takepicture();
+          ev.preventDefault();
+        },
+        false
+      );
     }
-    fdata	= new FormData(document.getElementById('myForm'));
-    var dataURI	= data;
-    var imageData   = dataURItoBlob( dataURI );
-    fdata.append( "image", imageData, "{{ user.id|safe }}.png" );
-    fetch('/checkfacedata/', {
-    method: 'POST',
-    body: fdata
-    }).then(status)    // note that the `status` function is actually **called** here, and that it **returns a promise***
-  .then(json)      // likewise, the only difference here is that the `json` function here returns a promise that resolves with `data`
-  .then(data => {  // ... which is why `data` shows up here as the first parameter to the anonymous function
-    console.log(data.match)
-    document.getElementById("showResult").innerHTML = data.match;
-  })
-  .catch(error => {
-    console.log('Request failed', error)
-  })
-}
-function dataURItoBlob( dataURI ) {
-        var byteString = atob( dataURI.split( ',' )[ 1 ] );
-        var mimeString = dataURI.split( ',' )[ 0 ].split( ':' )[ 1 ].split( ';' )[ 0 ];
-        var buffer	= new ArrayBuffer( byteString.length );
-        var data	= new DataView( buffer );
-        for( var i = 0; i < byteString.length; i++ ) {
-            data.setUint8( i, byteString.charCodeAt( i ) );
-        }
-        return new Blob( [ buffer ], { type: mimeString } );
+
+    // Capture a photo by fetching the current contents of the video
+    // and drawing it into a canvas, then converting that to a PNG
+    // format data URL. By drawing it on an offscreen canvas and then
+    // drawing that to the screen, we can change its size and/or apply
+    // other changes before drawing it.
+
+    function takepicture() {
+      var context = canvas.getContext("2d");
+      if (width && height) {
+        canvas.width = width;
+        canvas.height = height;
+        context.drawImage(video, 0, 0, width, height);
+        var data = canvas.toDataURL("image/png");
+      } else {
+        console.log("No phot detected");
+      }
+      fdata = new FormData(document.getElementById("myForm"));
+      var dataURI = data;
+      var imageData = dataURItoBlob(dataURI);
+      fdata.append("image", imageData, "{{ user.id|safe }}.png");
+      fetch("/checkfacedata/", {
+        method: "POST",
+        body: fdata,
+      })
+        .then(status) // note that the `status` function is actually **called** here, and that it **returns a promise***
+        .then(json) // likewise, the only difference here is that the `json` function here returns a promise that resolves with `data`
+        .then((data) => {
+          let save = document.getElementById("alert_check_face_not");
+          // ... which is why `data` shows up here as the first parameter to the anonymous function
+          if (data.Success == true) {
+            console.log(data.match);
+            document.getElementById("showResult").innerHTML = data.match;
+            save.style = "display:none;";
+          } else {
+            save.style = "display:block;";
+            save.innerHTML = data.Message;
+          }
+        })
+        .catch((error) => {
+          console.log("Request failed", error);
+        });
+    }
+    function dataURItoBlob(dataURI) {
+      var byteString = atob(dataURI.split(",")[1]);
+      var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+      var buffer = new ArrayBuffer(byteString.length);
+      var data = new DataView(buffer);
+      for (var i = 0; i < byteString.length; i++) {
+        data.setUint8(i, byteString.charCodeAt(i));
+      }
+      return new Blob([buffer], { type: mimeString });
     }
 
-  // Set up our event listener to run the startup process
-  // once loading is complete.
-  window.addEventListener('load', startup, false);
-})();
+    // Set up our event listener to run the startup process
+    // once loading is complete.
+    window.addEventListener("load", startup, false);
+  })();
 </script>
 
 {% endblock %}

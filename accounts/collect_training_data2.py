@@ -1,4 +1,4 @@
-from time import time
+from time import time                                                     #imports
 import imutils
 import cv2,os
 import sys
@@ -8,11 +8,10 @@ from django.conf import settings
 import mediapipe as mp
 from typing import NamedTuple
 
-mp_face_detection = mp.solutions.face_detection
+mp_face_detection = mp.solutions.face_detection                           #calling mediapipe face detection
 
-# Loading classifiers
-faceCascade = cv2.CascadeClassifier(os.path.join(settings.BASE_DIR,'opencv_haarcascade_data','haarcascade_frontalface_default.xml'))
-#Preprocessing function
+
+ #Preprocessing function
 
 def prep(image): 
     image = cv2.GaussianBlur(image, (3,3), 0)
@@ -23,8 +22,8 @@ def prep(image):
     image = clahe.apply(image)
     return image
 
-# Method to generate dataset to recognize a person
-def generate_dataset(img, userID):
+# Method to generate dataset from recieved video
+def generate_dataset(img, userID):                                            
     # write image in data dir
     try:
         os.mkdir(os.path.join(settings.BASE_DIR,"data",userID))
@@ -32,13 +31,12 @@ def generate_dataset(img, userID):
         pass
     cv2.imwrite(os.path.join(settings.BASE_DIR,"data",userID,f"{random.randint(0,1000)}.jpg"), img)
 
-def draw_boundary(img):
+def draw_boundary(img):                                                    #extracting coordinates of faces from frames
     print(detect)
     height , width = img.shape
     with mp_face_detection.FaceDetection(min_detection_confidence=0.5) as face_detection:
 
         results = face_detection.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-        # print(results)
         try:
             for detection in results.detections:
                 x = int(detection.location_data.relative_bounding_box.xmin * width)
@@ -56,11 +54,10 @@ def draw_boundary(img):
 
 # Method to detect the features
 def detect(img, userID):
-    #print("detect")
-    #img = preprocess(img)
+
     coords = draw_boundary(img)
     # If feature is detected, the draw_boundary method will return the x,y coordinates and width and height of rectangle else the length of coords will be 0
-   # print(coords)
+   
     if len(coords)==4:
         # Updating region of interest by cropping image
         roi_img = img[coords[1]:coords[1]+coords[3], coords[0]:coords[0]+coords[2]]
@@ -72,7 +69,7 @@ def detect(img, userID):
 
 
 def collectTrainingData(userID):
-   # print("Collect Train")
+   
     video_capture = cv2.VideoCapture(os.path.join(settings.BASE_DIR,"media","user","videos",userID+".mp4"))
 
     # Initialize img_id with 0
@@ -81,9 +78,12 @@ def collectTrainingData(userID):
         # Reading image from video stream
         success, img = video_capture.read()
         # Call method we defined above
-       
-        img = prep(img)  #preprocessing function
-        img = detect(img, userID)
+        try:
+            img = prep(img)  #preprocessing function
+            img = detect(img, userID)
+        except:
+            resp = {"Success":False, "Message":"Face not registered. Please try again."}
+            return resp
         img_id += 1
         #changed the no of images to 30 for custom confidense level
         if img_id>35:

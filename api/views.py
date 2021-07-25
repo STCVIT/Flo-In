@@ -1,9 +1,13 @@
 import os
+
+# Imports from other modules
 from .renderers import ImageRenderer
 from .serializers import userDataSerializer
 from .permissions import IsOwnerProfileOrReadOnly
 from accounts.models import UserData, FaceData
 from accounts.recognise2 import authenticate_user
+
+# Imports from installed modules
 from rest_framework import status
 from django.conf import settings
 from django.shortcuts import render
@@ -16,18 +20,18 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from cryptography.fernet import Fernet
+import random
 
+# defined Encryption key
 k = dict()
 key= b'0Bnw3EFq0OSgfKA26qxJBkmWC9kABY1Xdfw8Ng1DHss='
 fernet = Fernet(key)
-# Create your views here.
 
 def sendFernet():
     return fernet
 
 
-ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', 
-                            '.JPG', '.JPEG', '.PNG']
+ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG']
 
 class ImageAPIView(APIView):
     renderer_classes = [ImageRenderer]
@@ -42,10 +46,12 @@ class ImageAPIView(APIView):
             base, ext = os.path.splitext(file.name)
             if not ext in ALLOWED_IMAGE_EXTENSIONS:
                 return JsonResponse({'error': 'Invalid image file format.'}, status=400)
-            default_storage.save(str(request.user.id)+".png",file)
+            print(random.randint(0,5000))
+            url = str(request.user.id)+str(random.randint(0,5000))
+            default_storage.save(url+".png",file)
             print(FaceData.objects.all)
             fd = FaceData.objects.get(user=request.user)
-            k[request.user.id] = authenticate_user(str(request.user.id), fd.confidence,os.path.join(settings.BASE_DIR,"media",str(request.user.id)+".png"))
+            k[request.user.id] = authenticate_user(str(request.user.id), fd.confidence,os.path.join(settings.BASE_DIR,"media",url+".png"))
             print(k)
             return JsonResponse({"match" : k[request.user.id]})
         else:
@@ -73,7 +79,12 @@ def dataDetail(request, url):
     datas = UserData.objects.filter(url=url, user=request.user).first()
     # print(datas.password)
     serializer = userDataSerializer(datas, many = False)
-    return Response(serializer.data)
+    password = fernet.decrypt(bytes(serializer.data['password'],encoding="utf8")).decode()
+    print(password)
+    resp = serializer.data
+    resp['password'] = password
+    print(resp)
+    return Response(resp)
 
 @api_view(['POST'])
 def dataCreate(request):
@@ -97,7 +108,6 @@ def dataCreate(request):
         serializer.save()
     return Response(serializer.data)
 
-
 @api_view(['POST'])
 def dataUpdate(request, url):
     data = UserData.objects.get(url = url)
@@ -107,13 +117,11 @@ def dataUpdate(request, url):
         serializer.save()
     return Response(serializer.data)
 
-
 @api_view(['DELETE'])
 def dataDelete(request, url):
     task = UserData.objects.get(url = url)
     task.delete()
     return Response("Taks deleted successfully.")
-
 
 @api_view(['POST'])
 def checkPattern(request):

@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-
 class MyUserManager(BaseUserManager):
     def create_user(self, email, password=None):
         if not email:
@@ -25,7 +24,6 @@ class MyUserManager(BaseUserManager):
         user.is_admin = True
         user.save(using=self._db)
         return user
-
 
 class MyUser(AbstractBaseUser):
     email = models.EmailField(
@@ -57,7 +55,6 @@ class MyUser(AbstractBaseUser):
     def is_staff(self):
         "Is the user a member of staff?"
         return self.is_admin
-    
     
 class UserData(models.Model):
     objects = None

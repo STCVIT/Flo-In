@@ -25,8 +25,8 @@ def profile(request):
     datas = UserData.objects.filter(user=request.user)
     fernet = sendFernet()
     for data in datas:
-        print(data.password)
         data.password = fernet.decrypt(bytes(data.password,encoding="utf8")).decode()
+        print(data.password)
     return render(request, 'profile.html',{'datas':datas})
 
 def loginuser(request):
@@ -80,6 +80,7 @@ def savedata(request):
         except:
             return render(request, 'savedata.html', {'form': UserDataForm(), 'error': 'Wrong data put in. Try Again'})
 
+# Register face 
 @login_required
 def savefacedata(request):
     if request.method == 'GET':
@@ -94,33 +95,37 @@ def savefacedata(request):
             newfacedata = form.save(commit=False)
             newfacedata.user = request.user
             newfacedata.save()
-        collectTrainingData(str(request.user.id))
-        fd = FaceData.objects.get(user=request.user)
-        fd.confidence = generate_classifier(str(request.user.id))
-        print(fd.confidence)
-        fd.save()
-        return redirect('profile')
-        # except:   
-        #     return render(request, 'savefacedata.html', {'form': FaceDataForm(), 'error': 'Wrong data put in. Try Again'})
+        resp = collectTrainingData(str(request.user.id))
+        if not resp:
+            fd = FaceData.objects.get(user=request.user)
+            fd.confidence, resp = generate_classifier(str(request.user.id))
+            print(fd.confidence)
+            fd.save()
+        return JsonResponse(resp)
 
-
+# Check Face Recognition model
 @login_required
 def checkfacedata(request):
     if request.method == 'GET':
         return render(request, 'checkfacedata.html', {'form': FaceDataForm()})   
     else:
-        print("hello")
-        checkImage = request.FILES['image']
-        fs = FileSystemStorage()
-        filename = fs.save(checkImage.name, checkImage)
-        filename = os.path.join(settings.BASE_DIR,"media",filename) 
-        fd = FaceData.objects.get(user=request.user)
-        confidence = fd.confidence
-        print(confidence)
-        k[request.user.id] = authenticate_user(str(request.user.id), confidence,filename )
-        print(k)
-        return JsonResponse({"match" : k[request.user.id]})
+        if(os.path.exists(os.path.join(settings.BASE_DIR,f"classifiers",str(request.user.id)+".xml"))):
+            checkImage = request.FILES['image']
+            fs = FileSystemStorage()
+            filename = fs.save(checkImage.name, checkImage)
+            filename = os.path.join(settings.BASE_DIR,"media",filename) 
+            fd = FaceData.objects.get(user=request.user)
+            confidence = fd.confidence
+            print(confidence)
+            k[request.user.id], resp = authenticate_user(str(request.user.id), confidence, filename)
+            print(k)
+            if resp:
+                return JsonResponse(resp)
+            return JsonResponse({"Success":True,"match" : k[request.user.id]})
+        else:
+            return JsonResponse({"Success": False, "Message":"Face not registered. Please register your face."})
 
+# Set PIN for alternate authentication
 @login_required
 def setpattern(request):
     if request.method == 'GET':
