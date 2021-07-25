@@ -31,7 +31,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Remove unnecessary dependency
-        run: pip uninstall dataclasses
+        run: pip uninstall -y dataclasses
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
