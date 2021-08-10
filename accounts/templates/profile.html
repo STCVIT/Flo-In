@@ -1,47 +1,56 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-<link rel="stylesheet" href="{% static 'frontend/profile.css' %}">
+<link rel="stylesheet" href="{% static 'frontend/profile.css' %}" />
 <div class="hero">
-    <h2>Passwords </h2>
-    <ul class="responsive-table">
-        <input class="form-control mb-2" id="myInput" type="text" placeholder="Search..">
-      <li class="table-header ">
+  <h2>Passwords</h2>
+  <ul class="responsive-table">
+    <input
+      class="form-control mb-2"
+      id="myInput"
+      type="text"
+      placeholder="Search.."
+    />
+    <li class="table-header">
+      <div class="col col-22">Website URL</div>
+      <div class="col col-33">Email Id/ Username</div>
+      <div class="col col-44">Password</div>
+    </li>
 
-        <div class="col col-22">Website URL</div>
-        <div class="col col-33">Email Id/ Username</div>
-        <div class="col col-44">Password</div>
-      </li>
-
-      {% for data in datas %}
-      <li class="table-row ">
-        <div class="col col-22" data-label="Website URL">{{data.url}}</div>
-        <div class="col col-33" data-label="Email ID">{{ data.username }}</div>
-        <!-- <div class="col col-4" data-label="Payment Status">{{ data.password }}</div> -->
-        <div class="col col-44" id="viewPassword"><button class="button" style="vertical-align:middle" onclick="showPassword()"><span>View Password </span></button></div>
-        <div class="col col-44" id="Password" style="display: none;"></div>
-        <script>
-          function showPassword(){
-      document.getElementById('Password').innerHTML = "{{ data.password }}";
-      document.getElementById('Password').style.display = "block";
-      document.getElementById('viewPassword').style.display = "none";
-    }
-        </script>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-  <script>
-    $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $(".table-row").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
+    {% for data in datas %}
+    <li class="table-row">
+      <div class="col col-22" data-label="Website URL">{{data.url}}</div>
+      <div class="col col-33" data-label="Email ID">{{ data.username }}</div>
+      <!-- <div class="col col-4" data-label="Payment Status">{{ data.password }}</div> -->
+      <div class="col col-44" id="{{data.username}}">
+        <button
+          class="button"
+          style="vertical-align: middle"
+          onclick="showPassword('{{data.username}}', '{{data.url}}','{{data.password}}')"
+        >
+          <span>View Password </span>
+        </button>
+      </div>
+      <div class="col col-44" id="{{data.url}}" style="display: none"></div>
+    </li>
+    {% endfor %}
+    <script>
+      function showPassword(username, url, password) {
+        console.log(username, url);
+        document.getElementById(url).innerHTML = password;
+        document.getElementById(url).style.display = "block";
+        document.getElementById(username).style.display = "none";
+      }
+    </script>
+  </ul>
+</div>
+<script>
+  $(document).ready(function () {
+    $("#myInput").on("keyup", function () {
+      var value = $(this).val().toLowerCase();
+      $(".table-row").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
       });
     });
-
-    
-    </script>
+  });
+</script>
 {% endblock %}

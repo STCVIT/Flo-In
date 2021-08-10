@@ -51,7 +51,7 @@ class ImageAPIView(APIView):
             default_storage.save(url+".png",file)
             print(FaceData.objects.all)
             fd = FaceData.objects.get(user=request.user)
-            k[request.user.id] = authenticate_user(str(request.user.id), fd.confidence,os.path.join(settings.BASE_DIR,"media",url+".png"))
+            k[request.user.id], resp = authenticate_user(str(request.user.id), fd.confidence,os.path.join(settings.BASE_DIR,"media",url+".png"))
             print(k)
             return JsonResponse({"match" : k[request.user.id]})
         else:

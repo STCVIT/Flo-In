@@ -22,7 +22,6 @@ def draw_boundary(img  , clf , userCONF):
     height , width, _dim = img.shape
     try:
         with mp_face_detection.FaceDetection(min_detection_confidence=0.5) as face_detection:
-
             results = face_detection.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
             print(results)
             coords = []
@@ -49,7 +48,7 @@ def draw_boundary(img  , clf , userCONF):
         coords = [x, y, w, h]
         return k, False
     except:
-        return "", {"Success": False, "Message":"Face not found. Please adjust your face and try again."}
+        return k, {"Success": False, "Message":"Face not found. Please adjust your face and try again."}
 
 
 

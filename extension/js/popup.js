@@ -45,7 +45,7 @@ function autofill() {
             }
 
             let allURLs = {
-              "https://www.facebook.com/": {
+              "https://www.facebook.com": {
                 "username": "//*[@id='email']",
                 "password": "//*[@id='pass']",
                 "login": "/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[2]/button"
@@ -293,4 +293,4 @@ function patterncheck() {
 
 setTimeout(async function () {
   await takepicture();
-}, 4000);
+}, 3000);

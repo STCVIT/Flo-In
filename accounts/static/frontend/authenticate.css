@@ -8,8 +8,8 @@ body {
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap");
 
 :root {
-  --main-color: #f3bebc;
-  --secondary-color: #f37272;
+  --main-color: #545454;
+  --secondary-color: #3e3e3e;
   --gradient: linear-gradient(
     135deg,
     var(--main-color),
@@ -22,7 +22,7 @@ body {
 }
 
 body {
-  background: #fddede;
+  background: #3e3e3e; /*#fddede;*/
   font-family: "Nunito", sans-serif;
   display: flex;
   flex-direction: column;
@@ -155,6 +155,13 @@ input {
   transform: translateY(100%);
 }
 
+.forget {
+  color: black;
+}
+
+.forget:hover {
+  color: #f37272;
+}
 .sign-up-container {
   top: 0;
   height: 50%;

@@ -1,7 +1,5 @@
-body {
-  font-family: "Open Sans", sans-serif;
-  color: #343148;
-  background: #f7cac9;
+.footer {
+  bottom: 0 !important;
 }
 
 .login {

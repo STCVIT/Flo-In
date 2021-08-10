@@ -1,8 +1,9 @@
 /********* General CSS *********/
 body {
   color: #797979;
-  background: #ffffff;
+  background-color: #3e3e3e;
   font-family: "Open Sans", sans-serif;
+  min-height: 100vh;
 }
 
 h1,
@@ -155,6 +156,7 @@ a:active {
   position: relative;
   transition: 0.5s;
   z-index: 999;
+  background-color: #000000;
 }
 
 .navbar.nav-sticky {
@@ -235,7 +237,7 @@ a:active {
   }
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 900px) {
   .navbar {
     padding: 5px;
     padding-left: 15px;
@@ -263,7 +265,7 @@ a:active {
   width: 100%;
   margin-bottom: 45px;
   padding: 100px 0 165px;
-  background: #f7cac9;
+  background: #3e3e3e;
   overflow: hidden;
 }
 
@@ -288,7 +290,7 @@ a:active {
 }
 
 .hero .hero-text p {
-  color: #343148;
+  color: #eeeeee /*#343148*/;
   font-size: 18px;
   margin-bottom: 25px;
 }
@@ -313,7 +315,7 @@ a:active {
   margin-right: 10px;
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 900.98px) {
   .hero .hero-text {
     padding: 0 15px;
   }
@@ -435,7 +437,7 @@ a:active {
   position: relative;
   font-size: 16px;
   font-weight: 600;
-  background: #ffffff;
+  background: #f7cac9;
 }
 
 .section-header p::after {
@@ -606,7 +608,7 @@ a:active {
 
 .service .service-item:hover h3,
 .service .service-item.active h3 {
-  color: #f7cac9;
+  color: #000000;
 }
 
 .service .service-item p {
@@ -639,8 +641,9 @@ a:active {
 /********* Footer CSS **********/
 
 .footer {
-  position: relative;
-  margin-top: 0px;
+  position: absolute;
+  margin-bottom: 0;
+  width: 100%;
   background: #000000;
 }
 
