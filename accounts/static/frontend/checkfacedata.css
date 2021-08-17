@@ -1,25 +1,29 @@
 h3 {
   text-align: center;
+  color: white;
 }
 
 #check3 {
   /* margin-left: 10%; */
   margin-bottom: 1%;
 }
-#check {
+/* #check {
   margin-top: 8%;
-}
+} */
 #video,
 #canvas {
-  width: 465px;
-  height: 349px;
+  width: 405px;
+  height: 308px;
+  background-color: #eee !important;
+  border-radius: 5%;
 }
 #container {
   margin-left: 4%;
-  width: 485px;
-  height: 369px;
-  border: 10px #343148 solid;
-  background: #343148;
+  width: 413px;
+  height: 315px;
+  border: 3px white solid;
+  background: #eee !important;
+  border-radius: 5%;
   position: relative;
 }
 
@@ -35,8 +39,8 @@ h3 {
 .btn {
   border: none;
   /* background-color: inherit; */
-  padding: 14px 28px;
-  font-size: 25px;
+  padding: 10px 20px;
+  font-size: 20px;
   cursor: pointer;
   display: inline-block;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -45,9 +49,9 @@ h3 {
 .btn-capture,
 .btn-auth {
   border: none;
-  background-color: #343148;
-  padding: 14px 28px;
-  font-size: 25px;
+  background-color: white;
+  padding: 10px 20px;
+  font-size: 20px;
   cursor: pointer;
   display: inline-block;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -59,7 +63,17 @@ h3 {
   color: white;
 }
 
-.bttn {
+/* .bttn {
   display: flex;
   justify-content: space-evenly;
+} */
+
+.alert-danger {
+  margin-top: 10% !important;
+}
+
+.para {
+  margin: 3%;
+  color: white;
+  font-size: 22px;
 }

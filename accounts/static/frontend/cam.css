@@ -1,22 +1,27 @@
+.hero {
+  padding: 100px 5% 15% 2%;
+}
 #container {
   margin-bottom: 5%;
-  width: 425px;
-  height: 328px;
-  border: 10px #343148 solid;
-  background: #343148;
+  width: 415px;
+  height: 315px;
+  border: 3px white solid;
+  border-radius: 5%;
+  background: white;
   position: relative;
 }
 
 #video {
   width: 405px;
   height: 308px;
-  background-color: #343148;
+  background-color: white;
+  border-radius: 5%;
 }
 
 .button {
-  margin: 50px;
-  margin-left: 5%;
-  display: flex;
+  margin: 40px;
+  margin-left: 10%;
+  display: center;
   justify-content: space-between;
 }
 .button,
@@ -26,20 +31,16 @@ h2 {
 
 .btn {
   border: none;
-  background-color: inherit;
-  padding: 14px 28px;
-  font-size: 25px;
+  padding: 10px 20px;
+  font-size: 20px;
+  margin-left: 3%;
   cursor: pointer;
   display: inline-block;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.btn:hover {
-  background-color: #343148;
-  color: white;
-}
 .btn:active {
-  background-color: #343148;
+  background-color: white;
   color: white;
   transform: translateY(4px);
 }
@@ -67,12 +68,12 @@ h2 {
 }
 
 .base-timer__path-elapsed {
-  stroke-width: 7px;
-  stroke: grey;
+  stroke-width: 3px;
+  stroke: white;
 }
 
 .base-timer__path-remaining {
-  stroke-width: 7px;
+  stroke-width: 3px;
   stroke-linecap: round;
   transform: rotate(90deg);
   transform-origin: center;
@@ -82,15 +83,18 @@ h2 {
 }
 
 .base-timer__path-remaining.green {
-  color: rgb(65, 184, 131);
+  /* color: rgb(65, 184, 131); */
+  color: #007bff;
 }
 
 .base-timer__path-remaining.orange {
-  color: orange;
+  /* color: orange; */
+  color: #007bff;
 }
 
 .base-timer__path-remaining.red {
-  color: red;
+  /* color: red; */
+  color: #007bff;
 }
 
 .base-timer__label {

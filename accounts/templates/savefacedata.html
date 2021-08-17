@@ -1,49 +1,52 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'frontend/cam.css' %}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div class="hero">
+  <div
+    id="alert_save_face"
+    class="alert alert-success"
+    role="alert"
+    style="display: none"
+  ></div>
+  <div
+    class="alert alert-danger"
+    id="alert_save_face_not"
+    role="alert"
+    style="display: none"
+  ></div>
 
-<div
-  id="alert_save_face"
-  class="alert alert-success"
-  role="alert"
-  style="display: none"
-></div>
-<div
-  class="alert alert-danger"
-  id="alert_save_face_not"
-  role="alert"
-  style="display: none"
-></div>
-
-<div class="bttn">
-  {{error}}
-  <div class="instr" style="padding-top: 3%">
-    <h2 style="color: black">Instructions:<br /></h2>
-    <p style="color: black">
-      1. Sit in a Well-Lit Area<br />
-      2. Face Towards the Camera<br />
-      3. Click on Start Recording<br />
-      4. Wait for The Timer to Complete<br />
-      5. Click on Stop Recording<br />
-      6. Proceed to Check Face
-    </p>
+  <div class="bttn">
+    {{error}}
+    <div class="instr" style="padding-top: 3%">
+      <h2 style="color: #eee">Instructions:<br /></h2>
+      <p style="color: #eee">
+        1. Sit in a Well-Lit Area<br />
+        2. Face Towards the Camera<br />
+        3. Click on Start Recording<br />
+        4. Wait for The Timer to Complete<br />
+        5. Click on Stop Recording<br />
+        6. Proceed to Check Face
+      </p>
+    </div>
+    <center>
+      <div id="container">
+        <video autoplay="true" id="video"></video>
+      </div>
+    </center>
+    <div id="app"></div>
   </div>
   <center>
-    <div id="container">
-      <video autoplay="true" id="video"></video>
-    </div>
+    <form id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
+      {% csrf_token %}
+      <div>
+        <button class="btn btn-primary" id="record" type="button">
+          Start Recording
+        </button>
+        <!-- <button class="btn" id="stop" type="button">Stop Recording</button> -->
+      </div>
+    </form>
   </center>
-  <div id="app"></div>
 </div>
-<center>
-  <form id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
-    {% csrf_token %}
-    <div class="border">
-      <button class="btn" id="record" type="button">Start Recording</button>
-      <!-- <button class="btn" id="stop" type="button">Stop Recording</button> -->
-    </div>
-  </form>
-</center>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="../static/frontend/clock.js"></script>
 <script>

@@ -46,3 +46,4 @@ class FaceDataForm(forms.ModelForm):
     class Meta:
         model=FaceData
         fields = ['data',]
+    

@@ -13,7 +13,8 @@ mp_face_detection = mp.solutions.face_detection                           #calli
 
  #Preprocessing function
 
-def prep(image): 
+def prep(image):
+
     image = cv2.GaussianBlur(image, (3,3), 0)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     image = cv2.normalize(image, image, 0, 255, cv2.NORM_MINMAX)
@@ -79,7 +80,8 @@ def collectTrainingData(userID):
         success, img = video_capture.read()
         # Call method we defined above
         try:
-            img = prep(img)  #preprocessing function
+            # img = prep(img)  #preprocessing function
+            img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             img = detect(img, userID)
         except:
             resp = {"Success":False, "Message":"Face not registered. Please try again."}

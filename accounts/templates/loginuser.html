@@ -20,7 +20,7 @@
             {% csrf_token %}
             <h1>Log In</h1>
             {% if error %}
-            <div style="color: #f44336;" role="alert">
+            <div style="color: #181818;" role="alert">
               {{ error }}
             </div>
             {% endif %}
@@ -38,7 +38,7 @@
             <h1>Sign Up</h1>
             {% csrf_token %}
             {% if error %}
-            <div style="color: #f44336;" role="alert">
+            <div style="color: #181818;" role="alert">
               {{ error }}
             </div>
             {% endif %}

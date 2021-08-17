@@ -1,114 +1,173 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>FLO-IN</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Free Website Template" name="keywords">
-        <meta content="Free Website Template" name="description">
-        <!-- Google Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="{% static 'frontend/lib/animate/animate.min.css' %}" rel="stylesheet">
-        <link href="{% static 'frontend/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-        <link href="{% static 'frontend/style.css' %}" rel="stylesheet">
-    </head>
-    <body>
-        
-        <div class="top-bar d-none d-md-block"></div>
-            
-                
-        <!-- Nav Bar Start -->
-        <div class="navbar navbar-expand-lg bg-dark navbar-dark">
-            <div class="container-fluid">
-                <a href="{% url 'home' %}" class="navbar-brand">
-                    Flo<span>-</span>In</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
+  <head>
+    <meta charset="utf-8" />
+    <title>FLO-IN</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free Website Template" name="keywords" />
+    <meta content="Free Website Template" name="description" />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- CSS Libraries -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'frontend/lib/animate/animate.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'frontend/lib/owlcarousel/assets/owl.carousel.min.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'frontend/style.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container-fluid">
+        <a href="{% url 'home' %}" class="navbar-brand" style="font-size: 5vh">
+          <strong> FLO-IN</strong></a
+        >
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarCollapse"
+        >
+          <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' %}">Dash Board</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'savefacedata' %}"
+                >Register Face</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'checkfacedata' %}"
+                >Check Face</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'setpattern' %}">Set PIN &nbsp;</a>
+            </li>
+          
+
+          <li class="nav-item dropdown ">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle nvit"
+              data-toggle="dropdown"
+              style="background-color: #007bff"
+              >My Profile</a
+            >
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="{% url 'reset_password' %}" class="dropdown-item"
+                >Change Password</a
+              >
+              <a
+                class="dropdown-item"
+                href="#"
+                onclick="$('#signOutBtn').click()"
+              class="nav-link"
+                >Logout</a
+              >
+              <form
+                style="display: none"
+                method="POST"
+                action="{% url 'logoutuser' %}"
+              >
+                {% csrf_token %}
+                <button id="signOutBtn" type="submit">
+                  <strong>Logout</strong>
                 </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto">
-                        {% if user.is_authenticated %}
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Features</a>
-                            <div class="dropdown-menu">
-                                <a href="{% url 'profile' %}" class="dropdown-item">Dash Board</a>
-                                <a href="{% url 'savefacedata' %}" class="dropdown-item">Register Face</a>
-                                <a href="{% url 'checkfacedata' %}" class="dropdown-item">Check Face</a>
-                                <a href="{% url 'setpattern' %}" class="dropdown-item">Set PIN</a>
-                            </div>
-                        </div>
-                        
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ user.email }}</a>
-                            <div class="dropdown-menu">
-                                <a href="{% url 'reset_password' %}" class="dropdown-item">Change Password</a>
-                                <a class="dropdown-item" href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a><form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
-                                    {% csrf_token %}
-                                    <button id="signOutBtn" type="submit"><strong>Logout</strong></button>
-                                </form>
-                            </div>
-                            {% else %}
-                            <a href="{% url 'loginuser' %}" class="nav-link">Register</a>  
-                            {% endif %}
-                        </div>
-                    </div>  
-                        </div>
-                    </div>  
-                </div>
-                    </div>  
-                        </div>
-                    </div>  
-        </div>
-                    </div>  
-                </div>
-                    </div>  
-                </div>
+              </form>
             </div>
+            {% else %}
+            <li class="nav-item">
+              <a href="#about" class="nav-link">About </a>
+            </li>
+            <li class="nav-item">
+              <a href="#features" class="nav-link">Features </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'loginuser' %}" class="nav-link"
+                ><button class="btn btn-primary">Sign up</button></a
+              >
+            </li>
+          </ul>
+            {% endif %}
+          </li>
         </div>
-        <!-- Nav Bar End -->
+      </div>
+    </div>
+    <!-- Nav Bar End -->
 
-        {% block content %}
+    {% block content %} {% endblock %}
 
-        {% endblock %}
-
-        <!-- Footer Start -->
-        <div class="footer wow fadeIn" data-wow-delay="0.3s">
-            <div class="container-fluid">
-                <div class="container">
-                    <div class="footer-info">
-                        <a href="https://github.com/STCVIT/Flo-In" target="_blank" class="footer-logo">FLO<span>-</span>IN</a>
-                    </div>
-                </div>
-                <div class="container copyright">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p>&copy; <a href="{% url 'home' %}">FLO-IN</a>, All Right Reserved.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p>Made By <a href="https://github.com/STCVIT" target="_blank">Student Technical Community, VIT, Vellore</a></p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Footer Start -->
+    <div class="footer wow fadeIn" data-wow-delay="0.3s">
+      <div class="container-fluid">
+        <div class="container">
+          <div class="footer-info">
+            <a
+              href="https://github.com/STCVIT/Flo-In"
+              target="_blank"
+              class="footer-logo"
+              >FLO<span>-</span>IN</a
+            >
+          </div>
+        </div>
+        <div class="container copyright">
+          <div class="row">
+            <div class="col-md-6">
+              <p>
+                &copy; <a href="{% url 'home' %}">FLO-IN</a>, All Rights
+                Reserved.
+              </p>
             </div>
+            <div class="col-md-6">
+              <p>
+                Made with ❤️ by
+                <a href="https://github.com/STCVIT" target="_blank">STC-VIT</a>
+              </p>
+            </div>
+          </div>
         </div>
-        <!-- Footer End -->
+      </div>
+    </div>
+    <!-- Footer End -->
 
-        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-        <!-- JavaScript Libraries -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="{% static 'frontend/lib/easing/easing.min.js' %}"></script>
-        <script src="{% static 'frontend/lib/wow/wow.min.js' %}"></script>
-        <script src="{% static 'frontend/lib/owlcarousel/owl.carousel.min.js' %}"></script>
-        <script src="{% static 'frontend/lib/isotope/isotope.pkgd.min.js' %}"></script>
-        <script src="{% static 'frontend/lib/lightbox/js/lightbox.min.js' %}"></script>
-        
-        <!-- Template Javascript -->
-        <script src="{% static 'frontend/main.js' %}"></script>
-    </body>
+    <!-- JavaScript Libraries -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'frontend/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'frontend/lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'frontend/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'frontend/lib/isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'frontend/lib/lightbox/js/lightbox.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'frontend/main.js' %}"></script>
+  </body>
 </html>

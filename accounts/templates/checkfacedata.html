@@ -2,47 +2,62 @@
 <link rel="stylesheet" href="{% static 'frontend/checkfacedata.css' %}" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div
-  class="alert alert-danger"
-  id="alert_check_face_not"
-  role="alert"
-  style="display: none"
-></div>
+<div>
+  <div
+    class="alert alert-danger"
+    id="alert_check_face_not"
+    role="alert"
+    style="display: none"
+  ></div>
+  <!-- <div class="para">
+  <p>
+    You may now check the registration of your face to ensure the your
+    biometrics have been correctly recorded properly, minizing the amount of
+    errors you may face in the future due to poor lighting
+  </p>
+</div> -->
 
-<div id="check">
-  <!-- The buttons to control the stream -->
-  <center>
-    <form id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
-      {% csrf_token %}
-      <div class="border bttn">
-        <button class="btn btn-capture button" type="button" id="startbutton">
-          Capture
-        </button>
-        <div class="btn btn-auth button" id="showResult">Result</div>
+  <!-- Video Element & Canvas -->
+  <div class="play-area">
+    <div class="row">
+      <div class="col-md play-area-sub">
+        <h3>The Stream</h3>
+        <div id="container">
+          <video id="video" height="500" width="500"></video>
+        </div>
       </div>
-    </form>
-  </center>
-</div>
-<!-- Video Element & Canvas -->
-<div class="play-area">
-  <div class="play-area-sub">
-    <h3>The Stream</h3>
-    <div id="container">
-      <video id="video" height="500" width="500"></video>
+      <div class="col-md play-area-sub">
+        <h3>The Capture</h3>
+        <div id="container">
+          <canvas id="canvas"></canvas>
+          <form method="POST" id="myForm">{% csrf_token %}</form>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="play-area-sub">
-    <h3>The Capture</h3>
-    <div id="container">
-      <canvas id="canvas"></canvas>
-      <form method="POST" id="myForm">{% csrf_token %}</form>
-    </div>
+  <div id="check">
+    <!-- The buttons to control the stream -->
+    <center>
+      <form
+        id="myForm"
+        method="POST"
+        enctype="multipart/form-data"
+        class="mb-5"
+      >
+        {% csrf_token %}
+        <div class="">
+          <button class="btn btn-primary" type="button" id="startbutton">
+            Capture
+          </button>
+          <!-- <div class="btn btn-auth button" id="showResult">Result</div> -->
+        </div>
+      </form>
+    </center>
+  </div>
+  <div id="check3">
+    <!-- The buttons to control the stream -->
   </div>
 </div>
-<div id="check3">
-  <!-- The buttons to control the stream -->
-</div>
-
 <script>
   (function () {
     const status = (response) => {
