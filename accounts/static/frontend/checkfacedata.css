@@ -28,9 +28,11 @@ h3 {
 }
 
 .play-area {
-  display: flex;
+  /* display: flex; */
   justify-content: space-around;
   margin-bottom: 3%;
+  margin-top: 5% !important;
+  position: relative;
 }
 .button {
   display: flex;
@@ -76,4 +78,7 @@ h3 {
   margin: 3%;
   color: white;
   font-size: 22px;
+}
+.row {
+  margin-top: 10% !important;
 }

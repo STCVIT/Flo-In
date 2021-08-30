@@ -936,4 +936,7 @@ a:active {
     margin-left: 0;
     margin-top: -60%;
   }
+  .signup {
+    display: none;
+  }
 } ;

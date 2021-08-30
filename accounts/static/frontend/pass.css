@@ -14,6 +14,7 @@
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5),
     0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3); */
+  background-color: #333333 !important;
 }
 
 .login:before {
@@ -24,7 +25,7 @@
   bottom: -8px;
   left: -8px;
   z-index: -1;
-  background: rgba(0, 0, 0, 0.08);
+  /* background: rgba(0, 0, 0, 0.08); */
   border-radius: 4px;
 }
 
@@ -87,7 +88,7 @@ input[type="password"] {
   width: 400px;
   height: 34px;
   color: #404040;
-  background: white;
+  background: #333333 !important;
   border: 1px solid;
   /* border-color: #8581a3 #8581a3 #8581a3; */
   border-radius: 2px;
@@ -137,4 +138,9 @@ input[type="submit"]:active {
 .lt-ie9 input[type="text"],
 .lt-ie9 input[type="password"] {
   line-height: 34px;
+}
+#form1 {
+  padding: 2% !important;
+  background-color: #333333 !important;
+  align-content: center;
 }
