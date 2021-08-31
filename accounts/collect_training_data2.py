@@ -48,7 +48,7 @@ def draw_boundary(img):                                                    #extr
         except:
             coords = []
         print(coords)
-        print("----------------------------------")
+        # print("----------------------------------")
     return coords
 
 
@@ -75,18 +75,27 @@ def collectTrainingData(userID):
 
     # Initialize img_id with 0
     img_id = 0
+    fps = video_capture.get(cv2.CAP_PROP_FPS)
+    amountOfFrames = video_capture.get(cv2.CAP_PROP_FRAME_COUNT )
+    print("fps ===> " , fps , "total frames ==> " , amountOfFrames)
     while (video_capture.isOpened()):
         # Reading image from video stream
+        
         success, img = video_capture.read()
+        if not success:
+            video_capture.grab()
+            break
+
         # Call method we defined above
-        try:
-            # img = prep(img)  #preprocessing function
-            img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            img = detect(img, userID)
-        except:
-            resp = {"Success":False, "Message":"Face not registered. Please try again."}
-            return resp
+        # try:
+        img = prep(img)  #preprocessing function
+        # img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img = detect(img, userID)
+        # except:
+        #     resp = {"Success":False, "Message":"Face not registered. Please try again."}
+        #     return resp
         img_id += 1
+        print("IMG ID ===> ", img_id)
         #changed the no of images to 30 for custom confidense level
         if img_id>35:
             break

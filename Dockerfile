@@ -13,6 +13,7 @@ ENV PYTHONUNBUFFERED=1
 #     && rm -rf /var/lib/apt/lists/*
 RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt-get install cmake -y
 
 WORKDIR /usr/src/app
 COPY requirements.txt ./

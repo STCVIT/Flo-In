@@ -6,9 +6,8 @@ Django==3.1.1
 djoser
 imutils==0.5.4
 numpy
-opencv-python==4.5.2.52
-opencv-contrib-python==4.5.2.52
-opencv-python-headless==4.5.2.52
+opencv-python==4.2.0.34
+opencv-contrib-python==4.5.1.48
 Pillow==8.1.0
 gunicorn
 django-cors-headers==3.5.0
@@ -23,3 +22,4 @@ toml==0.10.1
 whitenoise==5.2.0
 uritemplate==3.0.1
 mediapipe==0.8.3.1
+face_recognition

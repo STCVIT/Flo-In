@@ -49,7 +49,7 @@ def generate_confidense_level(userID):                                        #f
     mean_conf = statistics.mean(confidence)
     sd_conf = statistics.stdev(confidence)                                                            #calculating standard deviation of confidence level generated
 
-    custom_confidence = mean_conf + (sd_conf)**2 + 30                                                 #calculating variance of confidence level generated and adding buffer for threshold authentication
+    custom_confidence = mean_conf + (sd_conf) + 30                                                 #calculating variance of confidence level generated and adding buffer for threshold authentication
     
     return 85 if (custom_confidence<=85) else custom_confidence                                       #setting 85 as threshold if calculated level is less than 85
     
@@ -85,11 +85,11 @@ def generate_classifier(userID):                                                
     split_data(userID)
     conf=80
     train_classifier(userID)
-    try:
-        conf = generate_confidense_level(userID)
-        delete_images(userID)
-    except:
-        resp=resp = {"Success":False, "Message":"Face not registered. Please try again."}
+    # try:
+    conf = generate_confidense_level(userID)
+    delete_images(userID)
+    # except:
+    #     resp=resp = {"Success":False, "Message":"Face not registered. Please try again."}
     if not os.path.isfile(os.path.join(settings.BASE_DIR,"classifiers",userID+".xml")):
         resp = {"Success":False, "Message":"Face not registered. Please try again."}
     return conf, resp
