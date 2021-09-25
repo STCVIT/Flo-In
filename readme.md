@@ -3,14 +3,22 @@
 </p>
 
 <center>
+
 # FLO-IN
-
-
-FLO-IN is the smartest way to log in using facial recognition.
+> FLO-IN is the smartest way to log in using facial recognition.
 </center>
 
 ---
+<p>
+  <a href="https://acmvit.in/" target="_blank">
+    <img alt="made-by-acm" src="https://img.shields.io/badge/MADE%20BY-STC%20VIT-blue?style=for-the-badge" />
+  </a>
 
+  <a href='https://github.com/STCVIT/Flo-In/blob/master/LICENSE' target="_blank">
+  <img alt="license" src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" />
+  </a>
+    
+</p>
 
 
 FLO-IN is an extension that recognises a user whenever he/she tries to Log-In any of the accounts. The user who has registered his/her face will only be given the option to access the accounts. The face recognition will be done every time the user tries to access any of the accounts. Option to open the accounts via pattern is also provided. Hence, there is no need to Log-Out every time of the account to keep the data safe. Without any single click you can access your accounts as well as keep the account password protected.
@@ -37,11 +45,10 @@ FLO-IN is an extension that recognises a user whenever he/she tries to Log-In an
  - Python 3.8
  - Dlib
 
-<br>
+
 
 ## 🏃‍♀️ Getting Started
-<br>
-<h2>  Running locally  </h2>
+### Running locally
 
 - Clone the repository
 ```
@@ -56,7 +63,7 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-## Running this app using Docker
+### Running this app using Docker
 
 You'll need to have [Docker installed](https://docs.docker.com/get-docker/).
 It's available on Windows, macOS and most distros of Linux. If you're new to
@@ -111,7 +118,7 @@ docker run --name floin -d -p 8000:8000 floin:latest
 
 Visit <http://localhost:8000> in your favorite browser.
 
-<br>
+
 
 ## 🙌 Contributions
 
@@ -119,7 +126,7 @@ Visit <http://localhost:8000> in your favorite browser.
 - Make sure you follow the [community guidelines](https://docs.github.com/en/github/site-policy/github-community-guidelines)!
 - Have a feature request? Open an Issue!
 
-<br>
+
 
 ## ⭐ Show your support
 
@@ -127,12 +134,13 @@ Give a ⭐ if this tool made your life easier!
 
 Spread the word to your geek fellows to save their time!
 
-<br>
+
 
 ## ✨ Contributors
 * [Vineet Raj](https://github.com/vinmik)
 * [Swarup Kharul](https://github.com/SwarupKharul)
 * [Vanshika Nehra](https://github.com/VanshikaNehra23)
+* [Harshita Rajput](https://github.com/HarshitaRajput)
 * [Suryakant Agrawal](https://github.com/suryaa62)
 
 ## ©️ License

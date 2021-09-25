@@ -1,9 +1,4 @@
 import os
-from .models import MyUser, UserData, FaceData
-from .encoding import encoding_recognise
-from .collect_training_data import collectTrainingData
-from .Forms import UserAdminCreationForm, AuthenticationForm, UserDataForm, FaceDataForm
-from api.views import sendFernet
 from django.conf import settings
 from django.db import IntegrityError
 from django.http import JsonResponse
@@ -13,6 +8,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.files.storage import default_storage, FileSystemStorage
+
+# Local imports
+from api.views import sendFernet
+from .encoding import encoding_recognise
+from .models import MyUser, UserData, FaceData
+from .collect_training_data import collectTrainingData
+from .Forms import UserAdminCreationForm, AuthenticationForm, UserDataForm, FaceDataForm
 
 k = dict()
 
@@ -32,6 +34,7 @@ def profile(request):
 
 
 def loginuser(request):
+    """Login user"""
     if request.method == "GET":
         return render(request, "loginuser.html", {"form": AuthenticationForm()})
     else:
@@ -82,6 +85,7 @@ def loginuser(request):
 
 @login_required
 def logoutuser(request):
+    """Logout user"""
     if request.method == "POST":
         logout(request)
         return redirect("home")
@@ -89,6 +93,7 @@ def logoutuser(request):
 
 @login_required
 def savedata(request):
+    """Save user data"""
     if request.method == "GET":
         return render(request, "savedata.html", {"form": UserDataForm()})
     else:
@@ -109,7 +114,7 @@ def savedata(request):
 # Register face
 @login_required
 def savefacedata(request):
-    resp = "heeeeelllo"
+    """Save face data"""
     if request.method == "GET":
         return render(request, "savefacedata.html", {"form": FaceDataForm()})
     else:
@@ -129,13 +134,12 @@ def savefacedata(request):
         return JsonResponse(resp)
 
 
-# Check Face Recognition model
 @login_required
 def checkfacedata(request):
+    """Check Face Recognition model"""
     if request.method == "GET":
         return render(request, "checkfacedata.html", {"form": FaceDataForm()})
     else:
-        resp = "hellloooo"
         checkImage = request.FILES["image"]
         fs = FileSystemStorage()
         filename = fs.save(checkImage.name, checkImage)
@@ -146,10 +150,9 @@ def checkfacedata(request):
         return JsonResponse(k[request.user.id])
 
 
-
-# Set PIN for alternate authentication
 @login_required
 def setpattern(request):
+    """Set PIN for alternate authentication"""
     fd = FaceData.objects.get(user=request.user)
     print(fd)
     fd.pin = request.POST["password"]

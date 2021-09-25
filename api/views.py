@@ -29,6 +29,7 @@ fernet = Fernet(key)
 
 
 def sendFernet():
+    """Generate a random key and encrypt it with Fernet"""
     return fernet
 
 

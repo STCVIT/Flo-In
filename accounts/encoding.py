@@ -7,17 +7,16 @@ from typing import NamedTuple
 
 mp_face_detection = mp.solutions.face_detection
 
-def encoding_recognise(
-    userID, image
-):
-    '''
-    This Function is used to authentticate the person face by comparing the encodings of 
+
+def encoding_recognise(userID, image):
+    """
+    This Function is used to authentticate the person face by comparing the encodings of
     image passed as parameter and image saved in database.
 
     userID -> unique Id of the user (used to get the image saved in database).
     image -> PATH of the iamge use to get the image to compare.
 
-    '''
+    """
 
     pth = os.path.join(settings.BASE_DIR, "data", userID)
     dir_list = os.listdir(pth)
@@ -35,6 +34,8 @@ def encoding_recognise(
         results = face_detection.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
         print(results)
         coords = []
+
+        # Can throw error if result.detction is NULL
         try:
             for detection in results.detections:
                 x = int(detection.location_data.relative_bounding_box.xmin * width) - 10
@@ -56,8 +57,7 @@ def encoding_recognise(
             return resp
         if len(coords) != 4:
             return resp
-    
-    
+
     roi_img = img[y : y + h, x : x + w]
     roi_img = cv2.resize(roi_img, (100, 100))
     cv2.imwrite(os.path.join(pth, "toVerify.jpg"), roi_img)
@@ -65,19 +65,17 @@ def encoding_recognise(
 
     trainEncoding = fr.face_encodings(train_image)[0]
 
-    '''
-    if there is no     
-
-    '''
+    """
+    If face is not detected in the test image, below code will 
+    throw out of range error.   
+    """
     try:
         testEncoding = fr.face_encodings(testImage)[0]
     except:
         return resp
-
 
     distance = fr.face_distance([testEncoding], trainEncoding)
     print(f"=======>{distance}")
     if distance[0] < 0.45:
         resp = {"Success": True, "Message": "Model Trained Successfully!!!"}
     return resp
-

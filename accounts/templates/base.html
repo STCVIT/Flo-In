@@ -75,12 +75,12 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="padding-left: 40px;"href="{% url 'savefacedata' %}"
+              <a class="nav-link active" style="padding-left: 40px;"href="{% url 'savefacedata' %}#checkface"
                 >Check Face</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="padding-left: 40px;" href="{% url 'savefacedata' %}">Set PIN &nbsp;</a>
+              <a class="nav-link active" style="padding-left: 40px;" href="{% url 'savefacedata' %}#setpinmain">Set PIN &nbsp;</a>
             </li>
           
 
@@ -180,7 +180,32 @@
     <script src="{% static 'frontend/lib/isotope/isotope.pkgd.min.js' %}"></script>
     <script src="{% static 'frontend/lib/lightbox/js/lightbox.min.js' %}"></script>
 
-    <!-- Template Javascript -->
+    
     <script src="{% static 'frontend/main.js' %}"></script>
+    <script>
+      $(document).ready(function(){
+        
+        $("a").on('click', function(event) {
+      
+          
+          if (this.hash !== "") {
+            
+            event.preventDefault();
+      
+            
+            var hash = this.hash;
+      
+            
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 500, function(){
+      
+              
+              window.location.hash = hash;
+            });
+          } // End if
+        });
+      });
+      </script>
   </body>
 </html>

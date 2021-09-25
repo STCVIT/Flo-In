@@ -9,6 +9,7 @@
   }
 </style>
 
+
 <link rel="stylesheet" href="{% static 'frontend/cam.css' %}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div
@@ -356,6 +357,7 @@
   }
 </script>
 
+
 <link rel="stylesheet" href="{% static 'frontend/checkfacedata.css' %}" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -494,30 +496,8 @@
       </div>
     </div>
   </div>
-  <div id="check">
-    <!-- The buttons to control the stream -->
-    <center>
-      <!-- <form
-        id="myForm"
-        method="POST"
-        enctype="multipart/form-data"
-        class="mb-5"
-      >
-        {% csrf_token %}
-        <div >
-          <button class="btn btn-primary" type="button" id="startbutton">
-            Capture
-          </button>
-           <div class="btn btn-auth button" id="showResult" style="color: black">
-            Result
-          </div> -->
-      <!--</div>
-      </form> -->
-    </center>
-  </div>
-  <div id="check3">
-    <!-- The buttons to control the stream -->
-  </div>
+  Result
+  <div class="btn btn-auth" id="showResult" style="color: black"></div>
 </div>
 <script>
   (function () {
@@ -657,9 +637,10 @@
 </script>
 
 <link href="{% static 'frontend/pass.css' %}" rel="stylesheet" />
-
+<div>
 <h1
   class="setpin"
+  id="setpinmain"
   style="
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
     letter-spacing: 3px !important;
@@ -757,4 +738,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script src="{% static 'frontend/pin-login.js' %}/"></script>
+</div>
 {%endblock%}
