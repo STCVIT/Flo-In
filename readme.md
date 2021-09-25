@@ -9,7 +9,16 @@
 </center>
 
 ---
+<p>
+  <a href="https://acmvit.in/" target="_blank">
+    <img alt="made-by-acm" src="https://img.shields.io/badge/MADE%20BY-STC%20VIT-blue?style=for-the-badge" />
+  </a>
 
+  <a href='https://github.com/STCVIT/Flo-In/blob/master/LICENSE' target="_blank">
+  <img alt="license" src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" />
+  </a>
+    
+</p>
 
 
 FLO-IN is an extension that recognises a user whenever he/she tries to Log-In any of the accounts. The user who has registered his/her face will only be given the option to access the accounts. The face recognition will be done every time the user tries to access any of the accounts. Option to open the accounts via pattern is also provided. Hence, there is no need to Log-Out every time of the account to keep the data safe. Without any single click you can access your accounts as well as keep the account password protected.
