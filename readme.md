@@ -3,10 +3,9 @@
 </p>
 
 <center>
+
 # FLO-IN
-
-
-FLO-IN is the smartest way to log in using facial recognition.
+> FLO-IN is the smartest way to log in using facial recognition.
 </center>
 
 ---
@@ -37,11 +36,10 @@ FLO-IN is an extension that recognises a user whenever he/she tries to Log-In an
  - Python 3.8
  - Dlib
 
-<br>
+
 
 ## 🏃‍♀️ Getting Started
-<br>
-<h2>  Running locally  </h2>
+### Running locally
 
 - Clone the repository
 ```
@@ -56,7 +54,7 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-## Running this app using Docker
+### Running this app using Docker
 
 You'll need to have [Docker installed](https://docs.docker.com/get-docker/).
 It's available on Windows, macOS and most distros of Linux. If you're new to
@@ -111,7 +109,7 @@ docker run --name floin -d -p 8000:8000 floin:latest
 
 Visit <http://localhost:8000> in your favorite browser.
 
-<br>
+
 
 ## 🙌 Contributions
 
@@ -119,7 +117,7 @@ Visit <http://localhost:8000> in your favorite browser.
 - Make sure you follow the [community guidelines](https://docs.github.com/en/github/site-policy/github-community-guidelines)!
 - Have a feature request? Open an Issue!
 
-<br>
+
 
 ## ⭐ Show your support
 
@@ -127,7 +125,7 @@ Give a ⭐ if this tool made your life easier!
 
 Spread the word to your geek fellows to save their time!
 
-<br>
+
 
 ## ✨ Contributors
 * [Vineet Raj](https://github.com/vinmik)
