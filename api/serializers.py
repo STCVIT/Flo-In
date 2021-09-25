@@ -6,16 +6,18 @@ from accounts.models import UserData
 
 User = get_user_model()
 
+
 class UserCreateSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ('id', 'email', 'username', 'password')
-    
+        fields = ("id", "email", "username", "password")
+
+
 class userDataSerializer(serializers.ModelSerializer):
     class Meta:
-        model=UserData
-        fields=('user', 'username', 'url', 'password')
-    
+        model = UserData
+        fields = ("user", "username", "url", "password")
+
+
 class ImageSerializer(serializers.Serializer):
-    image = ImageField(max_length=None,allow_empty_file=False)
-    
+    image = ImageField(max_length=None, allow_empty_file=False)

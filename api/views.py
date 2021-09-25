@@ -5,7 +5,7 @@ from .renderers import ImageRenderer
 from .serializers import userDataSerializer
 from .permissions import IsOwnerProfileOrReadOnly
 from accounts.models import UserData, FaceData
-from accounts.recognise2 import authenticate_user
+from accounts.encoding import encoding_recognise
 
 # Imports from installed modules
 from rest_framework import status
@@ -24,82 +24,95 @@ import random
 
 # defined Encryption key
 k = dict()
-key= b'0Bnw3EFq0OSgfKA26qxJBkmWC9kABY1Xdfw8Ng1DHss='
+key = b"0Bnw3EFq0OSgfKA26qxJBkmWC9kABY1Xdfw8Ng1DHss="
 fernet = Fernet(key)
+
 
 def sendFernet():
     return fernet
 
 
-ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG']
+ALLOWED_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG"]
+
 
 class ImageAPIView(APIView):
     renderer_classes = [ImageRenderer]
     permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
-        return JsonResponse({'get request':'ok'})
+        return JsonResponse({"get request": "ok"})
 
     def post(self, request, *args, **kwargs):
-        if 'image' in request.FILES:
-            file = request.FILES['image']
+        if "image" in request.FILES:
+            file = request.FILES["image"]
             base, ext = os.path.splitext(file.name)
             if not ext in ALLOWED_IMAGE_EXTENSIONS:
-                return JsonResponse({'error': 'Invalid image file format.'}, status=400)
-            print(random.randint(0,5000))
-            url = str(request.user.id)+str(random.randint(0,5000))
-            default_storage.save(url+".png",file)
-            print(FaceData.objects.all)
+                return JsonResponse({"error": "Invalid image file format."}, status=400)
+            url = str(request.user.id) + str(random.randint(0, 5000))
+            default_storage.save(url + ".png", file)
             fd = FaceData.objects.get(user=request.user)
-            k[request.user.id], resp = authenticate_user(str(request.user.id), fd.confidence,os.path.join(settings.BASE_DIR,"media",url+".png"))
+            k[request.user.id] = encoding_recognise(
+                str(request.user.id),
+                os.path.join(settings.BASE_DIR, "media", url + ".png"),
+            )
             print(k)
-            return JsonResponse({"match" : k[request.user.id]})
+            return JsonResponse({"match": k[request.user.id]})
         else:
-            return JsonResponse({'error': 'No file found.'}, status=400)
+            return JsonResponse({"error": "No file found."}, status=400)
+
 
 @permission_classes([AllowAny])
-@api_view(['POST'])
+@api_view(["POST"])
 def LogoutAndBlacklistRefreshTokenForUserView(request):
-        try:
-            refresh_token = request.data["refresh"]
-            token = RefreshToken(refresh_token)
-            token.blacklist()
-            return Response(status=status.HTTP_205_RESET_CONTENT)
-        except Exception as e:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+    try:
+        refresh_token = request.data["refresh"]
+        token = RefreshToken(refresh_token)
+        token.blacklist()
+        return Response(status=status.HTTP_205_RESET_CONTENT)
+    except Exception as e:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
+
+@api_view(["GET"])
 def dataList(request):
     datas = UserData.objects.filter(user=request.user)
-    serializer = userDataSerializer(datas, many = True)
+    serializer = userDataSerializer(datas, many=True)
     return Response(serializer.data)
 
-@api_view(['GET'])
+
+@api_view(["GET"])
 def dataDetail(request, url):
+    print(url)
     datas = UserData.objects.filter(url=url, user=request.user).first()
-    # print(datas.password)
-    serializer = userDataSerializer(datas, many = False)
-    password = fernet.decrypt(bytes(serializer.data['password'],encoding="utf8")).decode()
+    print(datas)
+    print(datas.password)
+    serializer = userDataSerializer(datas, many=False)
+    password = fernet.decrypt(
+        bytes(serializer.data["password"], encoding="utf8")
+    ).decode()
     print(password)
     resp = serializer.data
-    resp['password'] = password
+    resp["password"] = password
     print(resp)
     return Response(resp)
 
-@api_view(['POST'])
+
+@api_view(["POST"])
 def dataCreate(request):
-    password = request.data.get('password')
-    password= fernet.encrypt(password.encode())
+    password = request.data.get("password")
+    password = fernet.encrypt(password.encode())
     password = password.decode("utf8")
-    data={
-            'username': request.data.get('username'),
-            'password': password,
-            'url': request.data.get('url'),
-            'user': request.user.id
-            }
+    data = {
+        "username": request.data.get("username"),
+        "password": password,
+        "url": request.data.get("url"),
+        "user": request.user.id,
+    }
     print(data)
     try:
-        udata = UserData.objects.filter(url = request.data.get('url'), user=request.user).first()
+        udata = UserData.objects.filter(
+            url=request.data.get("url"), user=request.user
+        ).first()
         serializer = userDataSerializer(instance=udata, data=data)
     except:
         serializer = userDataSerializer(data=data)
@@ -108,27 +121,30 @@ def dataCreate(request):
         serializer.save()
     return Response(serializer.data)
 
-@api_view(['POST'])
+
+@api_view(["POST"])
 def dataUpdate(request, url):
-    data = UserData.objects.get(url = url)
+    data = UserData.objects.get(url=url)
     serializer = userDataSerializer(instance=data, data=request.data)
 
     if serializer.is_valid():
         serializer.save()
     return Response(serializer.data)
 
-@api_view(['DELETE'])
+
+@api_view(["DELETE"])
 def dataDelete(request, url):
-    task = UserData.objects.get(url = url)
+    task = UserData.objects.get(url=url)
     task.delete()
     return Response("Taks deleted successfully.")
 
-@api_view(['POST'])
+
+@api_view(["POST"])
 def checkPattern(request):
-    data = FaceData.objects.get(user = request.user)
-    pinData=request.data
-    if data.pin==pinData["pin"]:
+    data = FaceData.objects.get(user=request.user)
+    pinData = request.data
+    if data.pin == pinData["pin"]:
         print("Matched")
-        return JsonResponse({"PIN":"Matched"})
+        return JsonResponse({"PIN": "Matched"})
     else:
-        return JsonResponse({"PIN":"Unmatched"})
+        return JsonResponse({"PIN": "Unmatched"})

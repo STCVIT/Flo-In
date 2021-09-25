@@ -74,9 +74,9 @@ a {
 button {
   cursor: pointer;
   border-radius: 20px;
-  border: 1px solid var(--main-color);
-  background: var(--main-color);
-  color: #fff;
+  border: #eee;
+  background: #149bfc;
+  color: #fff !important;
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
@@ -98,13 +98,16 @@ button:focus {
 }
 
 button.ghost {
-  background-color: transparent;
-  border-color: #fff;
+  background-color: transparent !important;
+  border-color: #149bfc;
+  color: #149bfc;
 }
 
 button.ghost:hover {
   background: #fff;
-  color: var(--secondary-color);
+  color: #eee;
+  border-color:#149bfc ;
+  /* color: var(--secondary-color); */
 }
 
 form {
@@ -156,7 +159,7 @@ input {
 }
 
 .forget {
-  color: black;
+  color: #757575;
 }
 
 .forget:hover {

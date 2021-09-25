@@ -11,7 +11,7 @@ h2 small {
   font-size: 0.5em;
 }
 .responsive-table li {
-  border-radius: 5px;
+  border-radius: 0.5em;
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;
@@ -20,7 +20,7 @@ h2 small {
   margin-top: 5%;
   background-color: #070707;
 
-  color: white;
+  color: #393939;
   font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -28,10 +28,10 @@ h2 small {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.responsive-table .table-row {
-  background-color: #fff;
-  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
-}
+/* .responsive-table .table-row {
+  background-color: #393939 !important;
+  
+} */
 .responsive-table .col-22 {
   flex-basis: 70%;
 }
@@ -114,4 +114,5 @@ h2 small {
   margin-left: 8%;
   color: #eee;
   font-family: "Inter";
+  letter-spacing: 2px !important;
 }

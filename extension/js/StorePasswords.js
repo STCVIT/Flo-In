@@ -2,8 +2,41 @@ console.log('hello from StorePasswords')
 let token = localStorage.getItem('user')
 token = JSON.parse(token)
 
+const allURLs = [
+  "https://www.facebook.com",
+  "https://www.linkedin.com/login",
+  "https://twitter.com/login",
+  "https://www.instagram.com",
+  "https://github.com/login",
+  "https://vtop.vit.ac.in/vtop/initialProcess",
+  "https://in.pinterest.com/",
+  "https://www.reddit.com/login",
+  "https://www.quora.com/",
+  "https://www.netflix.com/in/login",
+  "https://www.flipkart.com",
+  "http://www.vpropel.in/loginn",
+  "https://mail.rediff.com/cgi-bin/login.cgi",
+  "https://www.irctc.co.in/nget/train-search",
+  "https://www.shaadi.com",
+  "https://account.similarweb.com/login",
+  "https://newtrade.sharekhan.com",
+  "https://moodle.org/login/index.php",
+  "https://moodle.org/login/index.php",
+  "https://moovit.vit.ac.in/login/index.php",
+  "https://www.amazon.com/ap/signin"
+]
+
 async function sendData(url, inputUsername, encodedPassword) {
   var fdata = new FormData()
+
+  // check if url is in the list
+  allURLs.forEach(e => {
+    if (url.includes(e)) {
+      url = e
+    }
+  });
+  url.charAt(url.length - 1) === '/' ? url = url.slice(0, -1) : url = url
+  console.log(url)
   fdata.append('url', url)
   fdata.append('username', inputUsername)
   fdata.append('password', encodedPassword)
@@ -16,6 +49,9 @@ async function sendData(url, inputUsername, encodedPassword) {
     body: fdata,
   }).then(() => {
     console.log('data sent successfully')
+    document.getElementById('msg').innerHTML = "Password Stored Successfully"
+  }).catch((error) => {
+    document.getElementById('msg').innerHTML = "Oops! There was some issue saving your password. Please try again!"
   })
 }
 

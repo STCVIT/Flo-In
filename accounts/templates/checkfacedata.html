@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+<!-- {% extends 'base.html' %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'frontend/checkfacedata.css' %}" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,11 +16,12 @@
     errors you may face in the future due to poor lighting
   </p>
 </div> -->
-
-  <!-- Video Element & Canvas -->
+  <!-- Video Element & Canvas 
   <div class="play-area">
+    <h1 class="headingcheckf">Check Face</h1>
     <div class="row">
       <div class="col-md play-area-sub">
+         {{ user.email }} 
         <h3>The Stream</h3>
         <div id="container">
           <video id="video" height="500" width="500"></video>
@@ -36,7 +37,7 @@
     </div>
   </div>
   <div id="check">
-    <!-- The buttons to control the stream -->
+     The buttons to control the stream 
     <center>
       <form
         id="myForm"
@@ -57,7 +58,7 @@
     </center>
   </div>
   <div id="check3">
-    <!-- The buttons to control the stream -->
+     The buttons to control the stream 
   </div>
 </div>
 <script>
@@ -169,8 +170,8 @@
           let save = document.getElementById("alert_check_face_not");
           // ... which is why `data` shows up here as the first parameter to the anonymous function
           if (data.Success == true) {
-            console.log(data.match);
-            document.getElementById("showResult").innerHTML = data.match;
+            console.log(data.Message);
+            document.getElementById("showResult").innerHTML = data.Message;
             save.style = "display:none;";
           } else {
             save.style = "display:block;";
@@ -198,4 +199,4 @@
   })();
 </script>
 
-{% endblock %}
+{% endblock %} -->

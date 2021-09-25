@@ -1,6 +1,5 @@
-.footer {
-  bottom: 0 !important;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+
 
 .login {
   position: relative;
@@ -15,6 +14,7 @@
     0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3); */
   background-color: #333333 !important;
+  border-radius: 1.5em !important;
 }
 
 .login:before {
@@ -144,3 +144,5 @@ input[type="submit"]:active {
   background-color: #333333 !important;
   align-content: center;
 }
+
+

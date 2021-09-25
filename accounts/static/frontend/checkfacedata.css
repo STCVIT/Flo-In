@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 h3 {
   text-align: center;
   color: white;
@@ -81,4 +82,8 @@ h3 {
 }
 .row {
   margin-top: 10% !important;
+}
+.checkfacehead{
+  font-family: 'Inter', sans-serif !important;
+  letter-spacing: 2px !important;
 }
