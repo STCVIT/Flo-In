@@ -1,7 +1,7 @@
 import os
 from .models import MyUser, UserData, FaceData
 from .encoding import encoding_recognise
-from .collect_training_data2 import collectTrainingData
+from .collect_training_data import collectTrainingData
 from .Forms import UserAdminCreationForm, AuthenticationForm, UserDataForm, FaceDataForm
 from api.views import sendFernet
 from django.conf import settings

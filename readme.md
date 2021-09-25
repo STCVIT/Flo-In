@@ -8,38 +8,41 @@
 
 ---
 
-## Built With
-<p float="left">
-	<img src="https://github.com/STCVIT/CryptoAuction/blob/b541fecf108f1ef673d7a1f163c8eae1e2fdeffd/Build%20With/react%20png.png" alt="ReactJS" width="15%" >
-	<img src="https://github.com/STCVIT/CryptoAuction/blob/b541fecf108f1ef673d7a1f163c8eae1e2fdeffd/Build%20With/trufflepng.png" alt="Truffle Blockchain" width="15%" >
-	<img src="https://github.com/STCVIT/CryptoAuction/blob/b541fecf108f1ef673d7a1f163c8eae1e2fdeffd/Build%20With/node.png" alt="NodeJS" width="15%" >
-
-</p>
-
----
-
 > <Subtitle>
 ### FLO-IN is an extension that recognises a user whenever he/she tries to Log-In any of the accounts. The user who has registered his/her face will only be given the option to access the accounts. The face recognition will be done every time the user tries to access any of the accounts. Option to open the accounts via pattern is also provided. Hence, there is no need to Log-Out every time of the account to keep the data safe. Without any single click you can access your accounts as well as keep the account password protected.
 
+<br>
+
+
+## Built With
 ---
+<p float="left">
+<a href="https://www.djangoproject.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/django/django-original.svg" alt="django" width="100" height="100"/> </a> &nbsp; &nbsp; <a href="https://opencv.org/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/opencv/opencv-ar21.svg" alt="opencv" width="200" height="90"/> </a> &nbsp; &nbsp; <a href="https://opencv.org/" target="_blank"> <img src="assets/mediapipe.png" alt="Mediapipe" width="270" height="80"/> </a>
+</p>
 
 
 
-## Features
+## 💪🏻 Features
+---
 * Save Password
 * Auto-Fill with Facial Recognition 
 * PIN Login 
 
 <br>
 
-## Dependencies
+## 👨‍💻 Dependencies
+---
  - Chrome Browser
  - Python 3.8
  - Dlib
 
 <br>
 
-## Getting Started
+## 🏃‍♀️ Getting Started
+---
+
+<h2>  Running locally  </h2>
+
 - Clone the repository
 ```
 git clone 
@@ -108,9 +111,6 @@ docker run --name floin -d -p 8000:8000 floin:latest
 
 Visit <http://localhost:8000> in your favorite browser.
 
-Not seeing any CSS? That means Webpack is still compiling. Give it
-a few more seconds and reload. It should self resolve.
-
 <br>
 
 ## 🙌 Contributions
@@ -135,10 +135,10 @@ Spread the word to your geek fellows to save their time!
 * [Vanshika Nehra](https://github.com/VanshikaNehra23)
 * [Suryakant Agrawal](https://github.com/suryaa62)
 
-## License
+## ©️ License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
-## Connect with Us
+## 🤝🏻 Connect with Us
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mstcvit/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/micvitvellore/mycompany/)
 
