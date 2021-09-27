@@ -96,12 +96,8 @@ going to download a few Docker images and build the Python*
 docker build --tag floin:latest .
 ```
 
-Now that everything is built and running we can treat it like any other Django
-app.
+Now that everything is built. To get the app running use this command.
 
-Did you receive an error about a port being in use? Chances are it's because
-something on your machine is already running on port 8000. Check out the docs
-in the `.env` file for the `DOCKER_WEB_PORT_FORWARD` variable to fix this.
 
 ```sh
 docker run --name floin -d -p 8000:8000 floin:latest
