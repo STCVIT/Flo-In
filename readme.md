@@ -27,8 +27,9 @@ FLO-IN is an extension that recognises a user whenever he/she tries to Log-In an
 
 
 ## Built With
-
-<a href="https://www.djangoproject.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/django/django-original.svg" alt="django" width="100" height="100"/> </a> &nbsp; &nbsp; <a href="https://opencv.org/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/opencv/opencv-ar21.svg" alt="opencv" width="200" height="90"/> </a> &nbsp; &nbsp; <a href="https://opencv.org/" target="_blank"> <img src="assets/mediapipe.png" alt="Mediapipe" width="270" height="80"/> </a> <a href="" target="_blank"><img src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg" alt="bootstrap" width="200" height="100" /></a>
+| | | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+|<a href="https://www.djangoproject.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/django/django-original.svg" alt="django" width="100" height="100"/> </a>|<a href="https://opencv.org/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/opencv/opencv-ar21.svg" alt="opencv" width="150" height="70"/> </a>| <a href="https://opencv.org/" target="_blank"> <img src="assets/mediapipe.png" alt="Mediapipe" width="210" height="50"/> </a>| <a href="" target="_blank"><img src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg" alt="bootstrap" width="200" height="100" /></a>
 
 
 
@@ -95,12 +96,8 @@ going to download a few Docker images and build the Python*
 docker build --tag floin:latest .
 ```
 
-Now that everything is built and running we can treat it like any other Django
-app.
+Now that everything is built. To get the app running use this command.
 
-Did you receive an error about a port being in use? Chances are it's because
-something on your machine is already running on port 8000. Check out the docs
-in the `.env` file for the `DOCKER_WEB_PORT_FORWARD` variable to fix this.
 
 ```sh
 docker run --name floin -d -p 8000:8000 floin:latest
