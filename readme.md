@@ -52,7 +52,7 @@ FLO-IN is an extension that recognises a user whenever he/she tries to Log-In an
 
 - Clone the repository
 ```
-git clone 
+git clone https://github.com/STCVIT/Flo-In.git 
 ```
 - Install the dependencies
 ```
@@ -79,7 +79,7 @@ these commands for PowerShell if you want.
 #### Clone this repo anywhere you want and move into the directory:
 
 ```sh
-git clone https://github.com/STCVIT/Flo-In
+git clone https://github.com/STCVIT/Flo-In.git
 cd FloIn
 
 # Optionally checkout a specific tag, such as: git checkout 0.4.0
