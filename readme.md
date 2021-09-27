@@ -10,7 +10,7 @@
 
 ---
 <p>
-  <a href="https://acmvit.in/" target="_blank">
+  <a href="https://stcvit.in/" target="_blank">
     <img alt="made-by-acm" src="https://img.shields.io/badge/MADE%20BY-STC%20VIT-blue?style=for-the-badge" />
   </a>
 
@@ -79,7 +79,7 @@ these commands for PowerShell if you want.
 #### Clone this repo anywhere you want and move into the directory:
 
 ```sh
-git clone link
+git clone https://github.com/STCVIT/Flo-In
 cd FloIn
 
 # Optionally checkout a specific tag, such as: git checkout 0.4.0
