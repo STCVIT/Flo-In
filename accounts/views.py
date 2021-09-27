@@ -144,7 +144,7 @@ def checkfacedata(request):
         fs = FileSystemStorage()
         filename = fs.save(checkImage.name, checkImage)
         filename = os.path.join(settings.BASE_DIR, "media", filename)
-        fd = FaceData.objects.get(user=request.user)
+        # fd = FaceData.objects.get(user=request.user)
         k[request.user.id] = encoding_recognise(str(request.user.id), filename)
         print(k)
         return JsonResponse(k[request.user.id])
@@ -153,9 +153,15 @@ def checkfacedata(request):
 @login_required
 def setpattern(request):
     """Set PIN for alternate authentication"""
-    fd = FaceData.objects.get(user=request.user)
-    print(fd)
-    fd.pin = request.POST["password"]
-    print(fd.pin)
-    fd.save()
-    return redirect("savefacedata")
+    try:
+        fd = FaceData.objects.get(user=request.user)
+        print(fd)
+        fd.pin = request.POST["userInput"]
+        print(fd.pin)
+        if len(fd.pin) == 4:
+            fd.save()
+            return JsonResponse({"Success": True, "Message": "PIN set successfully"})
+        else:
+            return JsonResponse({"Success": False, "Message": "PIN size should be 4"})
+    except:
+        return JsonResponse({"Success": False, "Message": "Please register your face!"})

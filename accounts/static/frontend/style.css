@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
 /********* General CSS *********/
 body {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
   color: #797979;
   background-color: #181818 !important;
   font-family: "Open Sans", sans-serif;

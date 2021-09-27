@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<!-- Hero Start -->
-<!-- Template Stylesheet -->
+
 <div class="hero">
   <div class="homehead">
     <div class="txt">
@@ -44,7 +43,7 @@
                   your accounts as well as keep the account password protected.
                 </p>
                 <button class="btn btn-primary">
-                  <a href="" class="lnk">Register Now </a>
+                  <a href="{% url 'loginuser' %}" class="lnk">Register Now </a>
                 </button>
               </div>
             </div>
@@ -53,7 +52,6 @@
       </div>
       <!-- About End -->
 
-      <!-- Service Start -->
       <div class="service">
         <div class="container">
           <div
@@ -76,8 +74,8 @@
                 />
                 <h3 class="fthead">PIN Log-In</h3>
                 <p>
-                  Loggin-In with Pattern can also be an easy option sometimes,
-                  so FLO-IN provides you with an easy to access Pattern
+                  Loggin-In with Pin can also be an easy option sometimes,
+                  so FLO-IN provides you with an easy to access Pin
                   Protection.
                 </p>
               </div>
@@ -118,7 +116,16 @@
           </div>
         </div>
       </div>
-
+      <div
+            class="section-header text-center wow zoomIn"
+            data-wow-delay="0.1s"
+          >
+            <h2 class="hdwl">Instructions To Use</h2>
+          </div>
+      <img
+        style="width: 90%; margin-left: 7% ; margin-top: 10%"
+        src="{% static 'frontend/imgs/Group 1.png' %}"
+      />
       <!-- <div class="discount wow cont">
         <div class="section-header text-center">
           <h2 style="color: #eee">Instructions To Get <span>Started</span></h2>

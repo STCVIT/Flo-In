@@ -26,9 +26,10 @@ def generate_dataset(img, userID):
     # try block to catch if encoded is extracted from the first image
     try:
         train_encoding = fr.face_encodings(img)[0]
+        
         cv2.imwrite(
             os.path.join(
-                settings.BASE_DIR, "data", userID, f"{random.randint(0,1000)}.jpg"
+                settings.BASE_DIR, "data", userID, ".jpg"
             ),
             img,
         )

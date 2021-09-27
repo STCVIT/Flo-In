@@ -18,10 +18,15 @@ def encoding_recognise(userID, image):
 
     """
 
-    pth = os.path.join(settings.BASE_DIR, "data", userID)
-    dir_list = os.listdir(pth)
-    img_path = os.path.join(settings.BASE_DIR, "data", userID, dir_list[0])
-    train_image = fr.load_image_file(img_path)
+    try:
+        pth = os.path.join(settings.BASE_DIR, "data", userID)
+        dir_list = os.listdir(pth)
+        img_path = os.path.join(settings.BASE_DIR, "data", userID, dir_list[0])
+        train_image = fr.load_image_file(img_path)
+
+    except:
+        resp = {"Success": False, "Message": "Please register your face!"}
+        return resp
 
     img = cv2.imread(image)
     height, width, _dim = img.shape

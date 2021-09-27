@@ -1,7 +1,8 @@
-.body {
+body {
   background-size: 70%;
   background-repeat: no-repeat;
   background-position-x: right;
+  scroll-behavior: smooth;
 }
 .hero {
   padding: 100px 5% 15% 2%;
@@ -13,7 +14,8 @@
   border: 3px white solid;
   border-radius: 5%;
   background: white;
-  position: relative;
+  /* position: relative; */
+  align-items: center;
 }
 
 #video {
@@ -22,7 +24,12 @@
   background-color: white;
   border-radius: 5%;
 }
-
+#video2 {
+  width: 405px;
+  height: 308px;
+  background-color: white;
+  border-radius: 5%;
+}
 .button {
   margin: 40px;
   margin-left: 10%;

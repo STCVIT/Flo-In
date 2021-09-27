@@ -97,18 +97,20 @@ button:focus {
   outline: none;
 }
 
-button.ghost {
+.ghost {
   background-color: transparent !important;
-  border-color: #149bfc;
+  border-color: #eee;
   color: #149bfc;
+
 }
 
-button.ghost:hover {
+.ghost:hover {
   background: #fff;
-  color: #eee;
+  color: #149bfc;
   border-color:#149bfc ;
   /* color: var(--secondary-color); */
 }
+
 
 form {
   background-color: #fff;
@@ -163,7 +165,7 @@ input {
 }
 
 .forget:hover {
-  color: #f37272;
+  color: #149bfc ;
 }
 .sign-up-container {
   top: 0;

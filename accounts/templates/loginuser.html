@@ -19,8 +19,9 @@
           <form class="modal-content" method="POST">
             {% csrf_token %}
             <h1>Log In</h1>
+            <br>
             {% if error %}
-            <div style="color: #181818;" role="alert">
+            <div style="color: #149bfc;" role="alert">
               {{ error }}
             </div>
             {% endif %}
@@ -36,9 +37,10 @@
           
           <form class="modal-content" method="POST">
             <h1>Sign Up</h1>
+            <br>
             {% csrf_token %}
             {% if error %}
-            <div style="color: #181818;" role="alert">
+            <div style="color: #149bfc;" role="alert">
               {{ error }}
             </div>
             {% endif %}
@@ -59,7 +61,7 @@
           <div class="overlay">
             <div class="overlay-panel overlay-left">
               <h1>Hello, Friend!</h1>
-              <p>Please login with your personal info!</p>
+              <p>Please Sign Up With Your Personal Info!</p>
               <button class="ghost" id="signIn">Log In</button>
             </div>
             <div class="overlay-panel overlay-right">

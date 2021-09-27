@@ -86,17 +86,18 @@
 
           <li class="nav-item dropdown " style="padding-left: 40px;">
             <a
-              href="#"
+              href="{% url 'profile' %}"
               class="nav-link  active dropdown-toggle nvit"
               data-toggle="dropdown"
               style="background-color: #007bff"
               >My Profile</a
             >
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="#"  class="dropdown-item"> </a>
-              <a href="{% url 'reset_password' %}" class="dropdown-item"
-                >Change Password</a
-              >
+              <a href="{% url 'profile' %}" id="usermail" class="dropdown-item " style="display: none;">{{user.email}} </a>
+              <a href="{% url 'profile' %}" class="dropdown-item" id="userfield"
+                ></a>
+              
+              <a href="{% url 'reset_password' %}" class="dropdown-item">Change Password</a>
               <a
                 class="dropdown-item"
                 href="#"
@@ -117,10 +118,10 @@
             </div>
             {% else %}
             <li class="nav-item">
-              <a href="#about" class="nav-link active " style="padding-top: 25%;">About </a>
+              <a href="#about" class="nav-link active " style="padding-top: 20%;">About </a>
             </li>
             <li class="nav-item">
-              <a href="#features" class="nav-link active" style="padding-top: 20%;">Features </a>
+              <a href="#features" class="nav-link active" style="padding-top: 15%;">Features </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'loginuser' %}" class="nav-link"
@@ -184,28 +185,33 @@
     <script src="{% static 'frontend/main.js' %}"></script>
     <script>
       $(document).ready(function(){
-        
-        $("a").on('click', function(event) {
+        var mail=$("#usermail").text();
+        var newmail= mail.substring(0,mail.indexOf('@') );
+        console.log(newmail);
+        $("#userfield").text("welcome, "+newmail);
+      //   $("a").on('click', function(event) {
       
           
-          if (this.hash !== "") {
+      //     if (this.hash !== "") {
             
-            event.preventDefault();
+      //       event.preventDefault();
       
             
-            var hash = this.hash;
+      //       var hash = this.hash;
       
             
-            $('html, body').animate({
-              scrollTop: $(hash).offset().top
-            }, 500, function(){
+      //       $('html, body').animate({
+      //         scrollTop: $(hash).offset().top
+      //       }, 500, function(){
       
               
-              window.location.hash = hash;
-            });
-          } // End if
-        });
+      //         window.location.hash = hash;
+      //       });
+      //     } // End if
+      //   });
       });
+      
+      
       </script>
   </body>
 </html>
