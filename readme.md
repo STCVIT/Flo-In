@@ -143,8 +143,6 @@ Spread the word to your geek fellows to save their time!
 * [Harshita Rajput](https://github.com/HarshitaRajput)
 * [Suryakant Agrawal](https://github.com/suryaa62)
 
-## ©️ License
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 ## 🤝🏻 Connect with Us
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/mstcvit/)
