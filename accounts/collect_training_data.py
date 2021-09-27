@@ -29,7 +29,7 @@ def generate_dataset(img, userID):
         
         cv2.imwrite(
             os.path.join(
-                settings.BASE_DIR, "data", userID, ".jpg"
+                settings.BASE_DIR, "data", userID, "train.jpg"
             ),
             img,
         )
