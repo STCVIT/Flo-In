@@ -9,7 +9,7 @@
   }
 </style>
 
-<link rel="stylesheet" href="{% static 'frontend/cam.css' %}" />
+<link rel="stylesheet" href="{% static 'frontend/css/cam.css' %}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div
   class="hero"
@@ -128,7 +128,7 @@
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="../static/frontend/clock.js"></script>
+<script src="{% static 'frontend/js/clock.js'"></script>
 <script>
   const FULL_DASH_ARRAY = 283;
   const WARNING_THRESHOLD = 4;
@@ -355,7 +355,7 @@
   }
 </script>
 
-<link rel="stylesheet" href="{% static 'frontend/checkfacedata.css' %}" />
+<link rel="stylesheet" href="{% static 'frontend/css/checkfacedata.css' %}" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div id="checkface">
@@ -630,7 +630,7 @@
   })();
 </script>
 
-<link href="{% static 'frontend/pass.css' %}" rel="stylesheet" />
+<link href="{% static 'frontend/css/pass.css' %}" rel="stylesheet" />
 <div>
   <h1
     class="setpin"
@@ -800,6 +800,6 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script></script>
-  <script src="{% static 'frontend/pin-login.js' %}"></script>
+  <script src="{% static 'frontend/js/pin-login.js' %}"></script>
 </div>
 {%endblock%}

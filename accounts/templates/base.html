@@ -182,33 +182,14 @@
     <script src="{% static 'frontend/lib/lightbox/js/lightbox.min.js' %}"></script>
 
     
-    <script src="{% static 'frontend/main.js' %}"></script>
+    <script src="{% static 'frontend/js/main.js' %}"></script>
     <script>
       $(document).ready(function(){
         var mail=$("#usermail").text();
         var newmail= mail.substring(0,mail.indexOf('@') );
         console.log(newmail);
         $("#userfield").text("welcome, "+newmail);
-      //   $("a").on('click', function(event) {
       
-          
-      //     if (this.hash !== "") {
-            
-      //       event.preventDefault();
-      
-            
-      //       var hash = this.hash;
-      
-            
-      //       $('html, body').animate({
-      //         scrollTop: $(hash).offset().top
-      //       }, 500, function(){
-      
-              
-      //         window.location.hash = hash;
-      //       });
-      //     } // End if
-      //   });
       });
       
       
