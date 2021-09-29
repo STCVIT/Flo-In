@@ -62,7 +62,7 @@ def encoding_recognise(userID, image):
             return resp
         if len(coords) != 4:
             return resp
-
+    
     roi_img = img[y : y + h, x : x + w]
     roi_img = cv2.resize(roi_img, (100, 100))
     cv2.imwrite(os.path.join(pth, "toVerify.jpg"), roi_img)
@@ -83,4 +83,6 @@ def encoding_recognise(userID, image):
     print(f"=======>{distance}")
     if distance[0] < 0.45:
         resp = {"Success": True, "Message": "Model Trained Successfully!!!"}
+    else:
+        resp = {"Success": False, "Message": "There is some error , Please register your face again "}
     return resp
