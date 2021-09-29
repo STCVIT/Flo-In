@@ -176,46 +176,7 @@ a:active {
   width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-/*
 
-
-
-.navbar .navbar-brand {
-  margin: 0;
-  color: #ffffff;
-  font-size: 35px;
-  line-height: 0px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: 0.5s;
-}
-
-.navbar .navbar-brand span {
-  color: #000000;
-  text-transform: lowercase;
-  transition: 0.5s;
-}
-
-.navbar.nav-sticky .navbar-brand span {
-  color: #ffffff;
-}
-
-.navbar .navbar-brand img {
-  max-width: 100%;
-  max-height: 40px;
-}
-
-
-
-
-.navbar-dark .navbar-nav .nav-link,
-.navbar-dark .navbar-nav .nav-link:hover,
-.navbar-dark .navbar-nav .nav-link.active {
-  padding: 10px 10px 10px 10px;
-  color: #ffffff;
-  font-size: 20px;
-}*/
 .nav-link {
   padding: 5%;
 }
@@ -621,14 +582,14 @@ a:active {
 
 .footer .container-fluid {
   padding: 20px 0 0 0;
-  background: #070707; /*linear-gradient(rgba(52, 49, 72, 0.9), rgba(52, 49, 72, 0.9))*/
+  background: #070707; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .footer .footer-info {
-  /* position: relative; */
+  
   width: 100%;
   text-align: center;
 }
@@ -698,7 +659,7 @@ a:active {
   margin: 0 auto;
   position: relative;
 }
-.step-wrapper {
+/* .step-wrapper {
   margin: 50px;
   margin-bottom: 50px;
   position: relative;
@@ -785,7 +746,7 @@ a:active {
 }
 .move-line .linestep8 {
   animation-delay: 3.2s;
-}
+} */
 @keyframes show-step-item {
   from {
     transform: scale(0.2);

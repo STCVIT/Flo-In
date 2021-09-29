@@ -121,6 +121,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="{% static 'frontend/js/clock.js' %}"></script>
 <script>
+  // (function () {
   const FULL_DASH_ARRAY = 283;
   const WARNING_THRESHOLD = 4;
   const ALERT_THRESHOLD = 2;
@@ -134,9 +135,9 @@
     alert("getUserMedia support required to use this page");
   }
 
-  const chunks = [];
+  let chunks = [];
   let onDataAvailable = (e) => {
-    chunks.push(e.data);
+    chunks[0] = e.data;
   };
 
   // Not showing vendor prefixes.
@@ -146,9 +147,9 @@
       video: true,
     })
     .then((mediaStream) => {
-      const recorder = new MediaRecorder(mediaStream);
+      let recorder = new MediaRecorder(mediaStream);
       recorder.ondataavailable = onDataAvailable;
-      const video = document.querySelector("video");
+      let video = document.querySelector("video");
       video.srcObject = mediaStream;
       record.onclick = () => {
         recorder.start();
@@ -170,7 +171,7 @@
       recorder.onstop = (e) => {
         console.log("e", e);
         console.log("chunks", chunks);
-        const bigVideoBlob = new Blob(chunks, {
+        let bigVideoBlob = new Blob(chunks, {
           type: "video/mp4",
           codecs: "avc1.42001E, mp4a.40.2",
         });
@@ -193,11 +194,11 @@
             let not_save = document.getElementById("showSaveFailResult");
             if (res.Success == true) {
               save.style.display = "block";
-              save.getElementsById("tick1").innerHTML = res.Message;
+              save.getElementById("tick1").innerHTML = res.Message;
               not_save.style.display = "none";
             } else {
               not_save.style.display = "block";
-              not_save.getElementsById("cross1").innerHTML = res.Message;
+              not_save.getElementById("cross1").innerHTML = res.Message;
               save.style.display = "none";
             }
             console.log("fetching done");
@@ -343,6 +344,7 @@
       .getElementById("base-timer-path-remaining")
       .setAttribute("stroke-dasharray", circleDasharray);
   }
+  // });
 </script>
 
 <link rel="stylesheet" href="{% static 'frontend/css/checkfacedata.css' %}" />
@@ -635,19 +637,7 @@
 
 <link href="{% static 'frontend/css/pass.css' %}" rel="stylesheet" />
 <div id="setpinmain" style="padding-top: 40px">
-  <h1
-    id="setpin"
-    style="
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
-      letter-spacing: 3px !important;
-      font-family: 'Inter', sans-serif !important;
-      margin-top: 5%;
-      margin-left: 5%;
-      color: #eee;
-    "
-  >
-    Set Pin
-  </h1>
+  <h1 id="setpin" class="setpinh1">Set Pin</h1>
   <p
     class="setpinp"
     style="color: #eee; margin-top: 2%; margin-left: 5%; width: 60%"
@@ -660,19 +650,7 @@
     class="login"
     style="border-color: #181818; margin-top: 7%; border-radius: 1.5em"
   >
-    <h5
-      style="
-        background-color: #000000;
-        margin: 0;
-        color: #eee;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        padding: 6%;
-        text-align: center;
-      "
-    >
-      Store your PIN
-    </h5>
+    <h5 class="storepinh5">Store your PIN</h5>
     <form
       autocomplete="off"
       id="PINform"
