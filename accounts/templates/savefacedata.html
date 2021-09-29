@@ -15,18 +15,7 @@
   class="hero"
   style="padding-bottom: 6%; background-color: transparent !important"
 >
-  <h1
-    style="
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
-      letter-spacing: 3px !important;
-      font-family: 'Inter', sans-serif !important;
-      margin-top: 5%;
-      margin-left: 5%;
-      color: #eee;
-    "
-  >
-    Register face
-  </h1>
+  <h1 class="regface">Register face</h1>
   <div class="bttn">
     {{error}}
 
@@ -59,7 +48,7 @@
     </form>
   </center>
   <div
-    id="alert_save_face"
+    id="showSaveSuccessResult"
     class="alert alert-success"
     role="alert"
     style="
@@ -97,10 +86,11 @@
         fill="white"
       />
     </svg>
+    <span id="tick1" class="pl-2">Face Registered</span>
   </div>
   <div
     class="alert alert-danger"
-    id="alert_save_face_not"
+    id="showSaveFailResult"
     role="alert"
     style="
       background-color: #313131;
@@ -125,6 +115,7 @@
       <rect x="10.5" y="3" width="3" height="13.5" rx="1" fill="white" />
       <rect x="10.5" y="18" width="3" height="3" rx="1.5" fill="white" />
     </svg>
+    <span id="cross1">Face not registered. Please try again</span>
   </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -198,19 +189,18 @@
           .then((res) => res.json())
           .then((res) => {
             console.log(res);
-            let save = document.getElementById("alert_save_face");
-            let not_save = document.getElementById("alert_save_face_not");
+            let save = document.getElementById("showSaveSuccessResult");
+            let not_save = document.getElementById("showSaveFailResult");
             if (res.Success == true) {
-              save.style = "display:block;";
-              save.innerHTML = res.Message;
-              not_save.style = "display:none;";
+              save.style.display = "block";
+              save.getElementsById("tick1").innerHTML = res.Message;
+              not_save.style.display = "none";
             } else {
-              not_save.style = "display:block;";
-              not_save.innerHTML = res.Message;
-              save.style = "display:none;";
+              not_save.style.display = "block";
+              not_save.getElementsById("cross1").innerHTML = res.Message;
+              save.style.display = "none";
             }
             console.log("fetching done");
-            // window.location.reload();
           });
       };
     })
@@ -358,7 +348,7 @@
 <link rel="stylesheet" href="{% static 'frontend/css/checkfacedata.css' %}" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div id="checkface">
+<div id="checkface" style="padding-top: 40px">
   <div class="play-area">
     <h1
       class="checkfacehead"
@@ -375,7 +365,7 @@
     <div class="row">
       <div class="col-md play-area-sub" style="margin-left: 7%">
         <!-- {{ user.email }} -->
-        <h3 style="margin-right: 17%">The Stream</h3>
+        <h3 style="margin-right: 25%">The Stream</h3>
         <div id="container">
           <video id="video2" width="500"></video>
         </div>
@@ -389,12 +379,18 @@
         >
           {% csrf_token %}
           <div>
-            <button class="btn btn-primary" type="button" id="startbutton">
+            <button
+              class="btn btn-primary"
+              type="button"
+              id="startbutton"
+              style="margin-left: 0"
+            >
               Capture
             </button>
+
             <div
-              id="alert_save_face"
               class="alert alert-success"
+              id="showSuccessResult"
               role="alert"
               style="
                 background-color: #313131;
@@ -437,10 +433,13 @@
                   fill="white"
                 />
               </svg>
+              <span id="tick2"
+                >You're good to go! Go ahead and set your pin.</span
+              >
             </div>
             <div
               class="alert alert-danger"
-              id="showResult"
+              id="showFailResult"
               role="alert"
               style="
                 background-color: #313131;
@@ -479,12 +478,13 @@
                   fill="white"
                 />
               </svg>
+              <span id="cross3">Face not found.Please try again.</span>
             </div>
           </div>
         </form>
       </div>
       <div class="col-md play-area-sub">
-        <h3 style="margin-right: 17%">The Capture</h3>
+        <h3 style="margin-right: 25%">The Capture</h3>
         <div id="container">
           <canvas id="canvas"></canvas>
           <form method="POST" id="myForm">{% csrf_token %}</form>
@@ -599,14 +599,17 @@
         .then(json) // likewise, the only difference here is that the `json` function here returns a promise that resolves with `data`
         .then((data) => {
           console.log(data);
-          let save = document.getElementById("showResult");
+          let save = document.getElementById("showSuccessResult");
+          let fail = document.getElementById("showFailResult");
           // ... which is why `data` shows up here as the first parameter to the anonymous function
-          if (data.Success) {
-            document.getElementById("showResult").innerHTML = data.Message;
-            // save.style = "display:none;";
+          if (data.Success == true) {
+            save.style.display = "block";
+            save.getElementById("tick2").innerHTML = data.Message;
+            fail.style.display = "none";
           } else {
-            save.style = "display:block;";
-            save.innerHTML = data.Message;
+            fail.style.display = "block";
+            fail.getElementById("cross2").innerHTML = data.Message;
+            save.style.display = "none";
           }
         })
         .catch((error) => {
@@ -631,10 +634,9 @@
 </script>
 
 <link href="{% static 'frontend/css/pass.css' %}" rel="stylesheet" />
-<div>
+<div id="setpinmain" style="padding-top: 40px">
   <h1
-    class="setpin"
-    id="setpinmain"
+    id="setpin"
     style="
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
       letter-spacing: 3px !important;
@@ -650,7 +652,7 @@
     class="setpinp"
     style="color: #eee; margin-top: 2%; margin-left: 5%; width: 60%"
   >
-    Logging-In with Pin is also be another easy and quick option that FLO-IN
+    Logging-In with Pin is also another easy and quick option that FLO-IN
     provides you with. Enter a Pin for easy access to websites using Pin
     Protection.
   </p>
@@ -678,77 +680,11 @@
         background-color: #333;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
+        padding: 5%;
       "
     >
       {% csrf_token %}
-      <div
-        class="alert alert-danger"
-        id="showPINSuccessResult"
-        role="alert"
-        style="
-          background-color: #313131;
-          border-color: #313131;
-          width: 110%;
-          margin-left: 35%;
-          height: 2vh;
-          margin-top: 10%;
-          height: 50px;
-          color: #eee;
-          display: none;
-        "
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="12" cy="12" r="12" fill="#FF4040" />
-          <rect x="10.5" y="3" width="3" height="13.5" rx="1" fill="white" />
-          <rect x="10.5" y="18" width="3" height="3" rx="1.5" fill="white" />
-        </svg>
-      </div>
-      <div
-        id="showPINFailResult"
-        class="alert alert-success"
-        role="alert"
-        style="
-          background-color: #313131;
-          border-color: #313131;
-          width: 110%;
-          margin-left: 35%;
-          height: 2vh;
-          margin-top: 10%;
-          height: 50px;
-          color: #eee;
-          display: none;
-        "
-      >
-        <svg
-          width="26"
-          height="24"
-          viewBox="0 0 26 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <ellipse cx="12.6542" cy="12" rx="12.6009" ry="12" fill="#149BFC" />
-          <rect
-            width="3.06113"
-            height="15.3695"
-            rx="1"
-            transform="matrix(0.651691 0.758484 -0.788806 0.614642 19.9697 6)"
-            fill="white"
-          />
-          <rect
-            width="3.08898"
-            height="6.65707"
-            rx="1"
-            transform="matrix(0.780936 -0.624612 0.661447 0.749992 5.30371 12.9297)"
-            fill="white"
-          />
-        </svg>
-      </div>
+
       <input
         type="password"
         name="userInput"
@@ -756,16 +692,17 @@
         id="userInput"
         maxlength="4"
         style="background-color: #333; color: #fff; border-color: #007bff"
+        required="required"
       /><button
         type="button"
         onclick="showPassword()"
         id="showpass"
         style="background-color: transparent; border-color: transparent"
       >
-        <!-- <i id="eyeb" class="showpass fa fa-fw fa-eye-slash"></i> -->
-        <i style="color: #eee" id="eyeb" class="fa">&#xf070;</i>
+        <span id="eyespan" style="position: absolute; right: 9%; top: 31%">
+          <i style="color: #eee" id="eyeb" class="fa">&#xf070;</i>
+        </span>
       </button>
-      <span style="position: absolute; right: 8%; top: 35%"> </span>
 
       <p>
         <input
@@ -788,18 +725,83 @@
         Confirm
       </button>
     </form>
+    <div
+      class="alert alert-danger"
+      id="showPINFailResult"
+      role="alert"
+      style="
+        background-color: #313131;
+        border-color: #313131;
+        width: 100%;
+        margin-left: 35%;
+        height: 1vh;
+        position: absolute;
+        height: 50px;
+        color: #eee;
+        top: 50%;
+        left: 70%;
+        display: none;
+      "
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="12" cy="12" r="12" fill="#FF4040" />
+        <rect x="10.5" y="3" width="3" height="13.5" rx="1" fill="white" />
+        <rect x="10.5" y="18" width="3" height="3" rx="1.5" fill="white" />
+      </svg>
+      <span id="cross3">Pins not matching!</span>
+    </div>
+    <div
+      id="showPINSuccessResult"
+      class="alert alert-success"
+      role="alert"
+      style="
+        background-color: #313131;
+        border-color: #313131;
+        width: 100%;
+        margin-left: 35%;
+        height: 1vh;
+        position: absolute;
+        height: 50px;
+        color: #eee;
+        top: 50%;
+        left: 70%;
+        display: none;
+      "
+    >
+      <svg
+        width="26"
+        height="24"
+        viewBox="0 0 26 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <ellipse cx="12.6542" cy="12" rx="12.6009" ry="12" fill="#149BFC" />
+        <rect
+          width="3.06113"
+          height="15.3695"
+          rx="1"
+          transform="matrix(0.651691 0.758484 -0.788806 0.614642 19.9697 6)"
+          fill="white"
+        />
+        <rect
+          width="3.08898"
+          height="6.65707"
+          rx="1"
+          transform="matrix(0.780936 -0.624612 0.661447 0.749992 5.30371 12.9297)"
+          fill="white"
+        />
+      </svg>
+      <span id="tick3">Pin set successfully</span>
+    </div>
   </div>
-  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
-  $('#userInput, #userInput2').on('keyup', function () {
-        if ($('#userInput').val() == $('#userInput2').val()) {
-            $('#message').html('').css('color', '#eee');
-        } else
-            $('#message').html('pins do not match! ').css('color', '#eee');
-    });
-</script> -->
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script></script>
-  <script src="{% static 'frontend/js/pin-login.js' %}"></script>
 </div>
-{%endblock%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="{% static 'frontend/js/pin-login.js' %}"></script>
+{% endblock %}

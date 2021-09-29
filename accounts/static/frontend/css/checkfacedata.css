@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.checkface{
+  padding-top: 40px !important;
+}
 body{
   scroll-behavior: smooth !important;
 }
@@ -91,3 +98,7 @@ h3 {
   font-family: 'Inter', sans-serif !important;
   letter-spacing: 2px !important;
 }
+ .play-area-sub{
+  padding:0;
+  width:80%;
+} 

@@ -9,6 +9,11 @@ body {
   font-family: "Open Sans", sans-serif;
   min-height: 100vh;
 }
+.stepimg {
+  width: 90% !important;
+  margin-left: 7%;
+  margin-top: 10%;
+}
 
 h1,
 h2,
@@ -220,53 +225,6 @@ a:active {
   border-radius: 0;
   background: #000000;
 }
-/*
-@media (min-width: 992px) {
-  .navbar {
-    position: absolute;
-    width: 100%;
-    top: 15px;
-    padding: 20px 60px;
-    background: rgba(0, 0, 0, 0.1) !important;
-    z-index: 9;
-  }
-
-  .navbar.nav-sticky {
-    padding: 10px 60px;
-    background: #000000 !important;
-  }
-
-  .navbar a.nav-link {
-    padding: 8px 15px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-} */
-/*
-@media (max-width: 900px) {
-  .navbar {
-    padding: 5px;
-    padding-left: 15px;
-    background: #000000 !important;
-  }
-
-  .navbar .navbar-brand span {
-    color: #ffffff;
-  }
-
-  /* .navbar a.nav-link {
-    margin: 5px;
-    padding: 5px;
-  }
-
-  .navbar .dropdown-menu {
-    box-shadow: none;
-  }
-}
-*/
-
-/********** Hero CSS ***********/
 
 .hero {
   position: relative;
@@ -481,6 +439,7 @@ a:active {
   margin-top: 6%;
   border-radius: 1vw;
   background-color: #27292b;
+  padding-top:60px
 }
 
 .about .section-header {
@@ -929,13 +888,13 @@ a:active {
   .lockimg {
     margin-left: 0%;
     width: 80%;
-    margin-top: -20%;
+    
   }
-  .addbtn {
-    margin-left: 0;
-    margin-top: -60%;
-  }
-  .signup {
+  .addbtn, .signup, .stepimg ,.hdwl{
     display: none;
+    
   }
+   
+  
+  
 } ;

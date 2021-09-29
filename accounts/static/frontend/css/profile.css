@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  min-height: 100%;
+}
 .hero {
   padding: 100px 5% 15% 2%;
 }
@@ -115,4 +121,22 @@ h2 small {
   color: #eee;
   font-family: "Inter";
   letter-spacing: 2px !important;
+}
+.inp {
+  width: 80%;
+  border-color: #007bff;
+  background-color: #333;
+  color: #eee;
+  
+  
+}
+.rpas {
+  color: #eee;
+
+  padding-top: 0%;
+  margin-top: 10%;
+}
+
+.resetpass{
+  align-items: center;
 }
