@@ -134,8 +134,25 @@ Spread the word to your geek fellows to save their time!
 
 
 ## ✨ Contributors
+
+## Contributors
+<table>
+	<tr align="center" style="font-weight:bold">
+		<td>
+		Swarup Kharul
+		<p align="center">
+			<img src = "https://avatars.githubusercontent.com/u/65753949?v=4" width="150" height="150" alt="Swarup Kharul">
+		</p>
+			<p align="center">
+				<a href = "https://github.com/SwarupKharul">
+					<img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/>
+				</a>
+			</p>
+		</td>
+	</tr>
+</table>
+
 * [Vineet Raj](https://github.com/vinmik)
-* [Swarup Kharul](https://github.com/SwarupKharul)
 * [Vanshika Nehra](https://github.com/VanshikaNehra23)
 * [Harshita Rajput](https://github.com/HarshitaRajput)
 * [Suryakant Agrawal](https://github.com/suryaa62)
