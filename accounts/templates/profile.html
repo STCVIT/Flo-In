@@ -10,55 +10,54 @@
       type="text"
       placeholder="Search.."
     />
-    <div style="background-color: #262828; border-radius: 1em; padding-bottom: 2%;" >
+    <div class="tbhead"  >
     <li class="table-header" style="text-align: center; color: #eee;">
       <div class="col col-22">Website URL</div>
       <div class="col col-33">Email Id/ Username</div>
       <div class="col col-44">Password</div>
     </li>
 
-  
+    <div class="tabledata">
     {% for data in datas %}
     <li
       class="table-row"
-      style="
-        background-color: #393939;
-        margin: 1.5%;
-        color: #eee;
-        text-align: center;
-        border-radius: 0.5em;
-      "
+     
     >
       <div class="col col-22" data-label="Website URL">{{data.url}}</div>
       <div class="col col-33" data-label="Email ID">{{ data.username }}</div>
       
       <!-- <div class="col col-4" data-label="Payment Status">{{ data.password }}</div> -->
-      <div class="col col-44" id="{{data.username}}">
-        <span id="blur">******</span>
+      <div class="col col-44" >
+        <span id="{{data.username}}">******</span>
+        <!-- <div  id="{{data.url}}" ></div> -->
+        
         <button
-          class="eye"
-          style="vertical-align: middle;background-color: transparent;
-          border-color: transparent;
-          color: #eee;
-          position: absolute;
-          align-self: flex-end;
-          margin-left: 37%;
-          "
-          
+          class="eye"         
           onclick="showPassword('{{data.username}}', '{{data.url}}','{{data.password}}')"
         >
-          <span><i class="fa">&#xf06e;</i></span>
+          <span id="eyebt"><i class="fa">&#xf06e;</i></span>
         </button>
       </div> 
-      <div class="col col-44" style="display: none;"id="{{data.url}}" ></div>
+      
     </li>
+    </div>
     {% endfor %}
     <script>
+      var rw=document.getElementsByClassName("table-row");
+      if (rw.length===0){
+        document.getElementsByClassName("tabledata")[0].innerHTML='<p class="nodata">You have not saved any passwords yet!</p>';
+      }
       function showPassword(username, url, password) {
         console.log(username, url);
-        document.getElementById(url).innerHTML = password;
-        document.getElementById(url).style.display = "block";
-        document.getElementById(username).style.display = "none";
+        var span=document.getElementById("eyebt")
+        if(document.getElementById(username).innerHTML==="******"){
+          document.getElementById(username).innerHTML=password;
+          span.innerHTML = '<i style="color: #eee" id="eyebt" class="fa">&#xf070;</i></span>';
+        }
+        else{
+          document.getElementById(username).innerHTML="******";
+          span.innerHTML = '<i style="color: #eee" id="eyebt" class="fa">&#xf06e;</i></span>';
+        }
       }
     </script>
   </ul>

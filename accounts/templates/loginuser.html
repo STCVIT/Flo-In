@@ -7,7 +7,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Flo IN | Login</title>
   <link rel="stylesheet" href="{% static 'frontend/css/authenticate.css' %}" />
 </head>
 
@@ -16,14 +16,17 @@
     <header>
       <div class="container" id="container">
         <div class="form-container sign-in-container">
-          <form class="modal-content" method="POST">
+          <form class="modal-content" method="POST" id="form">
             {% csrf_token %}
             <h1>Log In</h1>
             <br>
             {% if error %}
-            <div style="color: #149bfc;" role="alert">
+            <div style="color: #149bfc;" role="alert" id="error">
               {{ error }}
             </div>
+            <script>
+              setTimeout(function(){ document.getElementById("error").style.display="None";}, 3000);
+            </script>
             {% endif %}
             <label for="user"><b></b></label>
             <input type="text" placeholder="Enter Email" name="email" required>
@@ -35,25 +38,29 @@
         </div>
         <div class="form-container sign-up-container">
           
-          <form class="modal-content" method="POST">
+          <form class="modal-content" method="POST" id="form2">
             <h1>Sign Up</h1>
             <br>
             {% csrf_token %}
+            
             {% if error %}
-            <div style="color: #149bfc;" role="alert">
+            <div style="color: #149bfc;" role="alert" id="error">
               {{ error }}
             </div>
+            <script>
+               setTimeout(function(){ document.getElementById("error").style.display="None";}, 3000);
+            </script>
             {% endif %}
 
             <label for="email"><b></b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+            <input type="email" placeholder="Enter Email" name="email" required>
 
             <label for="password1"><b></b></label>
             <input type="password" placeholder="Enter Password" name="password1" id="password1" required>
 
             <label for="password2"><b></b></label>
             <input type="password" placeholder="Confirm Password" name="password2" id="password2" required>
-            <button type="submit">Sign Up</button>
+            <button type="button" onclick="submitForm()">Sign Up</button>
           </form>
         </div>
         
@@ -76,6 +83,15 @@
       </div>
     </header>
   <script src="{% static 'frontend/js/authenticate.js' %}"></script>
+  <script>
+function submitForm(){
+  document.getElementById("form2").submit(function(e) {
+    e.preventDefault();
+    console.log("preventing.....")
+  });
+}
+    </script>
+  
 </body>
 
 </html>

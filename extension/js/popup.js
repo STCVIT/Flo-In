@@ -22,107 +22,107 @@ function autofill() {
     function (tabs) {
 
       const allURLs = {
-        "https://www.facebook.com": {
+        "facebook.com": {
           "username": "//*[@id='email']",
           "password": "//*[@id='pass']",
           "login": "/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[2]/button"
         },
-        "https://www.linkedin.com/login": {
+        "linkedin.com/login": {
           "username": "/html/body/div/main/div[2]/div[1]/form/div[1]/input",
           "password": "/html/body/div/main/div[2]/div[1]/form/div[2]/input",
           "login": "/html/body/div/main/div[2]/div[1]/form/div[3]/button"
         },
-        "https://twitter.com/login": {
+        "twitter.com/login": {
           "username": "/html/body/div/div/div/div[2]/main/div/div/div[2]/form/div/div[1]/label/div/div[2]/div/input",
           "password": "/html/body/div/div/div/div[2]/main/div/div/div[2]/form/div/div[2]/label/div/div[2]/div/input",
           "login": "/html/body/div/div/div/div[2]/main/div/div/div[2]/form/div/div[3]/div/div/span/span"
         },
-        "https://www.instagram.com": {
+        "instagram.com": {
           "username": "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[1]/div/label/input",
           "password": "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[2]/div/label/input",
           "login": "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[3]/button"
         },
-        "https://github.com/login": {
+        "github.com/login": {
           "username": "/html/body/div[3]/main/div/div[4]/form/input[2]",
           "password": "/html/body/div[3]/main/div/div[4]/form/div/input[1]",
           "login": "/html/body/div[3]/main/div/div[4]/form/div/input[12]"
         },
-        "https://vtop.vit.ac.in/vtop/initialProcess": {
+        "vtop.vit.ac.in/vtop/initialProcess": {
           "username": "/html/body/div[1]/div/section/div/div[2]/form/div[1]/input",
           "password": "/html/body/div[1]/div/section/div/div[2]/form/div[2]/input",
           "login": "/html/body/div[1]/div/section/div/div[2]/form/div[3]/div[3]/button"
         },
-        "https://in.pinterest.com": {
+        "in.pinterest.com": {
           "username": "/html/body/div[1]/div[1]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/form/div[1]/fieldset/span/div/input",
           "password": "/html/body/div[1]/div[1]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/form/div[4]",
           "login": "/html/body/div[1]/div[1]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/form/div[5]/button"
         },
-        "https://www.reddit.com/login": {
+        "reddit.com/login": {
           "username": "/html/body/div/main/div[1]/div/div[2]/form/fieldset[1]/input",
           "password": "/html/body/div/main/div[1]/div/div[2]/form/fieldset[2]/input",
           "login": "/html/body/div/main/div[1]/div/div[2]/form/fieldset[5]/button"
         },
-        "https://www.quora.com": {
+        "quora.com": {
           "username": "/html/body/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[2]/div[2]/input",
           "password": "/html/body/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[3]",
           "login": "/html/body/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[4]"
         },
-        "https://www.netflix.com/in/login": {
+        "netflix.com/in/login": {
           "username": "/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[1]/div[1]/div/label/input",
           "password": "/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[2]",
           "login": "/html/body/div[1]/div/div[3]/div/div/div[1]/form/button"
         },
-        "https://www.flipkart.com": {
+        "flipkart.com": {
           "username": "/html/body/div[2]/div/div/div/div/div[2]/div/form/div[1]/input",
           "password": "/html/body/div[2]/div/div/div/div/div[2]/div/form/div[2]/input",
           "login": "/html/body/div[2]/div/div/div/div/div[2]/div/form/div[4]/button"
         },
-        "http://www.vpropel.in/loginn": {
+        "vpropel.in/loginn": {
           "username": "/html/body/div/div[2]/form/div[1]/input[1]",
           "password": "/html/body/div/div[2]/form/div[2]/input",
           "login": "/html/body/div/div[2]/form/div[4]/button"
         },
-        "https://mail.rediff.com/cgi-bin/login.cgi": {
+        "mail.rediff.com/cgi-bin/login.cgi": {
           "username": "/html/body/div/div[1]/div[1]/div[2]/form/div[1]/div[2]/div[1]/div[2]/input",
           "password": "/html/body/div/div[1]/div[1]/div[2]/form/div[1]/div[2]/div[2]/div[2]/input[1]",
           "login": "/html/body/div/div[1]/div[1]/div[2]/form/div[1]/div[2]/div[2]/div[2]/input[2]"
         },
-        "https://www.irctc.co.in/nget/train-search": {
+        "irctc.co.in/nget/train-search": {
           "username": "/html/body/app-root/app-home/div[3]/app-login/p-dialog[1]/div/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/form/div[1]/input",
           "password": "/html/body/app-root/app-home/div[3]/app-login/p-dialog[1]/div/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/form/div[2]/input",
           "login": "/html/body/app-root/app-home/div[3]/app-login/p-dialog[1]/div/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/form/span/button"
         },
-        "https://www.shaadi.com": {
+        "shaadi.com": {
           "username": "/html/body/div/div[13]/form/div[2]/div[2]/input",
           "password": "/html/body/div/div[13]/form/div[2]/div[3]/input",
           "login": "/html/body/div/div[13]/form/div[2]/button[1]"
         },
-        "https://account.similarweb.com/login": {
+        "account.similarweb.com/login": {
           "username": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/div[1]/div/div[1]/input",
           "password": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/div[2]/div/div[1]/div/input",
           "login": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/button"
         },
-        "https://newtrade.sharekhan.com": {
+        "newtrade.sharekhan.com": {
           "username": "/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[3]/input",
           "password": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/div[2]/div/div[1]/div/input",
           "login": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/button"
         },
-        "https://moodle.org/login/index.php": {
+        "moodle.org/login/index.php": {
           "username": "/html/body/div[1]/div[2]/div/div/section/div/div/div/div[1]/form/div[1]/div[1]/input",
           "password": "/html/body/div[1]/div[2]/div/div/section/div/div/div/div[1]/form/div[1]/div[2]/input",
           "login": "/html/body/div[1]/div[2]/div/div/section/div/div/div/div[1]/form/div[1]/button"
         },
-        "https://moodle.org/login/index.php": {
+        "moodle.org/login/index.php": {
           "username": "/html/body/div[1]/div[2]/div[1]/div[3]/form/div[1]/div[1]/div/input",
           "password": "/html/body/div[1]/div[2]/div[1]/div[3]/form/div[1]/div[2]/div/input",
           "login": "/html/body/div[1]/div[2]/div[1]/div[3]/form/div[2]/div/input"
         },
-        "https://moovit.vit.ac.in/login/index.php": {
+        "moovit.vit.ac.in/login/index.php": {
           "username": "/html/body/div[2]/div[2]/div/div/section/div/div[2]/div/div/div/div/div/div[1]/form/div[1]/input",
           "password": "/html/body/div[2]/div[2]/div/div/section/div/div[2]/div/div/div/div/div/div[1]/form/div[2]/input",
           "login": "/html/body/div[2]/div[2]/div/div/section/div/div[2]/div/div/div/div/div/div[1]/form/button"
         },
-        "https://www.amazon.com/ap/signin": {
+        "amazon.com/ap/signin": {
           "username": "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[1]/input",
           "password": "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[1]/input",
           "login": "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[2]/span/span/input"
@@ -132,16 +132,18 @@ function autofill() {
       }
 
       console.log(tabs[0].url);
-      const url = tabs[0].url;
+      let url = tabs[0].url.replace("https://", "");
+      url = url.replace("http://", "");
+      url = url.replace("www.", "");
       const key = Object.keys(allURLs).find(key => url.includes(key));
       console.log(key)
       let get_detail_url;
 
       if (key) {
-        get_detail_url = `http://127.0.0.1:8000/api/data-detail/${key}`
+        get_detail_url = `https://flo-in2v.azurewebsites.net/api/data-detail/${key}`
       }
       else {
-        get_detail_url = `http://127.0.0.1:8000/api/data-detail/${url}`
+        get_detail_url = `https://flo-in2v.azurewebsites.net/api/data-detail/${url}`
       }
 
       fetch(get_detail_url, {
@@ -167,107 +169,107 @@ function autofill() {
             }
 
             let allURLs = {
-              "https://www.facebook.com": {
+              "facebook.com": {
                 "username": "//*[@id='email']",
                 "password": "//*[@id='pass']",
                 "login": "/html/body/div[1]/div[2]/div[1]/div/div/div/div[2]/div/div[1]/form/div[2]/button"
               },
-              "https://www.linkedin.com/login": {
+              "linkedin.com/login": {
                 "username": "/html/body/div/main/div[2]/div[1]/form/div[1]/input",
                 "password": "/html/body/div/main/div[2]/div[1]/form/div[2]/input",
                 "login": "/html/body/div/main/div[2]/div[1]/form/div[3]/button"
               },
-              "https://twitter.com/login": {
+              "twitter.com/login": {
                 "username": "/html/body/div/div/div/div[2]/main/div/div/div[2]/form/div/div[1]/label/div/div[2]/div/input",
                 "password": "/html/body/div/div/div/div[2]/main/div/div/div[2]/form/div/div[2]/label/div/div[2]/div/input",
                 "login": "/html/body/div/div/div/div[2]/main/div/div/div[2]/form/div/div[3]/div/div/span/span"
               },
-              "https://www.instagram.com": {
+              "instagram.com": {
                 "username": "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[1]/div/label/input",
                 "password": "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[2]/div/label/input",
                 "login": "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[3]/button"
               },
-              "https://github.com/login": {
+              "github.com/login": {
                 "username": "/html/body/div[3]/main/div/div[4]/form/input[2]",
                 "password": "/html/body/div[3]/main/div/div[4]/form/div/input[1]",
                 "login": "/html/body/div[3]/main/div/div[4]/form/div/input[12]"
               },
-              "https://vtop.vit.ac.in/vtop/initialProcess": {
+              "vtop.vit.ac.in/vtop/initialProcess": {
                 "username": "/html/body/div[1]/div/section/div/div[2]/form/div[1]/input",
                 "password": "/html/body/div[1]/div/section/div/div[2]/form/div[2]/input",
                 "login": "/html/body/div[1]/div/section/div/div[2]/form/div[3]/div[3]/button"
               },
-              "https://in.pinterest.com": {
+              "in.pinterest.com": {
                 "username": "/html/body/div[1]/div[1]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/form/div[1]/fieldset/span/div/input",
                 "password": "/html/body/div[1]/div[1]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/form/div[4]",
                 "login": "/html/body/div[1]/div[1]/div/div/div/div[1]/div[2]/div[2]/div/div/div/div/div/div/div/div[4]/form/div[5]/button"
               },
-              "https://www.reddit.com/login": {
+              "reddit.com/login": {
                 "username": "/html/body/div/main/div[1]/div/div[2]/form/fieldset[1]/input",
                 "password": "/html/body/div/main/div[1]/div/div[2]/form/fieldset[2]/input",
                 "login": "/html/body/div/main/div[1]/div/div[2]/form/fieldset[5]/button"
               },
-              "https://www.quora.com": {
+              "quora.com": {
                 "username": "/html/body/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[2]/div[2]/input",
                 "password": "/html/body/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[3]",
                 "login": "/html/body/div[2]/div[2]/div/div/div/div/div/div[2]/div[2]/div[4]"
               },
-              "https://www.netflix.com/in/login": {
+              "netflix.com/in/login": {
                 "username": "/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[1]/div[1]/div/label/input",
                 "password": "/html/body/div[1]/div/div[3]/div/div/div[1]/form/div[2]",
                 "login": "/html/body/div[1]/div/div[3]/div/div/div[1]/form/button"
               },
-              "https://www.flipkart.com": {
+              "flipkart.com": {
                 "username": "/html/body/div[2]/div/div/div/div/div[2]/div/form/div[1]/input",
                 "password": "/html/body/div[2]/div/div/div/div/div[2]/div/form/div[2]/input",
                 "login": "/html/body/div[2]/div/div/div/div/div[2]/div/form/div[4]/button"
               },
-              "http://www.vpropel.in/loginn": {
+              "vpropel.in/loginn": {
                 "username": "/html/body/div/div[2]/form/div[1]/input[1]",
                 "password": "/html/body/div/div[2]/form/div[2]/input",
                 "login": "/html/body/div/div[2]/form/div[4]/button"
               },
-              "https://mail.rediff.com/cgi-bin/login.cgi": {
+              "mail.rediff.com/cgi-bin/login.cgi": {
                 "username": "/html/body/div/div[1]/div[1]/div[2]/form/div[1]/div[2]/div[1]/div[2]/input",
                 "password": "/html/body/div/div[1]/div[1]/div[2]/form/div[1]/div[2]/div[2]/div[2]/input[1]",
                 "login": "/html/body/div/div[1]/div[1]/div[2]/form/div[1]/div[2]/div[2]/div[2]/input[2]"
               },
-              "https://www.irctc.co.in/nget/train-search": {
+              "irctc.co.in/nget/train-search": {
                 "username": "/html/body/app-root/app-home/div[3]/app-login/p-dialog[1]/div/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/form/div[1]/input",
                 "password": "/html/body/app-root/app-home/div[3]/app-login/p-dialog[1]/div/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/form/div[2]/input",
                 "login": "/html/body/app-root/app-home/div[3]/app-login/p-dialog[1]/div/div/div[2]/div[2]/div/div[2]/div[2]/div[2]/form/span/button"
               },
-              "https://www.shaadi.com": {
+              "shaadi.com": {
                 "username": "/html/body/div/div[13]/form/div[2]/div[2]/input",
                 "password": "/html/body/div/div[13]/form/div[2]/div[3]/input",
                 "login": "/html/body/div/div[13]/form/div[2]/button[1]"
               },
-              "https://account.similarweb.com/login": {
+              "account.similarweb.com/login": {
                 "username": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/div[1]/div/div[1]/input",
                 "password": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/div[2]/div/div[1]/div/input",
                 "login": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/button"
               },
-              "https://newtrade.sharekhan.com": {
+              "newtrade.sharekhan.com": {
                 "username": "/html/body/div[1]/div[2]/div[1]/div[2]/div[2]/form/div[1]/div[3]/input",
                 "password": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/div[2]/div/div[1]/div/input",
                 "login": "/html/body/div[1]/div[1]/main/div/div/div[4]/form/button"
               },
-              "https://moodle.org/login/index.php": {
+              "moodle.org/login/index.php": {
                 "username": "/html/body/div[1]/div[2]/div/div/section/div/div/div/div[1]/form/div[1]/div[1]/input",
                 "password": "/html/body/div[1]/div[2]/div/div/section/div/div/div/div[1]/form/div[1]/div[2]/input",
                 "login": "/html/body/div[1]/div[2]/div/div/section/div/div/div/div[1]/form/div[1]/button"
               },
-              "https://moodle.org/login/index.php": {
+              "moodle.org/login/index.php": {
                 "username": "/html/body/div[1]/div[2]/div[1]/div[3]/form/div[1]/div[1]/div/input",
                 "password": "/html/body/div[1]/div[2]/div[1]/div[3]/form/div[1]/div[2]/div/input",
                 "login": "/html/body/div[1]/div[2]/div[1]/div[3]/form/div[2]/div/input"
               },
-              "https://moovit.vit.ac.in/login/index.php": {
+              "moovit.vit.ac.in/login/index.php": {
                 "username": "/html/body/div[2]/div[2]/div/div/section/div/div[2]/div/div/div/div/div/div[1]/form/div[1]/input",
                 "password": "/html/body/div[2]/div[2]/div/div/section/div/div[2]/div/div/div/div/div/div[1]/form/div[2]/input",
                 "login": "/html/body/div[2]/div[2]/div/div/section/div/div[2]/div/div/div/div/div/div[1]/form/button"
               },
-              "https://www.amazon.com/ap/signin": {
+              "amazon.com/ap/signin": {
                 "username": "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[1]/input",
                 "password": "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[1]/input",
                 "login": "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div/form/div/div[2]/span/span/input"
@@ -320,8 +322,10 @@ window.onload = () => {
       token = JSON.parse(token)
       if ('access' in token) {
         fd = new FormData()
-        fd.append('token', token.access)
-        fetch('http://127.0.0.1:8000/api/authenticate/jwt/verify/', {
+        fetch('https://flo-in2v.azurewebsites.net/api/authenticate/jwt/verify/', {
+          headers: {
+            Authorization: `token ${token.access}`
+          },
           method: 'POST',
           body: fd
         }).then(res => {
@@ -426,7 +430,7 @@ function takepicture() {
   var dataURI = data
   var imageData = dataURItoBlob(dataURI)
   fdata.append('image', imageData, '123.png')
-  fetch('http://127.0.0.1:8000/api/upload/', {
+  fetch('https://flo-in2v.azurewebsites.net/api/upload/', {
     method: 'POST',
     headers: {
       Authorization: `JWT ${token.access}`,
@@ -465,7 +469,7 @@ logout.onclick = async function () {
   var fdata = new FormData()
   fdata.append('refresh', token.refresh)
   console.log(token.refresh)
-  await fetch('http://127.0.0.1:8000/api/logout/', {
+  await fetch('https://flo-in2v.azurewebsites.net/api/logout/', {
     method: 'POST',
     headers: {
       Authorization: `JWT ${token.access}`,
@@ -481,7 +485,7 @@ logout.onclick = async function () {
 function patterncheck() {
   var fdata = new FormData()
   fdata.append('image', imageData, '123.png')
-  fetch('http://127.0.0.1:8000/api/upload/', {
+  fetch('https://flo-in2v.azurewebsites.net/api/upload/', {
     method: 'POST',
     headers: {
       Authorization: `JWT ${token.access}`,

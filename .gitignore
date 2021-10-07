@@ -2,3 +2,5 @@ venv
 media/
 data/
 extension.zip
+extension-development.zip
+extension-development/

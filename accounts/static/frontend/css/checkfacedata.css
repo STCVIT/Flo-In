@@ -30,7 +30,7 @@ h3 {
   border-radius: 5%;
 }
 #container {
-  margin-left: 4%;
+  
   width: 413px;
   height: 315px;
   border: 3px white solid;
@@ -97,8 +97,52 @@ h3 {
 .checkfacehead{
   font-family: 'Inter', sans-serif !important;
   letter-spacing: 2px !important;
+  margin-bottom: 0;
+  color: #eee;
+  margin-left: 5%
 }
  .play-area-sub{
   padding:0;
   width:80%;
+  justify-content: center;
 } 
+
+.col-md{
+flex-grow: 0 !important;
+flex-basis: 0 !important;
+}
+
+#checkface{
+  padding-top: 40px
+}
+
+.checkpara{
+  width: 60%; 
+  color: #eee;
+  margin-top: 3%; 
+  margin-left: 5%
+}
+
+#showSuccessResult{
+  background-color: #313131;
+  border-color: #313131;
+  width: 110%;
+  margin-left: 35%;
+  height: 2vh;
+  margin-top: 10%;
+  height: 50px;
+  color: #eee;
+  display: none;
+}
+
+#showFailResult{
+  background-color: #313131;
+  border-color: #313131;
+  width: 110%;
+  margin-left: 35%;
+  height: 2vh;
+  margin-top: 10%;
+  height: 50px;
+  color: #eee;
+  display: none;
+}

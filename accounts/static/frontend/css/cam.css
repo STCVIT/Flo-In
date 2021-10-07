@@ -134,3 +134,32 @@ p {
 .alert {
   margin: 8% 8% 0 8%;
 }
+
+.regfacemain{
+  padding-bottom: 6%;
+  background-color: transparent !important
+}
+
+#showSaveSuccessResult{
+  background-color: #313131;
+  border-color: #313131;
+  width: 50%;
+  margin-left: 27%;
+  height: 2vh;
+  margin-top: 5%;
+  height: 50px;
+  color: #eee;
+  display: none;
+}
+
+#showSaveFailResult{
+  background-color: #313131;
+  border-color: #313131;
+  width: 50%;
+  margin-left: 27%;
+  height: 2vh;
+  margin-top: 5%;
+  height: 50px;
+  color: #eee;
+  display: none;
+}

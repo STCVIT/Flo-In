@@ -15,6 +15,7 @@ from .encoding import encoding_recognise
 from .models import MyUser, UserData, FaceData
 from .collect_training_data import collectTrainingData
 from .Forms import UserAdminCreationForm, AuthenticationForm, UserDataForm, FaceDataForm
+import re
 
 k = dict()
 
@@ -58,12 +59,25 @@ def loginuser(request):
             # Create a new user
             if request.POST["password1"] == request.POST["password2"]:
                 try:
-                    user = MyUser.objects.create_user(
-                        password=request.POST["password1"], email=request.POST["email"]
-                    )
-                    user.save()
-                    login(request, user)
-                    return redirect("profile")
+                    password_validate = request.POST["password1"]
+                    if len(password_validate) >= 8 and bool(
+                        re.match("^(?=.*[0-9]$)(?=.*[a-zA-Z])", password_validate)
+                    ):
+                        user = MyUser.objects.create_user(
+                            password=password_validate, email=request.POST["email"]
+                        )
+                        user.save()
+                        login(request, user)
+                        return redirect("profile")
+                    else:
+                        return render(
+                            request,
+                            "loginuser.html",
+                            {
+                                "form": AuthenticationForm(),
+                                "error": "Password must contain atleast 8 characters with atleast one letter and one number",
+                            },
+                        )
                 except IntegrityError:
                     return render(
                         request,

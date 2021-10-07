@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap"); 
 
-.setpinh1{
-letter-spacing: 3px !important;
-font-family: 'Inter', sans-serif !important;
-margin-top: 5%;
-margin-left: 5%;
-color: #eee;     
+.setpinh1 {
+  letter-spacing: 3px !important;
+  font-family: "Inter", sans-serif !important;
+  margin-top: 5%;
+  margin-left: 5%;
+  color: #eee;
 }
-.storepinh5{
+.storepinh5 {
   background-color: #000000;
   margin: 0;
   color: #eee;
@@ -18,20 +18,20 @@ color: #eee;
   padding: 6%;
   text-align: center;
 }
-.regface{
-letter-spacing: 3px !important;
-      font-family: 'Inter', sans-serif !important;
-      margin-top: 5%;
-      margin-left: 5%;
-      color: #eee;}
+.regface {
+  letter-spacing: 3px !important;
+  font-family: "Inter", sans-serif !important;
+  
+  margin-left: 5%;
+  color: #eee;
+}
 .login {
   position: relative;
   margin: 30px auto;
-  margin-top: 110px;
   margin-bottom: 130px;
   width: 310px;
-  background-color: #333333 !important;
   border-radius: 1.5em !important;
+  margin-top: 7%;
 }
 
 .login:before {
@@ -133,4 +133,48 @@ input[type="submit"]:active {
 
 #showpass:focus {
   outline: transparent !important;
+}
+.setpinp {
+  color: #eee;
+  margin-top: 2%;
+  margin-left: 5%;
+  width: 60%;
+}
+#PINform {
+  background-color: #333;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 5%;
+}
+.setpininput {
+  background-color: #333 !important;
+  color: #fff !important;
+  border-color: #007bff !important;
+}
+
+#showpass {
+  background-color: transparent;
+  border-color: transparent;
+}
+#eyespan {
+  position: absolute;
+  right: 9%;
+  top: 30%;
+  
+}
+
+.submitpin {
+  width: 30%;
+  font-size: revert;
+  margin-left: 35%;
+}
+
+.setpinalerts {
+  background-color: #313131;
+  border-color: #313131;
+  width: 100%;
+  color: #eee;
+  display: none;
+  height: 3em;
+  margin-left: 0;
 }

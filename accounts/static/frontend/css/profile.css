@@ -5,6 +5,13 @@ body {
   overflow-x: hidden;
   min-height: 100%;
 }
+
+.nodata{
+  color:#eee;
+  text-align: center;
+  font-size: 25px;
+  padding: 5%;
+}
 .hero {
   padding: 100px 5% 15% 2%;
 }
@@ -34,19 +41,7 @@ h2 small {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-/* .responsive-table .table-row {
-  background-color: #393939 !important;
-  
-} */
-.responsive-table .col-22 {
-  flex-basis: 70%;
-}
-.responsive-table .col-33 {
-  flex-basis: 60%;
-}
-.responsive-table .col-44 {
-  flex-basis: 40%;
-}
+
 
 @media all and (max-width: 767px) {
   .responsive-table .table-header {
@@ -135,8 +130,74 @@ h2 small {
 
   padding-top: 0%;
   margin-top: 10%;
+  text-align: center !important;
 }
 
 .resetpass{
   align-items: center;
+}
+
+.mailsent{
+  margin-top: 250px;
+  margin-bottom: 250px;
+  margin-left: 30%; 
+  font-size: large;
+   color: #eee;
+}
+.rpassb{
+  margin-left: 38%;
+  margin-top: 5%;
+}
+
+.resetbox{
+  background-color: #333;
+  border-color: #333;
+  color: #eee;
+  border-radius: 1em;
+  padding: 5%;
+}
+
+.resetdone{
+  margin-top: 250px;
+  margin-bottom: 250px;
+  margin-left: 30%; 
+  font-size: large; 
+  color: #eee;
+}
+
+.tbhead{
+  background-color: #262828; 
+  border-radius: 1em; 
+  padding-bottom: 2%;
+}
+.table-row{
+  background-color: #393939;
+  margin: 1.5%;
+  color: #eee;
+  text-align: center;
+  border-radius: 0.5em;
+}
+
+.eye{
+  vertical-align: middle;background-color: transparent;
+  border-color: transparent;
+  color: #eee;
+  position: absolute;
+  align-self: flex-end;
+  margin-left: 37%;
+}
+
+.eye:focus{
+  outline: transparent;
+}
+.dataurl{
+  display:none;
+}
+.rpasbox{
+  height: 80vh; 
+  margin: 0
+}
+.cri{
+  color: #bdb9b9;
+  font-size: 14px;
 }

@@ -9,7 +9,7 @@ function sleep(ms) {
 
 trigger.addEventListener('click', (e) => {
     e.preventDefault();
-    var loginUrl = 'http://127.0.0.1:8000/api/authenticate/jwt/create/'
+    var loginUrl = 'https://flo-in2v.azurewebsites.net/api/authenticate/jwt/create/'
     var email = userElement.value;
     var password = passwordElement.value;
     console.log("hi")

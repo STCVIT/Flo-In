@@ -2,14 +2,17 @@
 
 <div class="hero">
   <div class="homehead">
-    <div class="txt">
-      we bring to you the <span class="sm">smartest </span>way to login
+    <div class="txt" >
+      We bring to you the
+      
+      <span class="sm" >smartest </span>way to login
+      <!-- <img style="margin-left: -5%;margin-top: -5%;" src="{% static 'frontend/imgs/SparkleUp.png' %}"/> -->
     </div>
     <img class="lockimg" src="{% static 'frontend/imgs/lock_front.png' %}" />
 
-    <button class="btn btn-primary addbtn">
-      <a href="" style="color: #fff">Add Extension To Chrome</a>
-    </button>
+    <a href="" class="px-2">
+      <button class="btn btn-primary addbtn">Add Extension To Chrome</button>
+    </a>
     <div>
       <div class="about wow fadeInUp" id="about" data-wow-delay="0.1s">
         <div class="container">
@@ -35,16 +38,18 @@
                   registered his/her face will only be given the option to
                   access the accounts. The face recognition will be done every
                   time the user tries to access any of the accounts. Option to
-                  open the accounts via pattern is also provided.
+                  open the accounts via pin is also provided.
                 </p>
                 <p>
                   Hence, there is no need to Log-Out every time of the account
-                  to keep the data safe. Without any single click you can access
-                  your accounts as well as keep the account password protected.
+                  to keep the data safe. With a single click you can access your
+                  accounts as well as keep the account password protected.
                 </p>
-                <button class="btn btn-primary">
-                  <a href="{% url 'loginuser' %}" class="lnk">Register Now </a>
-                </button>
+                <a href="{% url 'loginuser' %}">
+                  <button class="btn btn-primary regbutton" class="lnk px-2">
+                    Register Now
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -55,7 +60,7 @@
       <div class="service" id="features">
         <div class="container">
           <div
-            class="section-header text-center wow zoomIn"
+            class="section-header text-center wow zoomIn featbox"
             data-wow-delay="0.1s"
           >
             <h2 class="hdwl">FLO-IN For Ease</h2>
@@ -63,13 +68,15 @@
           <div class="row">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.0s">
               <div class="service-item active">
-                <img
-                  class="ftrimg"
-                  src="{% static 'frontend/imgs/patternloginicon.png' %}"
-                  alt="pattern login"
-                />
-                <h3 class="fthead">PIN Log-In</h3>
-                <p>
+                <center>
+                  <img
+                    class="ftrimg"
+                    src="{% static 'frontend/imgs/patternloginicon.png' %}"
+                    alt="pattern login"
+                  />
+                  <h3 class="fthead">PIN Log-In</h3>
+                </center>
+                <p class="featpara">
                   Loggin-In with Pin can also be an easy option sometimes, so
                   FLO-IN provides you with an easy to access Pin Protection.
                 </p>
@@ -80,13 +87,15 @@
               data-wow-delay="0.2s"
             >
               <div class="service-item active">
-                <img
-                  class="ftrimg2"
-                  src="{% static 'frontend/imgs/facialloginicon.png' %}"
-                  alt="facial login"
-                />
-                <h3 class="fthead">Facial Log-In</h3>
-                <p>
+                <center>
+                  <img
+                    class="ftrimg2"
+                    src="{% static 'frontend/imgs/facialloginicon.png' %}"
+                    alt="facial login"
+                  />
+                  <h3 class="fthead">Facial Log-In</h3>
+                </center>
+                <p class="featpara">
                   FLO-IN provides you security of your accounts with Face
                   Detection Method. You can Log-In to your accont without
                   Logging-Out by recognising your face.
@@ -95,13 +104,15 @@
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
               <div class="service-item active">
-                <img
-                  class="ftrimg2"
-                  src="{% static 'frontend/imgs/autofillicon.png' %}"
-                  alt="autofill icon"
-                />
-                <h3 class="fthead">Auto-Fill</h3>
-                <p>
+                <center>
+                  <img
+                    class="ftrimg2"
+                    src="{% static 'frontend/imgs/autofillicon.png' %}"
+                    alt="autofill icon"
+                  />
+                  <h3 class="fthead">Auto-Fill</h3>
+                </center>
+                <p class="featpara">
                   There is no need for a single click to fill up your passwords,
                   FLO-IN provides you an option to Auto-Fill the passwords of
                   your accounts.
@@ -118,7 +129,7 @@
         class="stepimg wow zoomIn"
         data-wow-delay="0.1s"
         }
-        src="{% static 'frontend/imgs/Group.png' %}"
+        src="{% static 'frontend/imgs/illustration.png' %}"
       />
     </div>
   </div>

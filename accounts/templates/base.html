@@ -50,7 +50,7 @@
             <path d="M33.4946 15.6078C34.44 15.6078 35.2064 14.8542 35.2064 13.9246C35.2064 12.9949 34.44 12.2413 33.4946 12.2413C32.5491 12.2413 31.7827 12.9949 31.7827 13.9246C31.7827 14.8542 32.5491 15.6078 33.4946 15.6078Z" stroke="#149BFC" stroke-width="2.18571" stroke-miterlimit="10"/>
             </svg>
             
-          <strong> FLO-IN</strong></a
+          <span class="floin" > Flo In</span></a
         >
         <button
           type="button"
@@ -67,33 +67,33 @@
           <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link active" style="padding-left: 40px;" href="{% url 'profile' %}">Dash Board</a>
+              <a class="nav-link active"  href="{% url 'profile' %}">Dash Board</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="padding-left: 40px;"href="{% url 'savefacedata' %}"
+              <a class="nav-link active" href="{% url 'savefacedata' %}"
                 >Register Face</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="padding-left: 40px;"href="{% url 'savefacedata' %}#checkface"
+              <a class="nav-link active" href="{% url 'savefacedata' %}#checkface"
                 >Check Face</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link active" style="padding-left: 40px;" href="{% url 'savefacedata' %}#setpinmain">Set PIN &nbsp;</a>
+              <a class="nav-link active"  href="{% url 'savefacedata' %}#setpinmain">Set PIN &nbsp;</a>
             </li>
           
 
-          <li class="nav-item dropdown " style="padding-left: 40px;">
+          <li class="nav-item dropdown " >
             <a
               href="{% url 'profile' %}"
               class="nav-link  active dropdown-toggle nvit"
-              data-toggle="dropdown"
-              style="background-color: #007bff"
-              >My Profile</a
+              data-toggle="dropdown"              
+              id="profname"
+              >{{user.email}}</a
             >
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="{% url 'profile' %}" id="usermail" class="dropdown-item " style="display: none;">{{user.email}} </a>
+              <a href="{% url 'profile' %}" id="usermail" class="dropdown-item " style="display: none;"> </a>
               <a href="{% url 'profile' %}" class="dropdown-item" id="userfield"
                 ></a>
               
@@ -102,7 +102,7 @@
                 class="dropdown-item"
                 href="#"
                 onclick="$('#signOutBtn').click()"
-              class="nav-link"
+                class="nav-link"
                 >Logout</a
               >
               <form
@@ -118,7 +118,7 @@
             </div>
             {% else %}
             <li class="nav-item">
-              <a href="#about" class="nav-link active " style="padding-top: 20%;">About </a>
+              <a href="#about" class="nav-link active" style="padding-top: 20%;">About </a>
             </li>
             <li class="nav-item">
               <a href="#features" class="nav-link active" style="padding-top: 15%;">Features </a>
@@ -139,7 +139,7 @@
     {% block content %} {% endblock %}
 
     <!-- Footer Start -->
-     <div class="footer wow fadeIn" data-wow-delay="0.3s">
+     <!-- <div class="footer wow fadeIn" data-wow-delay="0.3s">
       <div class="container-fluid">
         <div class="container">
           <div class="footer-info">
@@ -168,7 +168,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>  -->
     <!-- Footer End -->
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
@@ -185,10 +185,11 @@
     <script src="{% static 'frontend/js/main.js' %}"></script>
     <script>
       $(document).ready(function(){
-        var mail=$("#usermail").text();
+        var mail=$("#profname").text();
         var newmail= mail.substring(0,mail.indexOf('@') );
-        console.log(newmail);
-        $("#userfield").text("Welcome, "+newmail);
+        var mail12=newmail.substring(0,12);
+        
+        $("#profname").text(mail12);
       
       });
       

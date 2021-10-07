@@ -11,10 +11,7 @@
 
 <link rel="stylesheet" href="{% static 'frontend/css/cam.css' %}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div
-  class="hero"
-  style="padding-bottom: 6%; background-color: transparent !important"
->
+<div class="hero regfacemain">
   <h1 class="regface">Register face</h1>
   <div class="bttn">
     {{error}}
@@ -40,29 +37,14 @@
     <form id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
       {% csrf_token %}
       <div>
-        <button class="btn btn-primary" id="record" type="button">
+        <button class="btn btn-primary" id="record" type="button" >
           Start Recording
         </button>
-        <!-- <button class="btn" id="stop" type="button">Stop Recording</button> -->
       </div>
     </form>
+    
   </center>
-  <div
-    id="showSaveSuccessResult"
-    class="alert alert-success"
-    role="alert"
-    style="
-      background-color: #313131;
-      border-color: #313131;
-      width: 50%;
-      margin-left: 27%;
-      height: 2vh;
-      margin-top: 5%;
-      height: 50px;
-      color: #eee;
-      display: none;
-    "
-  >
+  <div id="showSaveSuccessResult" class="alert alert-success" role="alert">
     <svg
       width="26"
       height="24"
@@ -88,22 +70,7 @@
     </svg>
     <span id="tick1" class="pl-2">Face Registered</span>
   </div>
-  <div
-    class="alert alert-danger"
-    id="showSaveFailResult"
-    role="alert"
-    style="
-      background-color: #313131;
-      border-color: #313131;
-      width: 50%;
-      margin-left: 27%;
-      height: 2vh;
-      margin-top: 5%;
-      height: 50px;
-      color: #eee;
-      display: none;
-    "
-  >
+  <div class="alert alert-danger" id="showSaveFailResult" role="alert">
     <svg
       width="24"
       height="24"
@@ -121,6 +88,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="{% static 'frontend/js/clock.js' %}"></script>
 <script>
+  
   // (function () {
   const FULL_DASH_ARRAY = 283;
   const WARNING_THRESHOLD = 4;
@@ -194,11 +162,17 @@
             let not_save = document.getElementById("showSaveFailResult");
             if (res.Success == true) {
               save.style.display = "block";
-              save.getElementById("tick1").innerHTML = res.Message;
+              setTimeout(function () {
+                save.style.display = "none";
+              }, 3000);
+              document.getElementById("tick1").innerHTML = res.Message;
               not_save.style.display = "none";
             } else {
               not_save.style.display = "block";
-              not_save.getElementById("cross1").innerHTML = res.Message;
+              setTimeout(function () {
+                not_save.style.display = "none";
+              }, 3000);
+              document.getElementById("cross1").innerHTML = res.Message;
               save.style.display = "none";
             }
             console.log("fetching done");
@@ -350,24 +324,18 @@
 <link rel="stylesheet" href="{% static 'frontend/css/checkfacedata.css' %}" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div id="checkface" style="padding-top: 40px">
+<div id="checkface">
   <div class="play-area">
-    <h1
-      class="checkfacehead"
-      style="margin-bottom: 0; color: #eee; margin-left: 5%"
-    >
-      Check face
-    </h1>
-    <p style="width: 60%; color: #eee; margin-top: 3%; margin-left: 5%">
+    <h1 class="checkfacehead">Check face</h1>
+    <p class="checkpara">
       You may now check the registeration of your face to ensure that your
       biometrics have been correctly recorded,minimizing the amount of errors
       you may face in the future due to poor lighting
     </p>
 
-    <div class="row">
-      <div class="col-md play-area-sub" style="margin-left: 7%">
-        <!-- {{ user.email }} -->
-        <h3 style="margin-right: 25%">The Stream</h3>
+    <div class="row justify-content-center">
+      <div class="col-md play-area-sub">
+        <h3>The Stream</h3>
         <div id="container">
           <video id="video2" width="500"></video>
         </div>
@@ -375,17 +343,15 @@
           id="myForm"
           method="POST"
           enctype="multipart/form-data"
-          class="mb-5"
-          style="margin-left: 28%"
+          class="mb-5 text-center"
           action="checkfacedata/"
         >
           {% csrf_token %}
           <div>
             <button
-              class="btn btn-primary"
-              type="button"
+              class="btn btn-primary capture"
+              type="button mx-auto"
               id="startbutton"
-              style="margin-left: 0"
             >
               Capture
             </button>
@@ -394,17 +360,6 @@
               class="alert alert-success"
               id="showSuccessResult"
               role="alert"
-              style="
-                background-color: #313131;
-                border-color: #313131;
-                width: 110%;
-                margin-left: 35%;
-                height: 2vh;
-                margin-top: 10%;
-                height: 50px;
-                color: #eee;
-                display: none;
-              "
             >
               <svg
                 width="26"
@@ -439,22 +394,7 @@
                 >You're good to go! Go ahead and set your pin.</span
               >
             </div>
-            <div
-              class="alert alert-danger"
-              id="showFailResult"
-              role="alert"
-              style="
-                background-color: #313131;
-                border-color: #313131;
-                width: 110%;
-                margin-left: 35%;
-                height: 2vh;
-                margin-top: 10%;
-                height: 50px;
-                color: #eee;
-                display: none;
-              "
-            >
+            <div class="alert alert-danger" id="showFailResult" role="alert">
               <svg
                 width="24"
                 height="24"
@@ -485,8 +425,8 @@
           </div>
         </form>
       </div>
-      <div class="col-md play-area-sub">
-        <h3 style="margin-right: 25%">The Capture</h3>
+      <div class="col-md offset-2 play-area-sub">
+        <h3>The Capture</h3>
         <div id="container">
           <canvas id="canvas"></canvas>
           <form method="POST" id="myForm">{% csrf_token %}</form>
@@ -506,20 +446,10 @@
 
     const json = (response) => response.json();
 
-    // The width and height of the captured photo. We will set the
-    // width to the value defined here, but the height will be
-    // calculated based on the aspect ratio of the input stream.
-
     var width = 405; // We will scale the photo width to this
     var height = 0; // This will be computed based on the input stream
 
-    // |streaming| indicates whether or not we're currently streaming
-    // video from the camera. Obviously, we start at false.
-
     var streaming = false;
-
-    // The various HTML elements we need to configure or control. These
-    // will be set by the startup() function.
 
     var video = null;
     var canvas = null;
@@ -547,9 +477,6 @@
           if (!streaming) {
             height = video.videoHeight / (video.videoWidth / width);
 
-            // Firefox currently has a bug where the height can't be read from
-            // the video, so we will make assumptions if this happens.
-
             if (isNaN(height)) {
               height = width / (4 / 3);
             }
@@ -572,12 +499,6 @@
         false
       );
     }
-
-    // Capture a photo by fetching the current contents of the video
-    // and drawing it into a canvas, then converting that to a PNG
-    // format data URL. By drawing it on an offscreen canvas and then
-    // drawing that to the screen, we can change its size and/or apply
-    // other changes before drawing it.
 
     function takepicture() {
       var context = canvas.getContext("2d");
@@ -606,11 +527,17 @@
           // ... which is why `data` shows up here as the first parameter to the anonymous function
           if (data.Success == true) {
             save.style.display = "block";
-            save.getElementById("tick2").innerHTML = data.Message;
+            setTimeout(function () {
+              save.style.display = "none";
+            }, 3000);
+            document.getElementById("tick2").innerHTML = data.Message;
             fail.style.display = "none";
           } else {
             fail.style.display = "block";
-            fail.getElementById("cross2").innerHTML = data.Message;
+            setTimeout(function () {
+              fail.style.display = "none";
+            }, 3000);
+            document.getElementById("cross2").innerHTML = data.Message;
             save.style.display = "none";
           }
         })
@@ -629,8 +556,6 @@
       return new Blob([buffer], { type: mimeString });
     }
 
-    // Set up our event listener to run the startup process
-    // once loading is complete.
     window.addEventListener("load", startup, false);
   })();
 </script>
@@ -638,29 +563,14 @@
 <link href="{% static 'frontend/css/pass.css' %}" rel="stylesheet" />
 <div id="setpinmain" style="padding-top: 40px">
   <h1 id="setpin" class="setpinh1">Set Pin</h1>
-  <p
-    class="setpinp"
-    style="color: #eee; margin-top: 2%; margin-left: 5%; width: 60%"
-  >
+  <p class="setpinp">
     Logging-In with Pin is also another easy and quick option that FLO-IN
     provides you with. Enter a Pin for easy access to websites using Pin
     Protection.
   </p>
-  <div
-    class="login"
-    style="border-color: #181818; margin-top: 7%; border-radius: 1.5em"
-  >
+  <div class="login">
     <h5 class="storepinh5">Store your PIN</h5>
-    <form
-      autocomplete="off"
-      id="PINform"
-      style="
-        background-color: #333;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        padding: 5%;
-      "
-    >
+    <form autocomplete="off" id="PINform">
       {% csrf_token %}
 
       <input
@@ -669,15 +579,10 @@
         placeholder="Enter PIN"
         id="userInput"
         maxlength="4"
-        style="background-color: #333; color: #fff; border-color: #007bff"
         required="required"
-      /><button
-        type="button"
-        onclick="showPassword()"
-        id="showpass"
-        style="background-color: transparent; border-color: transparent"
-      >
-        <span id="eyespan" style="position: absolute; right: 9%; top: 31%">
+        class="setpininput"
+      /><button type="button" onclick="showPassword()" id="showpass">
+        <span id="eyespan">
           <i style="color: #eee" id="eyeb" class="fa">&#xf070;</i>
         </span>
       </button>
@@ -690,36 +595,22 @@
           placeholder="Confirm PIN"
           id="userInput2"
           maxlength="4"
-          style="background-color: #333; color: #fff; border-color: #007bff"
+          class="setpininput"
         />
       </p>
       <span id="Message"></span>
       <button
         type="button"
         onclick="pincode()"
-        class="btn btn-primary"
-        style="width: 30%; font-size: revert; margin-left: 35%"
+        class="btn btn-primary submitpin"
       >
-        Confirm
+        Submit
       </button>
     </form>
     <div
-      class="alert alert-danger"
+      class="alert alert-danger setpinalerts"
       id="showPINFailResult"
       role="alert"
-      style="
-        background-color: #313131;
-        border-color: #313131;
-        width: 100%;
-        margin-left: 35%;
-        height: 1vh;
-        position: absolute;
-        height: 50px;
-        color: #eee;
-        top: 50%;
-        left: 70%;
-        display: none;
-      "
     >
       <svg
         width="24"
@@ -736,21 +627,8 @@
     </div>
     <div
       id="showPINSuccessResult"
-      class="alert alert-success"
+      class="alert alert-success setpinalerts"
       role="alert"
-      style="
-        background-color: #313131;
-        border-color: #313131;
-        width: 100%;
-        margin-left: 35%;
-        height: 1vh;
-        position: absolute;
-        height: 50px;
-        color: #eee;
-        top: 50%;
-        left: 70%;
-        display: none;
-      "
     >
       <svg
         width="26"

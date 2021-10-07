@@ -37,11 +37,15 @@ async function sendData(url, inputUsername, encodedPassword) {
   });
   url.charAt(url.length - 1) === '/' ? url = url.slice(0, -1) : url = url
   console.log(url)
+
+  url = url.replace("https://", "");
+  url = url.replace("http://", "");
+  url = url.replace("www.", "");
   fdata.append('url', url)
   fdata.append('username', inputUsername)
   fdata.append('password', encodedPassword)
   console.log('fetching....')
-  await fetch('http://localhost:8000/api/data-create/', {
+  await fetch('https://flo-in2v.azurewebsites.net/api/data-create/', {
     method: 'POST',
     headers: {
       Authorization: `JWT ${token.access}`,
@@ -51,6 +55,7 @@ async function sendData(url, inputUsername, encodedPassword) {
     console.log('data sent successfully')
     document.getElementById('msg').innerHTML = "Password Stored Successfully"
   }).catch((error) => {
+    console.log(error)
     document.getElementById('msg').innerHTML = "Oops! There was some issue saving your password. Please try again!"
   })
 }
