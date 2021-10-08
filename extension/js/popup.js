@@ -16,6 +16,7 @@ var startbutton = null
 let data
 let logout = document.getElementById('logout')
 let token
+const API = "https://floin-web.azurewebsites.net/api";
 
 function autofill() {
   chrome.tabs.query({ 'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT },
@@ -140,10 +141,10 @@ function autofill() {
       let get_detail_url;
 
       if (key) {
-        get_detail_url = `https://flo-in2v.azurewebsites.net/api/data-detail/${key}`
+        get_detail_url = API + `/data-detail/${key}`
       }
       else {
-        get_detail_url = `https://flo-in2v.azurewebsites.net/api/data-detail/${url}`
+        get_detail_url = API + `/data-detail/${url}`
       }
 
       fetch(get_detail_url, {
@@ -322,7 +323,7 @@ window.onload = () => {
       token = JSON.parse(token)
       if ('access' in token) {
         fd = new FormData()
-        fetch('https://flo-in2v.azurewebsites.net/api/authenticate/jwt/verify/', {
+        fetch(API + '/authenticate/jwt/verify/', {
           headers: {
             Authorization: `token ${token.access}`
           },
@@ -430,7 +431,7 @@ function takepicture() {
   var dataURI = data
   var imageData = dataURItoBlob(dataURI)
   fdata.append('image', imageData, '123.png')
-  fetch('https://flo-in2v.azurewebsites.net/api/upload/', {
+  fetch(API + '/upload/', {
     method: 'POST',
     headers: {
       Authorization: `JWT ${token.access}`,
@@ -447,7 +448,7 @@ function takepicture() {
       document.getElementById('pop_msg').innerHTML = "Not Authorised. Please use PIN"
     }
   }).catch((error) => {
-    document.getElementById('pop_msg').innerHTML = "Error aya"
+    document.getElementById('pop_msg').innerHTML = "There was some issue in sending your data!"
     console.log(error)
   })
 }
@@ -469,7 +470,7 @@ logout.onclick = async function () {
   var fdata = new FormData()
   fdata.append('refresh', token.refresh)
   console.log(token.refresh)
-  await fetch('https://flo-in2v.azurewebsites.net/api/logout/', {
+  await fetch(API + '/logout/', {
     method: 'POST',
     headers: {
       Authorization: `JWT ${token.access}`,
@@ -485,7 +486,7 @@ logout.onclick = async function () {
 function patterncheck() {
   var fdata = new FormData()
   fdata.append('image', imageData, '123.png')
-  fetch('https://flo-in2v.azurewebsites.net/api/upload/', {
+  fetch(API + '/upload/', {
     method: 'POST',
     headers: {
       Authorization: `JWT ${token.access}`,

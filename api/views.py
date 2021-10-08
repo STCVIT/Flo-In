@@ -85,21 +85,20 @@ def dataList(request):
 def dataDetail(request, url):
     print(url)
     print(request.user)
-    try:
-        datas = UserData.objects.filter(url=url, user=request.user).first()
-        print(datas)
-        print(datas.password)
-        serializer = userDataSerializer(datas, many=False)
-        password = fernet.decrypt(
-            bytes(serializer.data["password"], encoding="utf8")
-        ).decode()
-        print(password)
-        resp = serializer.data
-        resp["password"] = password
-        print(resp)
-        return Response(resp)
-    except:
-        return Response(False)
+
+    datas = UserData.objects.filter(url=url, user=request.user).first()
+    print(datas)
+    print(datas.password)
+    serializer = userDataSerializer(datas, many=False)
+    password = fernet.decrypt(
+        bytes(serializer.data["password"], encoding="utf8")
+    ).decode()
+    print(password)
+    resp = serializer.data
+    resp["password"] = password
+    print(resp)
+    return Response(resp)
+
 
 
 @api_view(["POST"])

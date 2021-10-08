@@ -1,5 +1,6 @@
 let trigger = document.getElementById('submitpin');
 let token = localStorage.getItem('user')
+const API = "https://floin-web.azurewebsites.net/api";
 token = JSON.parse(token)
 
 function autofill() {
@@ -125,10 +126,10 @@ function autofill() {
             let get_detail_url;
 
             if (key) {
-                get_detail_url = `https://flo-in2v.azurewebsites.net/api/data-detail/${key}`
+                get_detail_url = API + `/data-detail/${key}`
             }
             else {
-                get_detail_url = `https://flo-in2v.azurewebsites.net/api/data-detail/${url}`
+                get_detail_url = API + `/data-detail/${url}`
             }
 
             fetch(get_detail_url, {
@@ -305,7 +306,7 @@ trigger.addEventListener('click', async (e) => {
     let PIN = document.getElementById("userInput").value;
     var fdata = new FormData()
     fdata.append('pin', PIN)
-    await fetch('https://flo-in2v.azurewebsites.net/api/checkpattern/', {
+    await fetch(API + '/checkpattern/', {
         method: 'POST',
         headers: {
             Authorization: `JWT ${token.access}`,

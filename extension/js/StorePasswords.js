@@ -2,6 +2,8 @@ console.log('hello from StorePasswords')
 let token = localStorage.getItem('user')
 token = JSON.parse(token)
 
+const API = "https://floin-web.azurewebsites.net/api";
+
 const allURLs = [
   "https://www.facebook.com",
   "https://www.linkedin.com/login",
@@ -45,7 +47,7 @@ async function sendData(url, inputUsername, encodedPassword) {
   fdata.append('username', inputUsername)
   fdata.append('password', encodedPassword)
   console.log('fetching....')
-  await fetch('https://flo-in2v.azurewebsites.net/api/data-create/', {
+  await fetch(API + '/data-create/', {
     method: 'POST',
     headers: {
       Authorization: `JWT ${token.access}`,

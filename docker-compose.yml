@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    command: python3 manage.py migrate
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+      - .db_data/db.sqlite3:/db.sqlite3
+    ports:
+      - "8000:8000"

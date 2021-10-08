@@ -37,12 +37,16 @@
     <form id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
       {% csrf_token %}
       <div>
-        <button class="btn btn-primary" id="record" type="button" >
+        <button class="btn btn-primary" id="record" type="button">
           Start Recording
         </button>
       </div>
     </form>
-    
+    <div
+      class="spinner-border text-primary"
+      id="loading1"
+      style="display: none"
+    ></div>
   </center>
   <div id="showSaveSuccessResult" class="alert alert-success" role="alert">
     <svg
@@ -88,7 +92,6 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="{% static 'frontend/js/clock.js' %}"></script>
 <script>
-  
   // (function () {
   const FULL_DASH_ARRAY = 283;
   const WARNING_THRESHOLD = 4;
@@ -151,12 +154,14 @@
 
         let fd = new FormData(form);
         fd.append("data", file);
+        document.getElementById("loading1").style.display = "block";
         fetch("/facedata/", {
           method: "POST",
           body: fd,
         })
           .then((res) => res.json())
           .then((res) => {
+            document.getElementById("loading1").style.display = "none";
             console.log(res);
             let save = document.getElementById("showSaveSuccessResult");
             let not_save = document.getElementById("showSaveFailResult");
@@ -355,73 +360,6 @@
             >
               Capture
             </button>
-
-            <div
-              class="alert alert-success"
-              id="showSuccessResult"
-              role="alert"
-            >
-              <svg
-                width="26"
-                height="24"
-                viewBox="0 0 26 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <ellipse
-                  cx="12.6542"
-                  cy="12"
-                  rx="12.6009"
-                  ry="12"
-                  fill="#149BFC"
-                />
-                <rect
-                  width="3.06113"
-                  height="15.3695"
-                  rx="1"
-                  transform="matrix(0.651691 0.758484 -0.788806 0.614642 19.9697 6)"
-                  fill="white"
-                />
-                <rect
-                  width="3.08898"
-                  height="6.65707"
-                  rx="1"
-                  transform="matrix(0.780936 -0.624612 0.661447 0.749992 5.30371 12.9297)"
-                  fill="white"
-                />
-              </svg>
-              <span id="tick2"
-                >You're good to go! Go ahead and set your pin.</span
-              >
-            </div>
-            <div class="alert alert-danger" id="showFailResult" role="alert">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="12" cy="12" r="12" fill="#FF4040" />
-                <rect
-                  x="10.5"
-                  y="3"
-                  width="3"
-                  height="13.5"
-                  rx="1"
-                  fill="white"
-                />
-                <rect
-                  x="10.5"
-                  y="18"
-                  width="3"
-                  height="3"
-                  rx="1.5"
-                  fill="white"
-                />
-              </svg>
-              <span id="cross3">Face not found.Please try again.</span>
-            </div>
           </div>
         </form>
       </div>
@@ -432,6 +370,55 @@
           <form method="POST" id="myForm">{% csrf_token %}</form>
         </div>
       </div>
+    </div>
+    <center>
+      <div
+        class="spinner-border text-primary"
+        id="loading2"
+        style="display: none"
+      ></div>
+    </center>
+    <div class="alert alert-success" id="showSuccessResult" role="alert">
+      <svg
+        width="26"
+        height="24"
+        viewBox="0 0 26 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <ellipse cx="12.6542" cy="12" rx="12.6009" ry="12" fill="#149BFC" />
+        <rect
+          width="3.06113"
+          height="15.3695"
+          rx="1"
+          transform="matrix(0.651691 0.758484 -0.788806 0.614642 19.9697 6)"
+          fill="white"
+        />
+        <rect
+          width="3.08898"
+          height="6.65707"
+          rx="1"
+          transform="matrix(0.780936 -0.624612 0.661447 0.749992 5.30371 12.9297)"
+          fill="white"
+        />
+      </svg>
+      <span id="tick2"
+        >You're good to go! Go ahead and set your pin.</span
+      >
+    </div>
+    <div class="alert alert-danger" id="showFailResult" role="alert">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="12" cy="12" r="12" fill="#FF4040" />
+        <rect x="10.5" y="3" width="3" height="13.5" rx="1" fill="white" />
+        <rect x="10.5" y="18" width="3" height="3" rx="1.5" fill="white" />
+      </svg>
+      <span id="cross2">Face not found.Please try again.</span>
     </div>
   </div>
 </div>
@@ -508,12 +495,13 @@
         context.drawImage(video, 0, 0, width, height);
         var data = canvas.toDataURL("image/png");
       } else {
-        console.log("No phot detected");
+        console.log("No photo detected");
       }
       fdata = new FormData(document.getElementById("myForm"));
       var dataURI = data;
       var imageData = dataURItoBlob(dataURI);
       fdata.append("image", imageData, "{{ user.id|safe }}.png");
+      document.getElementById("loading2").style.display = "block";
       fetch("/checkfacedata/", {
         method: "POST",
         body: fdata,
@@ -521,6 +509,7 @@
         .then(status) // note that the `status` function is actually **called** here, and that it **returns a promise***
         .then(json) // likewise, the only difference here is that the `json` function here returns a promise that resolves with `data`
         .then((data) => {
+          document.getElementById("loading2").style.display = "none";
           console.log(data);
           let save = document.getElementById("showSuccessResult");
           let fail = document.getElementById("showFailResult");
@@ -583,7 +572,7 @@
         class="setpininput"
       /><button type="button" onclick="showPassword()" id="showpass">
         <span id="eyespan">
-          <i style="color: #eee" id="eyeb" class="fa">&#xf070;</i>
+          <i style="color: #eee" id="eyeb" class="fa">&#xf06e;</i>
         </span>
       </button>
 
@@ -607,7 +596,8 @@
         Submit
       </button>
     </form>
-    <div
+
+     <div
       class="alert alert-danger setpinalerts"
       id="showPINFailResult"
       role="alert"
@@ -624,7 +614,7 @@
         <rect x="10.5" y="18" width="3" height="3" rx="1.5" fill="white" />
       </svg>
       <span id="cross3">Pins not matching!</span>
-    </div>
+    </div> 
     <div
       id="showPINSuccessResult"
       class="alert alert-success setpinalerts"
@@ -656,6 +646,7 @@
       <span id="tick3">Pin set successfully</span>
     </div>
   </div>
+  
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

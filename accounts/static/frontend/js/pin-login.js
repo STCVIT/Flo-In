@@ -16,15 +16,15 @@ function pincode() {
                 let save = document.getElementById("showPINSuccessResult");
                 let fail = document.getElementById("showPINFailResult");
                 if (res.Success) {
-
                     save.style.display = "block";
-                    setTimeout(function () { save.style.display = "none"; }, 3000);
                     document.getElementById("tick3").innerHTML = res.Message;
+                    setTimeout(function () { save.style.display = "none"; }, 3000);
                     fail.style.display = "none";
                 } else {
                     fail.style.display = "block";
-                    setTimeout(function () { fail.style.display = "none"; }, 3000);
                     document.getElementById("cross3").innerHTML = res.Message;
+                    console.log(res.Message)
+                    setTimeout(function () { fail.style.display = "none"; }, 3000);
                     save.style.display = "none";
                 }
             })
@@ -47,13 +47,12 @@ function showPassword() {
     var span = document.getElementById("eyespan")
     if (document.getElementById("userInput").type === "password") {
         span.innerHTML = '<i style="color: #eee" id="eyeb" class="fa">&#xf070;</i></span>';
-
         document.getElementById("userInput").type = "text";
 
 
     }
     else {
-        span.innerHTML = '<i style="color: #eee" id="eyeb" class="fa">&#xf06e;</i></span>';
+        span.innerHTML = '<i style="color: #eee" id="eyeb" class="fa"> &#xf06e; </i></span>';
         document.getElementById("userInput").type = "password";
 
     };

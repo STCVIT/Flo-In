@@ -21,7 +21,7 @@ def encoding_recognise(userID, image):
     try:
         pth = os.path.join(settings.BASE_DIR, "data", userID)
         dir_list = os.listdir(pth)
-        img_path = os.path.join(settings.BASE_DIR, "data", userID, dir_list[0])
+        img_path = os.path.join(settings.BASE_DIR, "data", userID, "train.jpg")
         train_image = fr.load_image_file(img_path)
 
     except:
@@ -62,7 +62,7 @@ def encoding_recognise(userID, image):
             return resp
         if len(coords) != 4:
             return resp
-    
+
     roi_img = img[y : y + h, x : x + w]
     roi_img = cv2.resize(roi_img, (100, 100))
     cv2.imwrite(os.path.join(pth, "toVerify.jpg"), roi_img)
@@ -82,7 +82,15 @@ def encoding_recognise(userID, image):
     distance = fr.face_distance([testEncoding], trainEncoding)
     print(f"=======>{distance}")
     if distance[0] < 0.45:
-        resp = {"Success": True, "Message": "Model Trained Successfully!!!"}
+        resp = {
+            "Success": True,
+            "Message": "You are good to go! You can go ahead and set pin.",
+        }
     else:
-        resp = {"Success": False, "Message": "There is some error , Please register your face again "}
+        resp = {
+            "Success": False,
+            "Message": "There is some error , Please register your face again ",
+        }
+
+    os.remove(image)
     return resp

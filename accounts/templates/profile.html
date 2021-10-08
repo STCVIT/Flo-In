@@ -1,47 +1,55 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{% static 'frontend/css/profile.css' %}" />
+
 <div class="hero">
   <h1 class="dsh">Dashboard</h1>
+  
   <ul class="responsive-table">
+    <div>
+      
     <input
       class="form-control mb-2 srch"
       id="myInput"
       type="text"
       placeholder="Search.."
     />
+    </div>
     <div class="tbhead"  >
     <li class="table-header" style="text-align: center; color: #eee;">
-      <div class="col col-22">Website URL</div>
-      <div class="col col-33">Email Id/ Username</div>
-      <div class="col col-44">Password</div>
+      <div class="col col-4">Website URL</div>
+      <div class="col col-3">Email Id/ Username</div>
+      <div class="col col-3">Password</div>
+      <div class="col col-2">View</div>
     </li>
 
     <div class="tabledata">
     {% for data in datas %}
     <li
       class="table-row"
-     
     >
-      <div class="col col-22" data-label="Website URL">{{data.url}}</div>
-      <div class="col col-33" data-label="Email ID">{{ data.username }}</div>
+      <div class="col-4" data-label="Website URL">{{data.url}}</div>
+      <div class="col-3" data-label="Email ID">{{ data.username }}</div>
       
       <!-- <div class="col col-4" data-label="Payment Status">{{ data.password }}</div> -->
-      <div class="col col-44" >
-        <span id="{{data.username}}">******</span>
+      <div class="col-3" >
+        <span class="col-sm-10" id="{{data.username}}">******</span>
         <!-- <div  id="{{data.url}}" ></div> -->
-        
-        <button
-          class="eye"         
-          onclick="showPassword('{{data.username}}', '{{data.url}}','{{data.password}}')"
-        >
-          <span id="eyebt"><i class="fa">&#xf06e;</i></span>
-        </button>
-      </div> 
+      </div>
+    <div class="col-2" >
+    <button
+      class="eye"  
+      id="eyebt"       
+      onclick="showPassword('{{data.username}}', '{{data.url}}','{{data.password}}')"
+    >
+      <i class="fa">&#xf06e;</i>
+    </button>
+  </div>
+  
       
     </li>
-    </div>
     {% endfor %}
+  </div>
     <script>
       var rw=document.getElementsByClassName("table-row");
       if (rw.length===0){

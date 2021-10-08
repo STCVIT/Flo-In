@@ -6,8 +6,8 @@ body {
   min-height: 100%;
 }
 
-.nodata{
-  color:#eee;
+.nodata {
+  color: #eee;
   text-align: center;
   font-size: 25px;
   padding: 5%;
@@ -41,7 +41,6 @@ h2 small {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-
 
 @media all and (max-width: 767px) {
   .responsive-table .table-header {
@@ -122,8 +121,6 @@ h2 small {
   border-color: #007bff;
   background-color: #333;
   color: #eee;
-  
-  
 }
 .rpas {
   color: #eee;
@@ -133,23 +130,23 @@ h2 small {
   text-align: center !important;
 }
 
-.resetpass{
+.resetpass {
   align-items: center;
 }
 
-.mailsent{
+.mailsent {
   margin-top: 250px;
   margin-bottom: 250px;
-  margin-left: 30%; 
+  margin-left: 30%;
   font-size: large;
-   color: #eee;
+  color: #eee;
 }
-.rpassb{
+.rpassb {
   margin-left: 38%;
   margin-top: 5%;
 }
 
-.resetbox{
+.resetbox {
   background-color: #333;
   border-color: #333;
   color: #eee;
@@ -157,20 +154,20 @@ h2 small {
   padding: 5%;
 }
 
-.resetdone{
+.resetdone {
   margin-top: 250px;
   margin-bottom: 250px;
-  margin-left: 30%; 
-  font-size: large; 
+  margin-left: 30%;
+  font-size: large;
   color: #eee;
 }
 
-.tbhead{
-  background-color: #262828; 
-  border-radius: 1em; 
+.tbhead {
+  background-color: #262828;
+  border-radius: 1em;
   padding-bottom: 2%;
 }
-.table-row{
+.table-row {
   background-color: #393939;
   margin: 1.5%;
   color: #eee;
@@ -178,26 +175,25 @@ h2 small {
   border-radius: 0.5em;
 }
 
-.eye{
-  vertical-align: middle;background-color: transparent;
+.eye {
+  vertical-align: middle;
+  background-color: transparent;
   border-color: transparent;
   color: #eee;
-  position: absolute;
   align-self: flex-end;
-  margin-left: 37%;
 }
 
-.eye:focus{
+.eye:focus {
   outline: transparent;
 }
-.dataurl{
-  display:none;
+.dataurl {
+  display: none;
 }
-.rpasbox{
-  height: 80vh; 
-  margin: 0
+.rpasbox {
+  height: 80vh;
+  margin: 0;
 }
-.cri{
+.cri {
   color: #bdb9b9;
   font-size: 14px;
 }

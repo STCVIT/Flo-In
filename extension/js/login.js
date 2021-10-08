@@ -2,6 +2,7 @@
 const userElement = document.getElementById('email');
 const passwordElement = document.getElementById('password');
 const trigger = document.getElementById('trigger');
+const API = "https://floin-web.azurewebsites.net/api";
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -9,7 +10,7 @@ function sleep(ms) {
 
 trigger.addEventListener('click', (e) => {
     e.preventDefault();
-    var loginUrl = 'https://flo-in2v.azurewebsites.net/api/authenticate/jwt/create/'
+    var loginUrl = API + '/authenticate/jwt/create/';
     var email = userElement.value;
     var password = passwordElement.value;
     console.log("hi")
