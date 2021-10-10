@@ -71,7 +71,7 @@ a {
   margin: 15px 0;
 }
 
-button {
+.sig {
   cursor: pointer;
   border-radius: 20px;
   border: #eee;
@@ -85,32 +85,31 @@ button {
   transition: transform 80ms ease-out;
 }
 
-button:hover {
+.sig:hover {
   background: var(--secondary-color);
 }
 
-button:active {
+.sig:active {
   transform: scale(0.95);
 }
 
-button:focus {
+.sig:focus {
   outline: none;
 }
 
-.ghost {
-  background-color: transparent !important;
-  border-color: #eee;
-  color: #149bfc;
-
+.ghost-1 {
+  cursor: pointer;
+  border-radius: 20px;
+  border-color: #149bfc;
+  background: transparent;
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-out;
 }
-
-.ghost:hover {
-  background: #fff;
-  color: #149bfc;
-  border-color:#149bfc ;
-  /* color: var(--secondary-color); */
-}
-
 
 form {
   background-color: #fff;
@@ -165,7 +164,7 @@ input {
 }
 
 .forget:hover {
-  color: #149bfc ;
+  color: #149bfc;
 }
 .sign-up-container {
   top: 0;

@@ -33,13 +33,13 @@
       
       <!-- <div class="col col-4" data-label="Payment Status">{{ data.password }}</div> -->
       <div class="col-3" >
-        <span class="col-sm-10" id="{{data.username}}">******</span>
+        <span class="col-sm-10" id="{{data.url}}">******</span>
         <!-- <div  id="{{data.url}}" ></div> -->
       </div>
     <div class="col-2" >
     <button
       class="eye"  
-      id="eyebt"       
+      id="eyebt{{data.url}}"       
       onclick="showPassword('{{data.username}}', '{{data.url}}','{{data.password}}')"
     >
       <i class="fa">&#xf06e;</i>
@@ -57,14 +57,14 @@
       }
       function showPassword(username, url, password) {
         console.log(username, url);
-        var span=document.getElementById("eyebt")
-        if(document.getElementById(username).innerHTML==="******"){
-          document.getElementById(username).innerHTML=password;
-          span.innerHTML = '<i style="color: #eee" id="eyebt" class="fa">&#xf070;</i></span>';
+        var span=document.getElementById("eyebt"+url)
+        if(document.getElementById(url).innerHTML==="******"){
+          document.getElementById(url).innerHTML=password;
+          span.innerHTML = `<i style="color: #eee" id="eyebt${url}" class="fa">&#xf070;</i></span>`;
         }
         else{
-          document.getElementById(username).innerHTML="******";
-          span.innerHTML = '<i style="color: #eee" id="eyebt" class="fa">&#xf06e;</i></span>';
+          document.getElementById(url).innerHTML="******";
+          span.innerHTML = `<i style="color: #eee" id="eyebt${url}" class="fa">&#xf06e;</i></span>`;
         }
       }
     </script>

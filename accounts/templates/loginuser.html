@@ -32,7 +32,7 @@
             <input type="text" placeholder="Enter Email" name="email" required>
             <label for="password"><b></b></label>
             <input type="password" placeholder="Enter Password" name="password" id="password" required>
-            <button type="submit" id="login">Log In</button>
+            <button type="submit" id="login" class="sig">Log In</button>
             <a href="{% url 'reset_password' %}" class="dropdown-item forget" >Forgot Password?</a>
           </form>
         </div>
@@ -48,7 +48,7 @@
               {{ error }}
             </div>
             <script>
-               setTimeout(function(){ document.getElementById("error").style.display="None";}, 3000);
+              setTimeout(function(){ document.getElementById("error").style.display="None";}, 3000);
             </script>
             {% endif %}
 
@@ -60,7 +60,7 @@
 
             <label for="password2"><b></b></label>
             <input type="password" placeholder="Confirm Password" name="password2" id="password2" required>
-            <button type="button" onclick="submitForm()">Sign Up</button>
+            <button type="button" onclick="submitForm()" class="sig">Sign Up</button>
             <p style="color:#0095ff">*Password should have atleast 8 characters including atleast 1 digit</p>
           </form>
         </div>
@@ -70,14 +70,14 @@
             <div class="overlay-panel overlay-left">
               <h1>Hello, Friend!</h1>
               <p>Please Sign Up With Your Personal Info!</p>
-              <button class="ghost" id="signIn">Log In</button>
+              <button  id="signIn" class="ghost-1">Log In</button>
             </div>
             <div class="overlay-panel overlay-right">
               <h1>Welcome Back!</h1>
               <p>
                 Personalise Your Account!
               </p>
-              <button class="ghost" id="signUp">Sign Up</button>
+              <button class="ghost-1" id="signUp">Sign Up</button>
             </div>
           </div>
         </div>
