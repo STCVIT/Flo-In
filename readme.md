@@ -175,7 +175,6 @@ Spread the word to your geek fellows to save their time!
 	</table>
 
 
-* [Vineet Raj](https://github.com/vinmik)
 * [Harshita Rajput](https://github.com/HarshitaRajput)
 * [Suryakant Agrawal](https://github.com/suryaa62)
 
