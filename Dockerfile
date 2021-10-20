@@ -17,6 +17,7 @@ RUN apt-get install cmake -y
 
 WORKDIR /usr/src/app
 COPY requirements.txt ./
+RUN mkdir data
 RUN pip3 install -r requirements.txt
 COPY . .
 

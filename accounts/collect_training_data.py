@@ -16,7 +16,6 @@ mp_face_detection = mp.solutions.face_detection
 
 def generate_dataset(img, userID):
     """ "Function to save the reference frameage"""
-
     # try block to write the image in the directory
     try:
         os.mkdir(os.path.join(settings.BASE_DIR, "data", userID))
@@ -26,11 +25,9 @@ def generate_dataset(img, userID):
     # try block to catch if encoded is extracted from the first image
     try:
         train_encoding = fr.face_encodings(img)[0]
-        
+
         cv2.imwrite(
-            os.path.join(
-                settings.BASE_DIR, "data", userID, "train.jpg"
-            ),
+            os.path.join(settings.BASE_DIR, "data", userID, "train.jpg"),
             img,
         )
         return True
@@ -39,7 +36,7 @@ def generate_dataset(img, userID):
 
 
 def draw_boundary(img):
-    """ "function to get region of interest from the face"""
+    """function to get region of interest from the face"""
 
     print(detect)
     height, width, _ = img.shape
@@ -110,7 +107,7 @@ def collectTrainingData(userID):
         if not success:
             video_capture.grab()
             break
-        
+
         isImageOk = detect(img, userID)
         if isImageOk:
             resp = {"Success": True, "Message": "Face registered."}
