@@ -11,7 +11,7 @@
 ---
 <p>
   <a href="https://stcvit.in/" target="_blank">
-    <img alt="made-by-acm" src="https://img.shields.io/badge/MADE%20BY-STC%20VIT-blue?style=for-the-badge" />
+    <img alt="made-by-stc" src="https://img.shields.io/badge/MADE%20BY-STC%20VIT-blue?style=for-the-badge" />
   </a>
 
   <a href='https://github.com/STCVIT/Flo-In/blob/master/LICENSE' target="_blank">
@@ -21,7 +21,7 @@
 </p>
 
 
-FLO-IN is an extension that recognises a user whenever he/she tries to Log-In any of the accounts. The user who has registered his/her face will only be given the option to access the accounts. The face recognition will be done every time the user tries to access any of the accounts. Option to open the accounts via pattern is also provided. Hence, there is no need to Log-Out every time of the account to keep the data safe. Without any single click you can access your accounts as well as keep the account password protected.
+<a href="https://floin-project.azurewebsites.net/">FLO-IN</a> is an extension that recognises a user whenever he/she tries to Log-In any of the accounts. The user who has registered his/her face will only be given the option to access the accounts. The face recognition will be done every time the user tries to access any of the accounts. Option to open the accounts via pattern is also provided. Hence, there is no need to Log-Out every time of the account to keep the data safe. Without any single click you can access your accounts as well as keep the account password protected.
 
 <br>
 
