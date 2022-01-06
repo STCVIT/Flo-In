@@ -51,7 +51,7 @@
             <path d="M33.4946 15.6078C34.44 15.6078 35.2064 14.8542 35.2064 13.9246C35.2064 12.9949 34.44 12.2413 33.4946 12.2413C32.5491 12.2413 31.7827 12.9949 31.7827 13.9246C31.7827 14.8542 32.5491 15.6078 33.4946 15.6078Z" stroke="#149BFC" stroke-width="2.18571" stroke-miterlimit="10"/>
             </svg>
             
-          <span class="floin" > Flo In</span></a
+          <span class="floin" > Flo-In</span></a
         >
         <button
           type="button"
@@ -68,7 +68,7 @@
           <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link active"  href="{% url 'profile' %}">Dash Board</a>
+              <a class="nav-link active"  href="{% url 'profile' %}">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="{% url 'savefacedata' %}"
@@ -138,39 +138,6 @@
     <!-- Nav Bar End -->
 
     {% block content %} {% endblock %}
-
-    <!-- Footer Start -->
-     <!-- <div class="footer wow fadeIn" data-wow-delay="0.3s">
-      <div class="container-fluid">
-        <div class="container">
-          <div class="footer-info">
-            <a
-              href="https://github.com/STCVIT/Flo-In"
-              target="_blank"
-              class="footer-logo"
-              >FLO<span>-</span>IN</a
-            >
-          </div>
-        </div>
-        <div class="container copyright">
-          <div class="row">
-            <div class="col-md-6">
-              <p>
-                &copy; <a href="{% url 'home' %}">FLO-IN</a>, All Rights
-                Reserved.
-              </p>
-            </div>
-            <div class="col-md-6">
-              <p>
-                Made with ❤️ by
-                <a href="https://github.com/STCVIT" target="_blank">STC-VIT</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>  -->
-    <!-- Footer End -->
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 

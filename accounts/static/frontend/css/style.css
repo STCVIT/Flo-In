@@ -181,7 +181,7 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  margin-bottom: 45px;
+  margin-bottom: 40px;
   padding: 100px 0 165px;
   background: #181818 !important;
   overflow: hidden;
@@ -683,7 +683,7 @@ body {
 }
 .sm {
   font-family: "Lora";
-  font-size: 5vw;
+  font-size: 6vw;
 }
 
 .lockimg {
@@ -736,7 +736,7 @@ body {
     display: none;
   }
   .txt{
-    font-size: 100%;
+    font-size: 5vw;
   }
   .discount {
     display: none;
@@ -761,7 +761,12 @@ body {
   .featbox{
     margin-top: 5%;
   }
+  .fch{
+    margin-bottom: 5%;
+  }
 }
 .featpara {
   text-align: left !important;
 }
+
+

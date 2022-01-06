@@ -1,6 +1,6 @@
 let trigger = document.getElementById('submitpin');
 let token = localStorage.getItem('user')
-const API = "https://floin-web.azurewebsites.net/api";
+const API = "https://floin-project.azurewebsites.net/api";
 token = JSON.parse(token)
 
 function autofill() {
@@ -122,7 +122,6 @@ function autofill() {
             url = url.replace("http://", "");
             url = url.replace("www.", "");
             const key = Object.keys(allURLs).find(key => url.includes(key));
-            console.log(key)
             let get_detail_url;
 
             if (key) {
@@ -142,15 +141,11 @@ function autofill() {
                 username = userdata.username
                 password = userdata.password
                 let someJSON = { "userName": username, "password": password, "url": url };
-                console.log(userdata)
-                console.log(someJSON)
-
 
                 chrome.tabs.executeScript({
                     code: '(' + function (params) {
 
                         function getElementByXpath(path) {
-                            console.log("Auto filling.......")
                             return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
                         }
 
@@ -263,16 +258,11 @@ function autofill() {
 
 
                         }
-                        // console.log(params.url)
-                        // console.log(allURLs[params.url].username)
 
-                        console.log("hello")
                         const key = Object.keys(allURLs).find(key => params.url.includes(key));
-                        console.log(key)
                         if (key) {
                             getElementByXpath(allURLs[key].username).addEventListener("click", () => {
                                 getElementByXpath(allURLs[key].username).value = params.userName;
-                                console.log("hello in");
                             }
                             );
                             // getElementByXpath(allURLs[key].username).click();

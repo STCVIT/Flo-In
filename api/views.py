@@ -100,7 +100,6 @@ def dataDetail(request, url):
     return Response(resp)
 
 
-
 @api_view(["POST"])
 def dataCreate(request):
     password = request.data.get("password")

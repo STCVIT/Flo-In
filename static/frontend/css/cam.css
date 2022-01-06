@@ -1,0 +1,165 @@
+body {
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position-x: right;
+  scroll-behavior: smooth;
+}
+.hero {
+  padding: 100px 5% 15% 2%;
+}
+#container {
+  margin-bottom: 5%;
+  width: 415px;
+  height: 315px;
+  border: 3px white solid;
+  border-radius: 5%;
+  background: white;
+  /* position: relative; */
+  align-items: center;
+}
+
+#video {
+  width: 405px;
+  height: 308px;
+  background-color: white;
+  border-radius: 5%;
+}
+#video2 {
+  width: 405px;
+  height: 308px;
+  background-color: white;
+  border-radius: 5%;
+}
+.button {
+  margin: 40px;
+  margin-left: 10%;
+  display: center;
+  justify-content: space-between;
+}
+.button,
+h2 {
+  color: white;
+}
+
+.btn {
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.btn:active {
+  background-color: white;
+  color: white;
+  transform: translateY(4px);
+}
+
+.app {
+  font-family: sans-serif;
+  display: grid;
+  height: 50vh;
+  place-items: center;
+}
+
+.base-timer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 3px;
+  stroke: white;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 3px;
+  stroke-linecap: round;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+}
+
+.base-timer__path-remaining.green {
+  /* color: rgb(65, 184, 131); */
+  color: #007bff;
+}
+
+.base-timer__path-remaining.orange {
+  /* color: orange; */
+  color: #007bff;
+}
+
+.base-timer__path-remaining.red {
+  /* color: red; */
+  color: #007bff;
+}
+
+.base-timer__label {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.bttn {
+  margin-top: 8%;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+p {
+  font-size: 20px;
+}
+.alert {
+  margin: 8% 8% 0 8%;
+}
+
+.regfacemain{
+  padding-bottom: 6%;
+  background-color: transparent !important
+}
+
+#showSaveSuccessResult{
+  background-color: #313131;
+  border-color: #313131;
+  width: 50%;
+  margin-left: 27%;
+  height: 2vh;
+  margin-top: 5%;
+  height: 50px;
+  color: #eee;
+  display: none;
+}
+
+#showSaveFailResult{
+  background-color: #313131;
+  border-color: #313131;
+  width: 50%;
+  margin-left: 27%;
+  height: 2vh;
+  margin-top: 5%;
+  height: 50px;
+  color: #eee;
+  display: none;
+}

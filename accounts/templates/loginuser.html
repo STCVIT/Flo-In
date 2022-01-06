@@ -7,7 +7,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flo IN | Login</title>
+  <title>Flo-In | Login</title>
   <link rel="stylesheet" href="{% static 'frontend/css/authenticate.css' %}" />
 </head>
 
@@ -21,7 +21,7 @@
             <h1>Log In</h1>
             <br>
             {% if error %}
-            <div style="color: #149bfc;" role="alert" id="error">
+            <div style="color: red;" role="alert" id="error">
               {{ error }}
             </div>
             <script>
@@ -44,7 +44,7 @@
             {% csrf_token %}
             
             {% if error %}
-            <div style="color: #149bfc;" role="alert" id="error">
+            <div style="color: red;" role="alert" id="error">
               {{ error }}
             </div>
             <script>
@@ -83,6 +83,8 @@
         </div>
       </div>
     </header>
+    <!-- <h6 class="text-center">Made with ❤️ by STC-VIT</h6> -->
+  </div>
   <script src="{% static 'frontend/js/authenticate.js' %}"></script>
   <script>
 function submitForm(){

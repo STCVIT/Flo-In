@@ -1,4 +1,3 @@
-console.log('hi from popup js')
 var width = 320 // We will scale the photo width to this
 var height = 0 // This will be computed based on the input stream
 
@@ -16,7 +15,7 @@ var startbutton = null
 let data
 let logout = document.getElementById('logout')
 let token
-const API = "https://floin-web.azurewebsites.net/api";
+const API = "https://floin-project.azurewebsites.net/api";
 
 function autofill() {
   chrome.tabs.query({ 'active': true, 'windowId': chrome.windows.WINDOW_ID_CURRENT },
@@ -137,7 +136,6 @@ function autofill() {
       url = url.replace("http://", "");
       url = url.replace("www.", "");
       const key = Object.keys(allURLs).find(key => url.includes(key));
-      console.log(key)
       let get_detail_url;
 
       if (key) {
@@ -157,15 +155,11 @@ function autofill() {
         username = userdata.username
         password = userdata.password
         let someJSON = { "userName": username, "password": password, "url": url };
-        console.log(userdata)
-        console.log(someJSON)
-
 
         chrome.tabs.executeScript({
           code: '(' + function (params) {
 
             function getElementByXpath(path) {
-              console.log("Auto filling.......")
               return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
             }
 
@@ -278,16 +272,11 @@ function autofill() {
 
 
             }
-            // console.log(params.url)
-            // console.log(allURLs[params.url].username)
 
-            console.log("hello")
             const key = Object.keys(allURLs).find(key => params.url.includes(key));
-            console.log(key)
             if (key) {
               getElementByXpath(allURLs[key].username).addEventListener("click", () => {
                 getElementByXpath(allURLs[key].username).value = params.userName;
-                console.log("hello in");
               }
               );
               // getElementByXpath(allURLs[key].username).click();
@@ -336,13 +325,11 @@ window.onload = () => {
         })
       }
       else {
-        console.log("access")
         window.location.href = 'login.html'
       }
     } catch (error) { }
   }
   else {
-    console.log("login")
     window.location.href = 'login.html'
   }
 }
@@ -394,15 +381,12 @@ function startup() {
     'click',
     function (ev) {
       takepicture(console.log("in pic"));
-      console.log("logged 1");
       setTimeout(async function () {
         await takepicture();
       }, 1000);
-      console.log("logged 2");
       setTimeout(async function () {
         await takepicture();
       }, 1000);
-      console.log("logged 3")
       ev.preventDefault();
     },
     false,
@@ -439,7 +423,6 @@ function takepicture() {
     body: fdata,
   }).then(res => res.json()).then(res => {
     var auth = JSON.parse(JSON.stringify(res))
-    console.log("before calling autofill...", auth.match.Success)
     if (auth.match.Success === true) {
       document.getElementById('pop_msg').innerHTML = "Authorised"
       autofill()
@@ -469,7 +452,6 @@ window.addEventListener('load', startup, false)
 logout.onclick = async function () {
   var fdata = new FormData()
   fdata.append('refresh', token.refresh)
-  console.log(token.refresh)
   await fetch(API + '/logout/', {
     method: 'POST',
     headers: {
@@ -494,7 +476,6 @@ function patterncheck() {
     body: fdata,
   }).then(res => res.json()).then(res => {
     var auth = JSON.parse(JSON.stringify(res))
-    console.log(auth.match)
     if (auth.match == "Authorised") {
       autofill()
     }

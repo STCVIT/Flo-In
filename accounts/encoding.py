@@ -17,7 +17,7 @@ def encoding_recognise(userID, image):
     image -> PATH of the iamge use to get the image to compare.
 
     """
-
+    
     try:
         pth = os.path.join(settings.BASE_DIR, "data", userID)
         dir_list = os.listdir(pth)

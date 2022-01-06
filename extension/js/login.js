@@ -2,7 +2,7 @@
 const userElement = document.getElementById('email');
 const passwordElement = document.getElementById('password');
 const trigger = document.getElementById('trigger');
-const API = "https://floin-web.azurewebsites.net/api";
+const API = "https://floin-project.azurewebsites.net/api";
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -13,7 +13,6 @@ trigger.addEventListener('click', (e) => {
     var loginUrl = API + '/authenticate/jwt/create/';
     var email = userElement.value;
     var password = passwordElement.value;
-    console.log("hi")
     fetch(loginUrl, {
         method: 'POST',
         headers: {

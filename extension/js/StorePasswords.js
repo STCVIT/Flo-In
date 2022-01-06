@@ -1,8 +1,7 @@
-console.log('hello from StorePasswords')
 let token = localStorage.getItem('user')
 token = JSON.parse(token)
 
-const API = "https://floin-web.azurewebsites.net/api";
+const API = "https://floin-project.azurewebsites.net/api";
 
 const allURLs = [
   "https://www.facebook.com",
@@ -38,7 +37,6 @@ async function sendData(url, inputUsername, encodedPassword) {
     }
   });
   url.charAt(url.length - 1) === '/' ? url = url.slice(0, -1) : url = url
-  console.log(url)
 
   url = url.replace("https://", "");
   url = url.replace("http://", "");
@@ -46,7 +44,6 @@ async function sendData(url, inputUsername, encodedPassword) {
   fdata.append('url', url)
   fdata.append('username', inputUsername)
   fdata.append('password', encodedPassword)
-  console.log('fetching....')
   await fetch(API + '/data-create/', {
     method: 'POST',
     headers: {
@@ -54,7 +51,6 @@ async function sendData(url, inputUsername, encodedPassword) {
     },
     body: fdata,
   }).then(() => {
-    console.log('data sent successfully')
     document.getElementById('msg').innerHTML = "Password Stored Successfully"
   }).catch((error) => {
     console.log(error)
@@ -64,7 +60,6 @@ async function sendData(url, inputUsername, encodedPassword) {
 
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('contact').addEventListener('submit', function (e) {
-    console.log('ubmitting...')
     e.preventDefault()
     var text = document.getElementById('passwordToStore')
     var username = document.getElementById('userName')
@@ -72,7 +67,6 @@ window.addEventListener('DOMContentLoaded', () => {
       chrome.tabs.query(
         { active: true, windowId: chrome.windows.WINDOW_ID_CURRENT },
         function (tabs) {
-          console.log('inside chrome tabs query')
           url = tabs[0].url
           sendData(url, username.value, text.value)
         },
@@ -93,7 +87,6 @@ window.addEventListener('DOMContentLoaded', () => {
         chrome.tabs.query(
           { active: true, windowId: chrome.windows.WINDOW_ID_CURRENT },
           function (tabs) {
-            console.log('inside chrome tabs query')
             url = tabs[0].url
             sendData(url, inputUsername, Password)
           },

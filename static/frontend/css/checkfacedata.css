@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.checkface {
+  padding-top: 40px !important;
+}
+body {
+  scroll-behavior: smooth !important;
+}
+
+h3 {
+  text-align: center;
+  color: white;
+}
+
+#check3 {
+  /* margin-left: 10%; */
+  margin-bottom: 1%;
+}
+/* #check {
+  margin-top: 8%;
+} */
+#video,
+#canvas {
+  width: 405px;
+  height: 308px;
+  background-color: #eee !important;
+  border-radius: 5%;
+}
+#container {
+  width: 413px;
+  height: 315px;
+  border: 3px white solid;
+  background: #eee !important;
+  border-radius: 5%;
+  position: relative;
+}
+
+.play-area {
+  /* display: flex; */
+  justify-content: space-around;
+  margin-bottom: 3%;
+  margin-top: 5% !important;
+  position: relative;
+}
+.button {
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  border: none;
+  /* background-color: inherit; */
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.btn-submit,
+.btn-capture,
+.btn-auth {
+  border: none;
+  background-color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+.btn-submit:hover,
+.btn-capture:hover,
+.btn-auth:hover {
+  color: white;
+}
+
+/* .bttn {
+  display: flex;
+  justify-content: space-evenly;
+} */
+
+.alert-danger {
+  margin-top: 10% !important;
+}
+
+.para {
+  margin: 3%;
+  color: white;
+  font-size: 22px;
+}
+.row {
+  margin-top: 10% !important;
+}
+.checkfacehead {
+  font-family: "Inter", sans-serif !important;
+  letter-spacing: 2px !important;
+  margin-bottom: 0;
+  color: #eee;
+  margin-left: 5%;
+}
+.play-area-sub {
+  padding: 0;
+  width: 80%;
+  justify-content: center;
+}
+
+.col-md {
+  flex-grow: 0 !important;
+  flex-basis: 0 !important;
+}
+
+#checkface {
+  padding-top: 40px;
+}
+
+.checkpara {
+  width: 60%;
+  color: #eee;
+  margin-top: 3%;
+  margin-left: 5%;
+}
+
+#showSuccessResult {
+  background-color: #313131;
+  border-color: #313131;
+  width: 50%;
+  margin-left: 27%;
+  height: 2vh;
+  margin-top: -3% !important;
+  height: 50px;
+  color: #eee;
+  display: none;
+  justify-content: left;
+}
+
+#showFailResult {
+  background-color: #313131;
+  border-color: #313131;
+  width: 50%;
+  margin-left: 27%;
+  height: 2vh;  
+  height: 50px;
+  color: #eee;
+   display: none; 
+   margin-top: -3% !important;
+}
