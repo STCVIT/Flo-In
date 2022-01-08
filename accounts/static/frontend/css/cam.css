@@ -4,6 +4,29 @@ body {
   background-position-x: right;
   scroll-behavior: smooth;
 }
+.loaderscreen{
+  width:100vw;
+  height:100vh;
+}
+  
+  .loader{
+    margin: 200px auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 10px solid white;
+    border-top: 10px solid #007bff;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin{
+    0%{
+      transform: rotate(0deg);
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
 .hero {
   padding: 100px 5% 15% 2%;
 }

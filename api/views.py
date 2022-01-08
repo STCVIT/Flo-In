@@ -137,9 +137,9 @@ def dataUpdate(request, url):
 
 @api_view(["DELETE"])
 def dataDelete(request, url):
-    task = UserData.objects.get(url=url)
-    task.delete()
-    return Response("Taks deleted successfully.")
+    data = UserData.objects.get(url=url)
+    data.delete()
+    return Response("Password deleted successfully.")
 
 
 @api_view(["POST"])

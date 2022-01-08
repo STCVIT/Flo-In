@@ -19,6 +19,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("userdata/", views.savedata, name="userdata"),
     path("profile/", views.profile, name="profile"),
+    path("delete/<int:pk>/", views.delete_user_data, name="delete_user_data"),
     # Face Recognition routes
     path("facedata/", views.savefacedata, name="savefacedata"),
     path("checkfacedata/", views.checkfacedata, name="checkfacedata"),

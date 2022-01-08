@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="{% static 'frontend/css/cam.css' %}" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div class="loaderscreen"><div class="loader"></div></div>
 <div class="hero regfacemain">
   <h1 class="regface">Register face</h1>
   <div class="bttn">
@@ -92,6 +93,11 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="{% static 'frontend/js/clock.js' %}"></script>
 <script>
+var loader=document.querySelector(".loaderscreen")
+  window.addEventListener("load",hide)
+  function hide() {
+    loader.style.display="none"
+  }
   // (function () {
   const FULL_DASH_ARRAY = 283;
   const WARNING_THRESHOLD = 4;

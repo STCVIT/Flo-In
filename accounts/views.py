@@ -34,6 +34,14 @@ def profile(request):
     return render(request, "profile.html", {"datas": datas})
 
 
+@login_required
+# delete user data
+def delete_user_data(request, pk):
+    data = get_object_or_404(UserData, pk=pk)
+    data.delete()
+    return redirect("profile")
+
+
 def loginuser(request):
     """Login user"""
     if request.method == "GET":

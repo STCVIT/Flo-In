@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
 <div class="hero">
+  <!-- <div class="loaderscreen"><div class="loader"></div></div> -->
   <div class="homehead">
     <div class="txt">
       We bring to you the
-
       <span class="sm">smartest </span>way to login
       <!-- <img style="margin-left: -5%;margin-top: -5%;" src="{% static 'frontend/imgs/SparkleUp.png' %}"/> -->
     </div>
@@ -67,7 +67,10 @@
             <h2 class="hdwl">FLO-IN For Ease</h2>
           </div>
           <div class="row">
-            <div class="col-lg-4 col-md-6 wow fadeInUp fch" data-wow-delay="0.0s">
+            <div
+              class="col-lg-4 col-md-6 wow fadeInUp fch"
+              data-wow-delay="0.0s"
+            >
               <div class="service-item active">
                 <center>
                   <img
@@ -97,12 +100,13 @@
                   <h3 class="fthead">Facial Log-In</h3>
                 </center>
                 <p class="featpara">
-                  With the Face Detection Method, FLO-IN ensures the security of your accounts.
-                  By recognising your face it will log you into your account.
+                  With the Face Detection Method, FLO-IN ensures the security of
+                  your accounts. By recognising your face it will log you into
+                  your account.
                 </p>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp " data-wow-delay="0.4s">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
               <div class="service-item active">
                 <center>
                   <img
@@ -113,9 +117,10 @@
                   <h3 class="fthead">Auto-Fill</h3>
                 </center>
                 <p class="featpara">
-                  FLO-IN has a feature that allows you to autofill your credentials 
-                  just by recognising your face. You won't have to retype your passwords; 
-                  instead, you'll be able to log in with a single click.
+                  FLO-IN has a feature that allows you to autofill your
+                  credentials just by recognising your face. You won't have to
+                  retype your passwords; instead, you'll be able to log in with
+                  a single click.
                 </p>
               </div>
             </div>
@@ -135,4 +140,11 @@
   </div>
 </div>
 <h6 class="text-center">Made with ❤️ by STC-VIT</h6>
-{% endblock %} class=""
+<script>
+  var loader = document.querySelector(".loaderscreen");
+  window.addEventListener("load", hide);
+  function hide() {
+    loader.style.display = "none";
+  }
+</script>
+{% endblock %}

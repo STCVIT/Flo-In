@@ -20,7 +20,8 @@
       <div class="col col-4">Website URL</div>
       <div class="col col-3">Email Id/ Username</div>
       <div class="col col-3">Password</div>
-      <div class="col col-2">View</div>
+      <div class="col col-2">View/Delete</div>
+
     </li>
 
     <div class="tabledata">
@@ -31,19 +32,36 @@
       <div class="col-4" data-label="Website URL">{{data.url}}</div>
       <div class="col-3" data-label="Email ID">{{ data.username }}</div>
       
-      <!-- <div class="col col-4" data-label="Payment Status">{{ data.password }}</div> -->
       <div class="col-3" >
         <span class="col-sm-10" id="{{data.url}}">******</span>
-        <!-- <div  id="{{data.url}}" ></div> -->
       </div>
-    <div class="col-2" >
-    <button
+      <div class="col-2" >
+      <button
       class="eye"  
       id="eyebt{{data.url}}"       
       onclick="showPassword('{{data.username}}', '{{data.url}}','{{data.password}}')"
     >
       <i class="fa">&#xf06e;</i>
     </button>
+      <!-- to delete this entry -->
+      <button
+                class="eye"
+                href="#"
+                onclick="$('#delete_entry').click()"
+                
+                ><i class="fa fa-remove"></i></button
+              >
+              <form
+                style="display: none"
+                method="DELETE"
+                action="{% url 'delete_user_data' data.id %}"
+              >
+                {% csrf_token %}
+                <button id="delete_entry" type="submit">
+                  <strong>delete</strong>
+                </button>
+              </form>
+    
   </div>
   
       
