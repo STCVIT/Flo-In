@@ -171,12 +171,22 @@ Spread the word to your geek fellows to save their time!
 				</a>
 			</p>
 		</td>
+		<td>
+		Suryakant Agrawal
+		<p align="center">
+			<img src = "https://avatars.githubusercontent.com/u/72617587?v=4" width="150" height="150" alt="Suryakant Agrawal">
+		</p>
+			<p align="center">
+				<a href = "https://github.com/suryaa62">
+					<img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/>
+				</a>
+			</p>
+		</td>
 	</tr>
 	</table>
 
 
 * [Harshita Rajput](https://github.com/HarshitaRajput)
-* [Suryakant Agrawal](https://github.com/suryaa62)
 
 
 ## 🤝🏻 Connect with Us
